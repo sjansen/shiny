@@ -1,0 +1,22 @@
+archives:
+- id: default
+  format_overrides:
+    - goos: windows
+      format: zip
+
+builds:
+- env:
+  - CGO_ENABLED=0
+  goarch:
+  - amd64
+  ldflags:
+  - -s -w -X main.build={{.Version}}
+
+checksum:
+  name_template: 'checksums.txt'
+
+release:
+  prerelease: true
+
+source:
+  enabled: true
