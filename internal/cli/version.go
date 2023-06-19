@@ -2,7 +2,6 @@ package cli
 
 import (
 	"fmt"
-	"os"
 	"runtime/debug"
 )
 
@@ -17,10 +16,8 @@ func (cmd *versionCmd) Run() error {
 		fmt.Println()
 		fmt.Println("Build Info:")
 		fmt.Println("===========")
-		info, err := debug.ReadBuildInfo()
-		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
-		} else {
+		info, ok := debug.ReadBuildInfo()
+		if ok {
 			fmt.Println(info)
 		}
 	} else {
