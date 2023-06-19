@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/antlr/antlr4/runtime/Go/antlr/v4"
+	"github.com/antlr4-go/antlr/v4"
 
 	"github.com/sjansen/shiny/spikes/partiql/parser"
 )
@@ -43,7 +43,7 @@ func NewTreeShapeListener() *TreeShapeListener {
 }
 
 func (this *TreeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
-	fmt.Println(ctx.GetText())
+	fmt.Printf("%T %s\n", ctx, ctx.GetText())
 }
 
 func main() {

@@ -1,4 +1,4 @@
-// Code generated from PartiQL.g4 by ANTLR 4.12.0. DO NOT EDIT.
+// Code generated from PartiQL.g4 by ANTLR 4.13.0. DO NOT EDIT.
 
 package parser // PartiQL
 import (
@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/antlr/antlr4/runtime/Go/antlr/v4"
+	"github.com/antlr4-go/antlr/v4"
 )
 
 // Suppress unused import errors
@@ -18,20 +18,20 @@ type PartiQLParser struct {
 	*antlr.BaseParser
 }
 
-var partiqlParserStaticData struct {
+var PartiQLParserStaticData struct {
 	once                   sync.Once
 	serializedATN          []int32
-	literalNames           []string
-	symbolicNames          []string
-	ruleNames              []string
-	predictionContextCache *antlr.PredictionContextCache
+	LiteralNames           []string
+	SymbolicNames          []string
+	RuleNames              []string
+	PredictionContextCache *antlr.PredictionContextCache
 	atn                    *antlr.ATN
 	decisionToDFA          []*antlr.DFA
 }
 
 func partiqlParserInit() {
-	staticData := &partiqlParserStaticData
-	staticData.literalNames = []string{
+	staticData := &PartiQLParserStaticData
+	staticData.LiteralNames = []string{
 		"", "'ABSOLUTE'", "'ACTION'", "'ADD'", "'ALL'", "'ALLOCATE'", "'ALTER'",
 		"'AND'", "'ANY'", "'ARE'", "'AS'", "'ASC'", "'ASSERTION'", "'AT'", "'AUTHORIZATION'",
 		"'AVG'", "'BEGIN'", "'BETWEEN'", "'BIT'", "'BIT_LENGTH'", "'BY'", "'CASCADE'",
@@ -80,7 +80,7 @@ func partiqlParserInit() {
 		"'='", "", "'||'", "'<'", "'>'", "'<<'", "'>>'", "'['", "']'", "'{'",
 		"'}'", "'('", "')'", "':'", "';'", "'?'", "'.'",
 	}
-	staticData.symbolicNames = []string{
+	staticData.SymbolicNames = []string{
 		"", "ABSOLUTE", "ACTION", "ADD", "ALL", "ALLOCATE", "ALTER", "AND",
 		"ANY", "ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG",
 		"BEGIN", "BETWEEN", "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED",
@@ -127,7 +127,7 @@ func partiqlParserInit() {
 		"WS", "COMMENT_SINGLE", "COMMENT_BLOCK", "UNRECOGNIZED", "ION_CLOSURE",
 		"BACKTICK",
 	}
-	staticData.ruleNames = []string{
+	staticData.RuleNames = []string{
 		"root", "statement", "explainOption", "asIdent", "atIdent", "byIdent",
 		"symbolPrimitive", "dql", "execCommand", "ddl", "createCommand", "dropCommand",
 		"dml", "dmlBaseCommand", "pathSimple", "pathSimpleSteps", "replaceCommand",
@@ -153,7 +153,7 @@ func partiqlParserInit() {
 		"parameter", "varRefExpr", "collection", "array", "bag", "tuple", "pair",
 		"literal", "type",
 	}
-	staticData.predictionContextCache = antlr.NewPredictionContextCache()
+	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
 		4, 1, 305, 1572, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4,
 		7, 4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10,
@@ -936,7 +936,7 @@ func partiqlParserInit() {
 // NewPartiQLParser(). You can call this function if you wish to initialize the static state ahead
 // of time.
 func PartiQLParserInit() {
-	staticData := &partiqlParserStaticData
+	staticData := &PartiQLParserStaticData
 	staticData.once.Do(partiqlParserInit)
 }
 
@@ -945,11 +945,11 @@ func NewPartiQLParser(input antlr.TokenStream) *PartiQLParser {
 	PartiQLParserInit()
 	this := new(PartiQLParser)
 	this.BaseParser = antlr.NewBaseParser(input)
-	staticData := &partiqlParserStaticData
-	this.Interpreter = antlr.NewParserATNSimulator(this, staticData.atn, staticData.decisionToDFA, staticData.predictionContextCache)
-	this.RuleNames = staticData.ruleNames
-	this.LiteralNames = staticData.literalNames
-	this.SymbolicNames = staticData.symbolicNames
+	staticData := &PartiQLParserStaticData
+	this.Interpreter = antlr.NewParserATNSimulator(this, staticData.atn, staticData.decisionToDFA, staticData.PredictionContextCache)
+	this.RuleNames = staticData.RuleNames
+	this.LiteralNames = staticData.LiteralNames
+	this.SymbolicNames = staticData.SymbolicNames
 	this.GrammarFileName = "PartiQL.g4"
 
 	return this
@@ -1409,15 +1409,20 @@ type IRootContext interface {
 }
 
 type RootContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyRootContext() *RootContext {
 	var p = new(RootContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_root
 	return p
+}
+
+func InitEmptyRootContext(p *RootContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_root
 }
 
 func (*RootContext) IsRootContext() {}
@@ -1425,7 +1430,7 @@ func (*RootContext) IsRootContext() {}
 func NewRootContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *RootContext {
 	var p = new(RootContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_root
@@ -1533,46 +1538,38 @@ func (s *RootContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Root() (localctx IRootContext) {
-	this := p
-	_ = this
-
 	localctx = NewRootContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 0, PartiQLParserRULE_root)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	p.SetState(250)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserEXPLAIN {
 		{
 			p.SetState(236)
 			p.Match(PartiQLParserEXPLAIN)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(248)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 1, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(237)
 				p.Match(PartiQLParserPAREN_LEFT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(238)
@@ -1580,12 +1577,19 @@ func (p *PartiQLParser) Root() (localctx IRootContext) {
 			}
 			p.SetState(243)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 
 			for _la == PartiQLParserCOMMA {
 				{
 					p.SetState(239)
 					p.Match(PartiQLParserCOMMA)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(240)
@@ -1594,13 +1598,22 @@ func (p *PartiQLParser) Root() (localctx IRootContext) {
 
 				p.SetState(245)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 			}
 			{
 				p.SetState(246)
 				p.Match(PartiQLParserPAREN_RIGHT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	}
@@ -1609,7 +1622,17 @@ func (p *PartiQLParser) Root() (localctx IRootContext) {
 		p.Statement()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IStatementContext is an interface to support dynamic dispatch.
@@ -1623,15 +1646,20 @@ type IStatementContext interface {
 }
 
 type StatementContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyStatementContext() *StatementContext {
 	var p = new(StatementContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_statement
 	return p
+}
+
+func InitEmptyStatementContext(p *StatementContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_statement
 }
 
 func (*StatementContext) IsStatementContext() {}
@@ -1639,7 +1667,7 @@ func (*StatementContext) IsStatementContext() {}
 func NewStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StatementContext {
 	var p = new(StatementContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_statement
@@ -1649,8 +1677,8 @@ func NewStatementContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *StatementContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *StatementContext) CopyFrom(ctx *StatementContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *StatementContext) CopyAll(ctx *StatementContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *StatementContext) GetRuleContext() antlr.RuleContext {
@@ -1662,15 +1690,15 @@ func (s *StatementContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 type QueryExecContext struct {
-	*StatementContext
+	StatementContext
 }
 
 func NewQueryExecContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *QueryExecContext {
 	var p = new(QueryExecContext)
 
-	p.StatementContext = NewEmptyStatementContext()
+	InitEmptyStatementContext(&p.StatementContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*StatementContext))
+	p.CopyAll(ctx.(*StatementContext))
 
 	return p
 }
@@ -1716,15 +1744,15 @@ func (s *QueryExecContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type QueryDdlContext struct {
-	*StatementContext
+	StatementContext
 }
 
 func NewQueryDdlContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *QueryDdlContext {
 	var p = new(QueryDdlContext)
 
-	p.StatementContext = NewEmptyStatementContext()
+	InitEmptyStatementContext(&p.StatementContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*StatementContext))
+	p.CopyAll(ctx.(*StatementContext))
 
 	return p
 }
@@ -1770,15 +1798,15 @@ func (s *QueryDdlContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type QueryDqlContext struct {
-	*StatementContext
+	StatementContext
 }
 
 func NewQueryDqlContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *QueryDqlContext {
 	var p = new(QueryDqlContext)
 
-	p.StatementContext = NewEmptyStatementContext()
+	InitEmptyStatementContext(&p.StatementContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*StatementContext))
+	p.CopyAll(ctx.(*StatementContext))
 
 	return p
 }
@@ -1824,15 +1852,15 @@ func (s *QueryDqlContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type QueryDmlContext struct {
-	*StatementContext
+	StatementContext
 }
 
 func NewQueryDmlContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *QueryDmlContext {
 	var p = new(QueryDmlContext)
 
-	p.StatementContext = NewEmptyStatementContext()
+	InitEmptyStatementContext(&p.StatementContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*StatementContext))
+	p.CopyAll(ctx.(*StatementContext))
 
 	return p
 }
@@ -1878,31 +1906,15 @@ func (s *QueryDmlContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Statement() (localctx IStatementContext) {
-	this := p
-	_ = this
-
 	localctx = NewStatementContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 2, PartiQLParserRULE_statement)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(278)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserAVG, PartiQLParserBIT_LENGTH, PartiQLParserCASE, PartiQLParserCAST, PartiQLParserCHARACTER_LENGTH, PartiQLParserCHAR_LENGTH, PartiQLParserCOALESCE, PartiQLParserCOUNT, PartiQLParserDATE, PartiQLParserEXISTS, PartiQLParserEXTRACT, PartiQLParserDATE_ADD, PartiQLParserDATE_DIFF, PartiQLParserFALSE, PartiQLParserLOWER, PartiQLParserMAX, PartiQLParserMIN, PartiQLParserNOT, PartiQLParserNULL, PartiQLParserNULLIF, PartiQLParserOCTET_LENGTH, PartiQLParserSELECT, PartiQLParserSIZE, PartiQLParserSUBSTRING, PartiQLParserSUM, PartiQLParserTIME, PartiQLParserTRIM, PartiQLParserTRUE, PartiQLParserUPPER, PartiQLParserVALUES, PartiQLParserLAG, PartiQLParserLEAD, PartiQLParserCAN_CAST, PartiQLParserCAN_LOSSLESS_CAST, PartiQLParserMISSING, PartiQLParserPIVOT, PartiQLParserLIST, PartiQLParserSEXP, PartiQLParserPLUS, PartiQLParserMINUS, PartiQLParserAT_SIGN, PartiQLParserANGLE_DOUBLE_LEFT, PartiQLParserBRACKET_LEFT, PartiQLParserBRACE_LEFT, PartiQLParserPAREN_LEFT, PartiQLParserQUESTION_MARK, PartiQLParserLITERAL_STRING, PartiQLParserLITERAL_INTEGER, PartiQLParserLITERAL_DECIMAL, PartiQLParserIDENTIFIER, PartiQLParserIDENTIFIER_QUOTED, PartiQLParserION_CLOSURE:
@@ -1914,18 +1926,29 @@ func (p *PartiQLParser) Statement() (localctx IStatementContext) {
 		}
 		p.SetState(256)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserCOLON_SEMI {
 			{
 				p.SetState(255)
 				p.Match(PartiQLParserCOLON_SEMI)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
 		{
 			p.SetState(258)
 			p.Match(PartiQLParserEOF)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserDELETE, PartiQLParserFROM, PartiQLParserINSERT, PartiQLParserREPLACE, PartiQLParserSET, PartiQLParserUPDATE, PartiQLParserUPSERT, PartiQLParserREMOVE:
@@ -1937,18 +1960,29 @@ func (p *PartiQLParser) Statement() (localctx IStatementContext) {
 		}
 		p.SetState(262)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserCOLON_SEMI {
 			{
 				p.SetState(261)
 				p.Match(PartiQLParserCOLON_SEMI)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
 		{
 			p.SetState(264)
 			p.Match(PartiQLParserEOF)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserCREATE, PartiQLParserDROP:
@@ -1960,18 +1994,29 @@ func (p *PartiQLParser) Statement() (localctx IStatementContext) {
 		}
 		p.SetState(268)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserCOLON_SEMI {
 			{
 				p.SetState(267)
 				p.Match(PartiQLParserCOLON_SEMI)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
 		{
 			p.SetState(270)
 			p.Match(PartiQLParserEOF)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserEXEC:
@@ -1983,25 +2028,47 @@ func (p *PartiQLParser) Statement() (localctx IStatementContext) {
 		}
 		p.SetState(274)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserCOLON_SEMI {
 			{
 				p.SetState(273)
 				p.Match(PartiQLParserCOLON_SEMI)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
 		{
 			p.SetState(276)
 			p.Match(PartiQLParserEOF)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExplainOptionContext is an interface to support dynamic dispatch.
@@ -2032,7 +2099,7 @@ type IExplainOptionContext interface {
 }
 
 type ExplainOptionContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	param  antlr.Token
 	value  antlr.Token
@@ -2040,9 +2107,14 @@ type ExplainOptionContext struct {
 
 func NewEmptyExplainOptionContext() *ExplainOptionContext {
 	var p = new(ExplainOptionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_explainOption
 	return p
+}
+
+func InitEmptyExplainOptionContext(p *ExplainOptionContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_explainOption
 }
 
 func (*ExplainOptionContext) IsExplainOptionContext() {}
@@ -2050,7 +2122,7 @@ func (*ExplainOptionContext) IsExplainOptionContext() {}
 func NewExplainOptionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExplainOptionContext {
 	var p = new(ExplainOptionContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_explainOption
@@ -2097,28 +2169,8 @@ func (s *ExplainOptionContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ExplainOption() (localctx IExplainOptionContext) {
-	this := p
-	_ = this
-
 	localctx = NewExplainOptionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 4, PartiQLParserRULE_explainOption)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(280)
@@ -2126,6 +2178,10 @@ func (p *PartiQLParser) ExplainOption() (localctx IExplainOptionContext) {
 		var _m = p.Match(PartiQLParserIDENTIFIER)
 
 		localctx.(*ExplainOptionContext).param = _m
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(281)
@@ -2133,9 +2189,23 @@ func (p *PartiQLParser) ExplainOption() (localctx IExplainOptionContext) {
 		var _m = p.Match(PartiQLParserIDENTIFIER)
 
 		localctx.(*ExplainOptionContext).value = _m
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IAsIdentContext is an interface to support dynamic dispatch.
@@ -2154,15 +2224,20 @@ type IAsIdentContext interface {
 }
 
 type AsIdentContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyAsIdentContext() *AsIdentContext {
 	var p = new(AsIdentContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_asIdent
 	return p
+}
+
+func InitEmptyAsIdentContext(p *AsIdentContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_asIdent
 }
 
 func (*AsIdentContext) IsAsIdentContext() {}
@@ -2170,7 +2245,7 @@ func (*AsIdentContext) IsAsIdentContext() {}
 func NewAsIdentContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *AsIdentContext {
 	var p = new(AsIdentContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_asIdent
@@ -2221,39 +2296,33 @@ func (s *AsIdentContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) AsIdent() (localctx IAsIdentContext) {
-	this := p
-	_ = this
-
 	localctx = NewAsIdentContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 6, PartiQLParserRULE_asIdent)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(283)
 		p.Match(PartiQLParserAS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(284)
 		p.SymbolPrimitive()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IAtIdentContext is an interface to support dynamic dispatch.
@@ -2272,15 +2341,20 @@ type IAtIdentContext interface {
 }
 
 type AtIdentContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyAtIdentContext() *AtIdentContext {
 	var p = new(AtIdentContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_atIdent
 	return p
+}
+
+func InitEmptyAtIdentContext(p *AtIdentContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_atIdent
 }
 
 func (*AtIdentContext) IsAtIdentContext() {}
@@ -2288,7 +2362,7 @@ func (*AtIdentContext) IsAtIdentContext() {}
 func NewAtIdentContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *AtIdentContext {
 	var p = new(AtIdentContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_atIdent
@@ -2339,39 +2413,33 @@ func (s *AtIdentContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) AtIdent() (localctx IAtIdentContext) {
-	this := p
-	_ = this
-
 	localctx = NewAtIdentContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 8, PartiQLParserRULE_atIdent)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(286)
 		p.Match(PartiQLParserAT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(287)
 		p.SymbolPrimitive()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IByIdentContext is an interface to support dynamic dispatch.
@@ -2390,15 +2458,20 @@ type IByIdentContext interface {
 }
 
 type ByIdentContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyByIdentContext() *ByIdentContext {
 	var p = new(ByIdentContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_byIdent
 	return p
+}
+
+func InitEmptyByIdentContext(p *ByIdentContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_byIdent
 }
 
 func (*ByIdentContext) IsByIdentContext() {}
@@ -2406,7 +2479,7 @@ func (*ByIdentContext) IsByIdentContext() {}
 func NewByIdentContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ByIdentContext {
 	var p = new(ByIdentContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_byIdent
@@ -2457,39 +2530,33 @@ func (s *ByIdentContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ByIdent() (localctx IByIdentContext) {
-	this := p
-	_ = this
-
 	localctx = NewByIdentContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 10, PartiQLParserRULE_byIdent)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(289)
 		p.Match(PartiQLParserBY)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(290)
 		p.SymbolPrimitive()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ISymbolPrimitiveContext is an interface to support dynamic dispatch.
@@ -2514,16 +2581,21 @@ type ISymbolPrimitiveContext interface {
 }
 
 type SymbolPrimitiveContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	ident  antlr.Token
 }
 
 func NewEmptySymbolPrimitiveContext() *SymbolPrimitiveContext {
 	var p = new(SymbolPrimitiveContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_symbolPrimitive
 	return p
+}
+
+func InitEmptySymbolPrimitiveContext(p *SymbolPrimitiveContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_symbolPrimitive
 }
 
 func (*SymbolPrimitiveContext) IsSymbolPrimitiveContext() {}
@@ -2531,7 +2603,7 @@ func (*SymbolPrimitiveContext) IsSymbolPrimitiveContext() {}
 func NewSymbolPrimitiveContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SymbolPrimitiveContext {
 	var p = new(SymbolPrimitiveContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_symbolPrimitive
@@ -2574,28 +2646,9 @@ func (s *SymbolPrimitiveContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) SymbolPrimitive() (localctx ISymbolPrimitiveContext) {
-	this := p
-	_ = this
-
 	localctx = NewSymbolPrimitiveContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 12, PartiQLParserRULE_symbolPrimitive)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -2617,7 +2670,17 @@ func (p *PartiQLParser) SymbolPrimitive() (localctx ISymbolPrimitiveContext) {
 		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDqlContext is an interface to support dynamic dispatch.
@@ -2635,15 +2698,20 @@ type IDqlContext interface {
 }
 
 type DqlContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyDqlContext() *DqlContext {
 	var p = new(DqlContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_dql
 	return p
+}
+
+func InitEmptyDqlContext(p *DqlContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_dql
 }
 
 func (*DqlContext) IsDqlContext() {}
@@ -2651,7 +2719,7 @@ func (*DqlContext) IsDqlContext() {}
 func NewDqlContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DqlContext {
 	var p = new(DqlContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_dql
@@ -2698,35 +2766,25 @@ func (s *DqlContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Dql() (localctx IDqlContext) {
-	this := p
-	_ = this
-
 	localctx = NewDqlContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 14, PartiQLParserRULE_dql)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(294)
 		p.Expr()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExecCommandContext is an interface to support dynamic dispatch.
@@ -2766,7 +2824,7 @@ type IExecCommandContext interface {
 }
 
 type ExecCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	name   IExprContext
 	_expr  IExprContext
@@ -2775,9 +2833,14 @@ type ExecCommandContext struct {
 
 func NewEmptyExecCommandContext() *ExecCommandContext {
 	var p = new(ExecCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_execCommand
 	return p
+}
+
+func InitEmptyExecCommandContext(p *ExecCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_execCommand
 }
 
 func (*ExecCommandContext) IsExecCommandContext() {}
@@ -2785,7 +2848,7 @@ func (*ExecCommandContext) IsExecCommandContext() {}
 func NewExecCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExecCommandContext {
 	var p = new(ExecCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_execCommand
@@ -2881,33 +2944,18 @@ func (s *ExecCommandContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ExecCommand() (localctx IExecCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewExecCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 16, PartiQLParserRULE_execCommand)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(296)
 		p.Match(PartiQLParserEXEC)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(297)
@@ -2918,6 +2966,9 @@ func (p *PartiQLParser) ExecCommand() (localctx IExecCommandContext) {
 	}
 	p.SetState(306)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -2931,12 +2982,19 @@ func (p *PartiQLParser) ExecCommand() (localctx IExecCommandContext) {
 		localctx.(*ExecCommandContext).args = append(localctx.(*ExecCommandContext).args, localctx.(*ExecCommandContext)._expr)
 		p.SetState(303)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for _la == PartiQLParserCOMMA {
 			{
 				p.SetState(299)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(300)
@@ -2949,12 +3007,25 @@ func (p *PartiQLParser) ExecCommand() (localctx IExecCommandContext) {
 
 			p.SetState(305)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDdlContext is an interface to support dynamic dispatch.
@@ -2973,15 +3044,20 @@ type IDdlContext interface {
 }
 
 type DdlContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyDdlContext() *DdlContext {
 	var p = new(DdlContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_ddl
 	return p
+}
+
+func InitEmptyDdlContext(p *DdlContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_ddl
 }
 
 func (*DdlContext) IsDdlContext() {}
@@ -2989,7 +3065,7 @@ func (*DdlContext) IsDdlContext() {}
 func NewDdlContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DdlContext {
 	var p = new(DdlContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_ddl
@@ -3052,30 +3128,13 @@ func (s *DdlContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Ddl() (localctx IDdlContext) {
-	this := p
-	_ = this
-
 	localctx = NewDdlContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 18, PartiQLParserRULE_ddl)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(310)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserCREATE:
@@ -3093,10 +3152,21 @@ func (p *PartiQLParser) Ddl() (localctx IDdlContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ICreateCommandContext is an interface to support dynamic dispatch.
@@ -3110,15 +3180,20 @@ type ICreateCommandContext interface {
 }
 
 type CreateCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyCreateCommandContext() *CreateCommandContext {
 	var p = new(CreateCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_createCommand
 	return p
+}
+
+func InitEmptyCreateCommandContext(p *CreateCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_createCommand
 }
 
 func (*CreateCommandContext) IsCreateCommandContext() {}
@@ -3126,7 +3201,7 @@ func (*CreateCommandContext) IsCreateCommandContext() {}
 func NewCreateCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *CreateCommandContext {
 	var p = new(CreateCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_createCommand
@@ -3136,8 +3211,8 @@ func NewCreateCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext
 
 func (s *CreateCommandContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *CreateCommandContext) CopyFrom(ctx *CreateCommandContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *CreateCommandContext) CopyAll(ctx *CreateCommandContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *CreateCommandContext) GetRuleContext() antlr.RuleContext {
@@ -3149,15 +3224,15 @@ func (s *CreateCommandContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 type CreateIndexContext struct {
-	*CreateCommandContext
+	CreateCommandContext
 }
 
 func NewCreateIndexContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *CreateIndexContext {
 	var p = new(CreateIndexContext)
 
-	p.CreateCommandContext = NewEmptyCreateCommandContext()
+	InitEmptyCreateCommandContext(&p.CreateCommandContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*CreateCommandContext))
+	p.CopyAll(ctx.(*CreateCommandContext))
 
 	return p
 }
@@ -3264,15 +3339,15 @@ func (s *CreateIndexContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type CreateTableContext struct {
-	*CreateCommandContext
+	CreateCommandContext
 }
 
 func NewCreateTableContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *CreateTableContext {
 	var p = new(CreateTableContext)
 
-	p.CreateCommandContext = NewEmptyCreateCommandContext()
+	InitEmptyCreateCommandContext(&p.CreateCommandContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*CreateCommandContext))
+	p.CopyAll(ctx.(*CreateCommandContext))
 
 	return p
 }
@@ -3318,42 +3393,35 @@ func (s *CreateTableContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) CreateCommand() (localctx ICreateCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewCreateCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 20, PartiQLParserRULE_createCommand)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(330)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 12, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 12, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewCreateTableContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(312)
 			p.Match(PartiQLParserCREATE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(313)
 			p.Match(PartiQLParserTABLE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(314)
@@ -3366,14 +3434,26 @@ func (p *PartiQLParser) CreateCommand() (localctx ICreateCommandContext) {
 		{
 			p.SetState(315)
 			p.Match(PartiQLParserCREATE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(316)
 			p.Match(PartiQLParserINDEX)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(317)
 			p.Match(PartiQLParserON)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(318)
@@ -3382,6 +3462,10 @@ func (p *PartiQLParser) CreateCommand() (localctx ICreateCommandContext) {
 		{
 			p.SetState(319)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(320)
@@ -3389,12 +3473,19 @@ func (p *PartiQLParser) CreateCommand() (localctx ICreateCommandContext) {
 		}
 		p.SetState(325)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for _la == PartiQLParserCOMMA {
 			{
 				p.SetState(321)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(322)
@@ -3403,16 +3494,35 @@ func (p *PartiQLParser) CreateCommand() (localctx ICreateCommandContext) {
 
 			p.SetState(327)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 		{
 			p.SetState(328)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDropCommandContext is an interface to support dynamic dispatch.
@@ -3426,15 +3536,20 @@ type IDropCommandContext interface {
 }
 
 type DropCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyDropCommandContext() *DropCommandContext {
 	var p = new(DropCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_dropCommand
 	return p
+}
+
+func InitEmptyDropCommandContext(p *DropCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_dropCommand
 }
 
 func (*DropCommandContext) IsDropCommandContext() {}
@@ -3442,7 +3557,7 @@ func (*DropCommandContext) IsDropCommandContext() {}
 func NewDropCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DropCommandContext {
 	var p = new(DropCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_dropCommand
@@ -3452,8 +3567,8 @@ func NewDropCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 
 func (s *DropCommandContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *DropCommandContext) CopyFrom(ctx *DropCommandContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *DropCommandContext) CopyAll(ctx *DropCommandContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *DropCommandContext) GetRuleContext() antlr.RuleContext {
@@ -3465,16 +3580,16 @@ func (s *DropCommandContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 type DropTableContext struct {
-	*DropCommandContext
+	DropCommandContext
 	target ISymbolPrimitiveContext
 }
 
 func NewDropTableContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *DropTableContext {
 	var p = new(DropTableContext)
 
-	p.DropCommandContext = NewEmptyDropCommandContext()
+	InitEmptyDropCommandContext(&p.DropCommandContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*DropCommandContext))
+	p.CopyAll(ctx.(*DropCommandContext))
 
 	return p
 }
@@ -3524,7 +3639,7 @@ func (s *DropTableContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type DropIndexContext struct {
-	*DropCommandContext
+	DropCommandContext
 	target ISymbolPrimitiveContext
 	on     ISymbolPrimitiveContext
 }
@@ -3532,9 +3647,9 @@ type DropIndexContext struct {
 func NewDropIndexContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *DropIndexContext {
 	var p = new(DropIndexContext)
 
-	p.DropCommandContext = NewEmptyDropCommandContext()
+	InitEmptyDropCommandContext(&p.DropCommandContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*DropCommandContext))
+	p.CopyAll(ctx.(*DropCommandContext))
 
 	return p
 }
@@ -3617,41 +3732,33 @@ func (s *DropIndexContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) DropCommand() (localctx IDropCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewDropCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 22, PartiQLParserRULE_dropCommand)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(341)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 13, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 13, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewDropTableContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(332)
 			p.Match(PartiQLParserDROP)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(333)
 			p.Match(PartiQLParserTABLE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(334)
@@ -3667,10 +3774,18 @@ func (p *PartiQLParser) DropCommand() (localctx IDropCommandContext) {
 		{
 			p.SetState(335)
 			p.Match(PartiQLParserDROP)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(336)
 			p.Match(PartiQLParserINDEX)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(337)
@@ -3682,6 +3797,10 @@ func (p *PartiQLParser) DropCommand() (localctx IDropCommandContext) {
 		{
 			p.SetState(338)
 			p.Match(PartiQLParserON)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(339)
@@ -3691,9 +3810,21 @@ func (p *PartiQLParser) DropCommand() (localctx IDropCommandContext) {
 			localctx.(*DropIndexContext).on = _x
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDmlContext is an interface to support dynamic dispatch.
@@ -3707,15 +3838,20 @@ type IDmlContext interface {
 }
 
 type DmlContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyDmlContext() *DmlContext {
 	var p = new(DmlContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_dml
 	return p
+}
+
+func InitEmptyDmlContext(p *DmlContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_dml
 }
 
 func (*DmlContext) IsDmlContext() {}
@@ -3723,7 +3859,7 @@ func (*DmlContext) IsDmlContext() {}
 func NewDmlContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DmlContext {
 	var p = new(DmlContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_dml
@@ -3733,8 +3869,8 @@ func NewDmlContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoking
 
 func (s *DmlContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *DmlContext) CopyFrom(ctx *DmlContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *DmlContext) CopyAll(ctx *DmlContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *DmlContext) GetRuleContext() antlr.RuleContext {
@@ -3746,15 +3882,15 @@ func (s *DmlContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) st
 }
 
 type DmlDeleteContext struct {
-	*DmlContext
+	DmlContext
 }
 
 func NewDmlDeleteContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *DmlDeleteContext {
 	var p = new(DmlDeleteContext)
 
-	p.DmlContext = NewEmptyDmlContext()
+	InitEmptyDmlContext(&p.DmlContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*DmlContext))
+	p.CopyAll(ctx.(*DmlContext))
 
 	return p
 }
@@ -3792,15 +3928,15 @@ func (s *DmlDeleteContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type DmlInsertReturningContext struct {
-	*DmlContext
+	DmlContext
 }
 
 func NewDmlInsertReturningContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *DmlInsertReturningContext {
 	var p = new(DmlInsertReturningContext)
 
-	p.DmlContext = NewEmptyDmlContext()
+	InitEmptyDmlContext(&p.DmlContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*DmlContext))
+	p.CopyAll(ctx.(*DmlContext))
 
 	return p
 }
@@ -3838,15 +3974,15 @@ func (s *DmlInsertReturningContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type DmlBaseWrapperContext struct {
-	*DmlContext
+	DmlContext
 }
 
 func NewDmlBaseWrapperContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *DmlBaseWrapperContext {
 	var p = new(DmlBaseWrapperContext)
 
-	p.DmlContext = NewEmptyDmlContext()
+	InitEmptyDmlContext(&p.DmlContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*DmlContext))
+	p.CopyAll(ctx.(*DmlContext))
 
 	return p
 }
@@ -3973,15 +4109,15 @@ func (s *DmlBaseWrapperContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type DmlBaseContext struct {
-	*DmlContext
+	DmlContext
 }
 
 func NewDmlBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *DmlBaseContext {
 	var p = new(DmlBaseContext)
 
-	p.DmlContext = NewEmptyDmlContext()
+	InitEmptyDmlContext(&p.DmlContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*DmlContext))
+	p.CopyAll(ctx.(*DmlContext))
 
 	return p
 }
@@ -4019,32 +4155,17 @@ func (s *DmlBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Dml() (localctx IDmlContext) {
-	this := p
-	_ = this
-
 	localctx = NewDmlContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 24, PartiQLParserRULE_dml)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(370)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 20, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 20, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewDmlBaseWrapperContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
@@ -4054,6 +4175,9 @@ func (p *PartiQLParser) Dml() (localctx IDmlContext) {
 		}
 		p.SetState(345)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for ok := true; ok; ok = _la == PartiQLParserINSERT || _la == PartiQLParserREPLACE || ((int64((_la-183)) & ^0x3f) == 0 && ((int64(1)<<(_la-183))&72057594574798849) != 0) {
@@ -4064,10 +4188,16 @@ func (p *PartiQLParser) Dml() (localctx IDmlContext) {
 
 			p.SetState(347)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 		p.SetState(350)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserWHERE {
@@ -4079,6 +4209,9 @@ func (p *PartiQLParser) Dml() (localctx IDmlContext) {
 		}
 		p.SetState(353)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserRETURNING {
@@ -4098,6 +4231,9 @@ func (p *PartiQLParser) Dml() (localctx IDmlContext) {
 		}
 		p.SetState(357)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserWHERE {
@@ -4109,6 +4245,9 @@ func (p *PartiQLParser) Dml() (localctx IDmlContext) {
 		}
 		p.SetState(360)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for ok := true; ok; ok = _la == PartiQLParserINSERT || _la == PartiQLParserREPLACE || ((int64((_la-183)) & ^0x3f) == 0 && ((int64(1)<<(_la-183))&72057594574798849) != 0) {
@@ -4119,10 +4258,16 @@ func (p *PartiQLParser) Dml() (localctx IDmlContext) {
 
 			p.SetState(362)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 		p.SetState(365)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserRETURNING {
@@ -4157,9 +4302,21 @@ func (p *PartiQLParser) Dml() (localctx IDmlContext) {
 			p.DmlBaseCommand()
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDmlBaseCommandContext is an interface to support dynamic dispatch.
@@ -4181,15 +4338,20 @@ type IDmlBaseCommandContext interface {
 }
 
 type DmlBaseCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyDmlBaseCommandContext() *DmlBaseCommandContext {
 	var p = new(DmlBaseCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_dmlBaseCommand
 	return p
+}
+
+func InitEmptyDmlBaseCommandContext(p *DmlBaseCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_dmlBaseCommand
 }
 
 func (*DmlBaseCommandContext) IsDmlBaseCommandContext() {}
@@ -4197,7 +4359,7 @@ func (*DmlBaseCommandContext) IsDmlBaseCommandContext() {}
 func NewDmlBaseCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DmlBaseCommandContext {
 	var p = new(DmlBaseCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_dmlBaseCommand
@@ -4308,30 +4470,13 @@ func (s *DmlBaseCommandContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) DmlBaseCommand() (localctx IDmlBaseCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewDmlBaseCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 26, PartiQLParserRULE_dmlBaseCommand)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(377)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserINSERT:
@@ -4370,10 +4515,21 @@ func (p *PartiQLParser) DmlBaseCommand() (localctx IDmlBaseCommandContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPathSimpleContext is an interface to support dynamic dispatch.
@@ -4393,15 +4549,20 @@ type IPathSimpleContext interface {
 }
 
 type PathSimpleContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyPathSimpleContext() *PathSimpleContext {
 	var p = new(PathSimpleContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_pathSimple
 	return p
+}
+
+func InitEmptyPathSimpleContext(p *PathSimpleContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_pathSimple
 }
 
 func (*PathSimpleContext) IsPathSimpleContext() {}
@@ -4409,7 +4570,7 @@ func (*PathSimpleContext) IsPathSimpleContext() {}
 func NewPathSimpleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PathSimpleContext {
 	var p = new(PathSimpleContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_pathSimple
@@ -4497,28 +4658,9 @@ func (s *PathSimpleContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) PathSimple() (localctx IPathSimpleContext) {
-	this := p
-	_ = this
-
 	localctx = NewPathSimpleContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 28, PartiQLParserRULE_pathSimple)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -4527,6 +4669,9 @@ func (p *PartiQLParser) PathSimple() (localctx IPathSimpleContext) {
 	}
 	p.SetState(383)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserBRACKET_LEFT || _la == PartiQLParserPERIOD {
@@ -4537,10 +4682,23 @@ func (p *PartiQLParser) PathSimple() (localctx IPathSimpleContext) {
 
 		p.SetState(385)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPathSimpleStepsContext is an interface to support dynamic dispatch.
@@ -4554,15 +4712,20 @@ type IPathSimpleStepsContext interface {
 }
 
 type PathSimpleStepsContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyPathSimpleStepsContext() *PathSimpleStepsContext {
 	var p = new(PathSimpleStepsContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_pathSimpleSteps
 	return p
+}
+
+func InitEmptyPathSimpleStepsContext(p *PathSimpleStepsContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_pathSimpleSteps
 }
 
 func (*PathSimpleStepsContext) IsPathSimpleStepsContext() {}
@@ -4570,7 +4733,7 @@ func (*PathSimpleStepsContext) IsPathSimpleStepsContext() {}
 func NewPathSimpleStepsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PathSimpleStepsContext {
 	var p = new(PathSimpleStepsContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_pathSimpleSteps
@@ -4580,8 +4743,8 @@ func NewPathSimpleStepsContext(parser antlr.Parser, parent antlr.ParserRuleConte
 
 func (s *PathSimpleStepsContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *PathSimpleStepsContext) CopyFrom(ctx *PathSimpleStepsContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *PathSimpleStepsContext) CopyAll(ctx *PathSimpleStepsContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *PathSimpleStepsContext) GetRuleContext() antlr.RuleContext {
@@ -4593,16 +4756,16 @@ func (s *PathSimpleStepsContext) ToStringTree(ruleNames []string, recog antlr.Re
 }
 
 type PathSimpleLiteralContext struct {
-	*PathSimpleStepsContext
+	PathSimpleStepsContext
 	key ILiteralContext
 }
 
 func NewPathSimpleLiteralContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PathSimpleLiteralContext {
 	var p = new(PathSimpleLiteralContext)
 
-	p.PathSimpleStepsContext = NewEmptyPathSimpleStepsContext()
+	InitEmptyPathSimpleStepsContext(&p.PathSimpleStepsContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*PathSimpleStepsContext))
+	p.CopyAll(ctx.(*PathSimpleStepsContext))
 
 	return p
 }
@@ -4652,16 +4815,16 @@ func (s *PathSimpleLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type PathSimpleDotSymbolContext struct {
-	*PathSimpleStepsContext
+	PathSimpleStepsContext
 	key ISymbolPrimitiveContext
 }
 
 func NewPathSimpleDotSymbolContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PathSimpleDotSymbolContext {
 	var p = new(PathSimpleDotSymbolContext)
 
-	p.PathSimpleStepsContext = NewEmptyPathSimpleStepsContext()
+	InitEmptyPathSimpleStepsContext(&p.PathSimpleStepsContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*PathSimpleStepsContext))
+	p.CopyAll(ctx.(*PathSimpleStepsContext))
 
 	return p
 }
@@ -4707,16 +4870,16 @@ func (s *PathSimpleDotSymbolContext) ExitRule(listener antlr.ParseTreeListener) 
 }
 
 type PathSimpleSymbolContext struct {
-	*PathSimpleStepsContext
+	PathSimpleStepsContext
 	key ISymbolPrimitiveContext
 }
 
 func NewPathSimpleSymbolContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PathSimpleSymbolContext {
 	var p = new(PathSimpleSymbolContext)
 
-	p.PathSimpleStepsContext = NewEmptyPathSimpleStepsContext()
+	InitEmptyPathSimpleStepsContext(&p.PathSimpleStepsContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*PathSimpleStepsContext))
+	p.CopyAll(ctx.(*PathSimpleStepsContext))
 
 	return p
 }
@@ -4766,37 +4929,25 @@ func (s *PathSimpleSymbolContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) PathSimpleSteps() (localctx IPathSimpleStepsContext) {
-	this := p
-	_ = this
-
 	localctx = NewPathSimpleStepsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 30, PartiQLParserRULE_pathSimpleSteps)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(396)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 23, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 23, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewPathSimpleLiteralContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(386)
 			p.Match(PartiQLParserBRACKET_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(387)
@@ -4808,6 +4959,10 @@ func (p *PartiQLParser) PathSimpleSteps() (localctx IPathSimpleStepsContext) {
 		{
 			p.SetState(388)
 			p.Match(PartiQLParserBRACKET_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -4816,6 +4971,10 @@ func (p *PartiQLParser) PathSimpleSteps() (localctx IPathSimpleStepsContext) {
 		{
 			p.SetState(390)
 			p.Match(PartiQLParserBRACKET_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(391)
@@ -4827,6 +4986,10 @@ func (p *PartiQLParser) PathSimpleSteps() (localctx IPathSimpleStepsContext) {
 		{
 			p.SetState(392)
 			p.Match(PartiQLParserBRACKET_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 3:
@@ -4835,6 +4998,10 @@ func (p *PartiQLParser) PathSimpleSteps() (localctx IPathSimpleStepsContext) {
 		{
 			p.SetState(394)
 			p.Match(PartiQLParserPERIOD)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(395)
@@ -4844,9 +5011,21 @@ func (p *PartiQLParser) PathSimpleSteps() (localctx IPathSimpleStepsContext) {
 			localctx.(*PathSimpleDotSymbolContext).key = _x
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IReplaceCommandContext is an interface to support dynamic dispatch.
@@ -4874,16 +5053,21 @@ type IReplaceCommandContext interface {
 }
 
 type ReplaceCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	value  IExprContext
 }
 
 func NewEmptyReplaceCommandContext() *ReplaceCommandContext {
 	var p = new(ReplaceCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_replaceCommand
 	return p
+}
+
+func InitEmptyReplaceCommandContext(p *ReplaceCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_replaceCommand
 }
 
 func (*ReplaceCommandContext) IsReplaceCommandContext() {}
@@ -4891,7 +5075,7 @@ func (*ReplaceCommandContext) IsReplaceCommandContext() {}
 func NewReplaceCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ReplaceCommandContext {
 	var p = new(ReplaceCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_replaceCommand
@@ -4982,37 +5166,26 @@ func (s *ReplaceCommandContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ReplaceCommand() (localctx IReplaceCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewReplaceCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 32, PartiQLParserRULE_replaceCommand)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(398)
 		p.Match(PartiQLParserREPLACE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(399)
 		p.Match(PartiQLParserINTO)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(400)
@@ -5020,6 +5193,9 @@ func (p *PartiQLParser) ReplaceCommand() (localctx IReplaceCommandContext) {
 	}
 	p.SetState(402)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserAS {
@@ -5037,7 +5213,17 @@ func (p *PartiQLParser) ReplaceCommand() (localctx IReplaceCommandContext) {
 		localctx.(*ReplaceCommandContext).value = _x
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IUpsertCommandContext is an interface to support dynamic dispatch.
@@ -5065,16 +5251,21 @@ type IUpsertCommandContext interface {
 }
 
 type UpsertCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	value  IExprContext
 }
 
 func NewEmptyUpsertCommandContext() *UpsertCommandContext {
 	var p = new(UpsertCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_upsertCommand
 	return p
+}
+
+func InitEmptyUpsertCommandContext(p *UpsertCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_upsertCommand
 }
 
 func (*UpsertCommandContext) IsUpsertCommandContext() {}
@@ -5082,7 +5273,7 @@ func (*UpsertCommandContext) IsUpsertCommandContext() {}
 func NewUpsertCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *UpsertCommandContext {
 	var p = new(UpsertCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_upsertCommand
@@ -5173,37 +5364,26 @@ func (s *UpsertCommandContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) UpsertCommand() (localctx IUpsertCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewUpsertCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 34, PartiQLParserRULE_upsertCommand)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(406)
 		p.Match(PartiQLParserUPSERT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(407)
 		p.Match(PartiQLParserINTO)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(408)
@@ -5211,6 +5391,9 @@ func (p *PartiQLParser) UpsertCommand() (localctx IUpsertCommandContext) {
 	}
 	p.SetState(410)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserAS {
@@ -5228,7 +5411,17 @@ func (p *PartiQLParser) UpsertCommand() (localctx IUpsertCommandContext) {
 		localctx.(*UpsertCommandContext).value = _x
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IRemoveCommandContext is an interface to support dynamic dispatch.
@@ -5247,15 +5440,20 @@ type IRemoveCommandContext interface {
 }
 
 type RemoveCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyRemoveCommandContext() *RemoveCommandContext {
 	var p = new(RemoveCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_removeCommand
 	return p
+}
+
+func InitEmptyRemoveCommandContext(p *RemoveCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_removeCommand
 }
 
 func (*RemoveCommandContext) IsRemoveCommandContext() {}
@@ -5263,7 +5461,7 @@ func (*RemoveCommandContext) IsRemoveCommandContext() {}
 func NewRemoveCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *RemoveCommandContext {
 	var p = new(RemoveCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_removeCommand
@@ -5314,39 +5512,33 @@ func (s *RemoveCommandContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) RemoveCommand() (localctx IRemoveCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewRemoveCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 36, PartiQLParserRULE_removeCommand)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(414)
 		p.Match(PartiQLParserREMOVE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(415)
 		p.PathSimple()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IInsertCommandReturningContext is an interface to support dynamic dispatch.
@@ -5384,7 +5576,7 @@ type IInsertCommandReturningContext interface {
 }
 
 type InsertCommandReturningContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	value  IExprContext
 	pos    IExprContext
@@ -5392,9 +5584,14 @@ type InsertCommandReturningContext struct {
 
 func NewEmptyInsertCommandReturningContext() *InsertCommandReturningContext {
 	var p = new(InsertCommandReturningContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_insertCommandReturning
 	return p
+}
+
+func InitEmptyInsertCommandReturningContext(p *InsertCommandReturningContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_insertCommandReturning
 }
 
 func (*InsertCommandReturningContext) IsInsertCommandReturningContext() {}
@@ -5402,7 +5599,7 @@ func (*InsertCommandReturningContext) IsInsertCommandReturningContext() {}
 func NewInsertCommandReturningContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *InsertCommandReturningContext {
 	var p = new(InsertCommandReturningContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_insertCommandReturning
@@ -5546,37 +5743,26 @@ func (s *InsertCommandReturningContext) ExitRule(listener antlr.ParseTreeListene
 }
 
 func (p *PartiQLParser) InsertCommandReturning() (localctx IInsertCommandReturningContext) {
-	this := p
-	_ = this
-
 	localctx = NewInsertCommandReturningContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 38, PartiQLParserRULE_insertCommandReturning)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(417)
 		p.Match(PartiQLParserINSERT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(418)
 		p.Match(PartiQLParserINTO)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(419)
@@ -5585,6 +5771,10 @@ func (p *PartiQLParser) InsertCommandReturning() (localctx IInsertCommandReturni
 	{
 		p.SetState(420)
 		p.Match(PartiQLParserVALUE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(421)
@@ -5595,12 +5785,19 @@ func (p *PartiQLParser) InsertCommandReturning() (localctx IInsertCommandReturni
 	}
 	p.SetState(424)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserAT {
 		{
 			p.SetState(422)
 			p.Match(PartiQLParserAT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(423)
@@ -5613,6 +5810,9 @@ func (p *PartiQLParser) InsertCommandReturning() (localctx IInsertCommandReturni
 	}
 	p.SetState(427)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserON {
@@ -5624,6 +5824,9 @@ func (p *PartiQLParser) InsertCommandReturning() (localctx IInsertCommandReturni
 	}
 	p.SetState(430)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserRETURNING {
@@ -5634,7 +5837,17 @@ func (p *PartiQLParser) InsertCommandReturning() (localctx IInsertCommandReturni
 
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IInsertCommandContext is an interface to support dynamic dispatch.
@@ -5648,15 +5861,20 @@ type IInsertCommandContext interface {
 }
 
 type InsertCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyInsertCommandContext() *InsertCommandContext {
 	var p = new(InsertCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_insertCommand
 	return p
+}
+
+func InitEmptyInsertCommandContext(p *InsertCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_insertCommand
 }
 
 func (*InsertCommandContext) IsInsertCommandContext() {}
@@ -5664,7 +5882,7 @@ func (*InsertCommandContext) IsInsertCommandContext() {}
 func NewInsertCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *InsertCommandContext {
 	var p = new(InsertCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_insertCommand
@@ -5674,8 +5892,8 @@ func NewInsertCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext
 
 func (s *InsertCommandContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *InsertCommandContext) CopyFrom(ctx *InsertCommandContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *InsertCommandContext) CopyAll(ctx *InsertCommandContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *InsertCommandContext) GetRuleContext() antlr.RuleContext {
@@ -5687,7 +5905,7 @@ func (s *InsertCommandContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 type InsertLegacyContext struct {
-	*InsertCommandContext
+	InsertCommandContext
 	value IExprContext
 	pos   IExprContext
 }
@@ -5695,9 +5913,9 @@ type InsertLegacyContext struct {
 func NewInsertLegacyContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *InsertLegacyContext {
 	var p = new(InsertLegacyContext)
 
-	p.InsertCommandContext = NewEmptyInsertCommandContext()
+	InitEmptyInsertCommandContext(&p.InsertCommandContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*InsertCommandContext))
+	p.CopyAll(ctx.(*InsertCommandContext))
 
 	return p
 }
@@ -5816,16 +6034,16 @@ func (s *InsertLegacyContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type InsertContext struct {
-	*InsertCommandContext
+	InsertCommandContext
 	value IExprContext
 }
 
 func NewInsertContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *InsertContext {
 	var p = new(InsertContext)
 
-	p.InsertCommandContext = NewEmptyInsertCommandContext()
+	InitEmptyInsertCommandContext(&p.InsertCommandContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*InsertCommandContext))
+	p.CopyAll(ctx.(*InsertCommandContext))
 
 	return p
 }
@@ -5923,42 +6141,35 @@ func (s *InsertContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) InsertCommand() (localctx IInsertCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewInsertCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 40, PartiQLParserRULE_insertCommand)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(454)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 33, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 33, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewInsertLegacyContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(432)
 			p.Match(PartiQLParserINSERT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(433)
 			p.Match(PartiQLParserINTO)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(434)
@@ -5967,6 +6178,10 @@ func (p *PartiQLParser) InsertCommand() (localctx IInsertCommandContext) {
 		{
 			p.SetState(435)
 			p.Match(PartiQLParserVALUE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(436)
@@ -5977,12 +6192,19 @@ func (p *PartiQLParser) InsertCommand() (localctx IInsertCommandContext) {
 		}
 		p.SetState(439)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserAT {
 			{
 				p.SetState(437)
 				p.Match(PartiQLParserAT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(438)
@@ -5995,6 +6217,9 @@ func (p *PartiQLParser) InsertCommand() (localctx IInsertCommandContext) {
 		}
 		p.SetState(442)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserON {
@@ -6011,10 +6236,18 @@ func (p *PartiQLParser) InsertCommand() (localctx IInsertCommandContext) {
 		{
 			p.SetState(444)
 			p.Match(PartiQLParserINSERT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(445)
 			p.Match(PartiQLParserINTO)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(446)
@@ -6022,6 +6255,9 @@ func (p *PartiQLParser) InsertCommand() (localctx IInsertCommandContext) {
 		}
 		p.SetState(448)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserAS {
@@ -6040,6 +6276,9 @@ func (p *PartiQLParser) InsertCommand() (localctx IInsertCommandContext) {
 		}
 		p.SetState(452)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserON {
@@ -6050,9 +6289,21 @@ func (p *PartiQLParser) InsertCommand() (localctx IInsertCommandContext) {
 
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IOnConflictClauseContext is an interface to support dynamic dispatch.
@@ -6066,15 +6317,20 @@ type IOnConflictClauseContext interface {
 }
 
 type OnConflictClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyOnConflictClauseContext() *OnConflictClauseContext {
 	var p = new(OnConflictClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_onConflictClause
 	return p
+}
+
+func InitEmptyOnConflictClauseContext(p *OnConflictClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_onConflictClause
 }
 
 func (*OnConflictClauseContext) IsOnConflictClauseContext() {}
@@ -6082,7 +6338,7 @@ func (*OnConflictClauseContext) IsOnConflictClauseContext() {}
 func NewOnConflictClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OnConflictClauseContext {
 	var p = new(OnConflictClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_onConflictClause
@@ -6092,8 +6348,8 @@ func NewOnConflictClauseContext(parser antlr.Parser, parent antlr.ParserRuleCont
 
 func (s *OnConflictClauseContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *OnConflictClauseContext) CopyFrom(ctx *OnConflictClauseContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *OnConflictClauseContext) CopyAll(ctx *OnConflictClauseContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *OnConflictClauseContext) GetRuleContext() antlr.RuleContext {
@@ -6105,15 +6361,15 @@ func (s *OnConflictClauseContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 type OnConflictLegacyContext struct {
-	*OnConflictClauseContext
+	OnConflictClauseContext
 }
 
 func NewOnConflictLegacyContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *OnConflictLegacyContext {
 	var p = new(OnConflictLegacyContext)
 
-	p.OnConflictClauseContext = NewEmptyOnConflictClauseContext()
+	InitEmptyOnConflictClauseContext(&p.OnConflictClauseContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*OnConflictClauseContext))
+	p.CopyAll(ctx.(*OnConflictClauseContext))
 
 	return p
 }
@@ -6171,15 +6427,15 @@ func (s *OnConflictLegacyContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type OnConflictContext struct {
-	*OnConflictClauseContext
+	OnConflictClauseContext
 }
 
 func NewOnConflictContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *OnConflictContext {
 	var p = new(OnConflictContext)
 
-	p.OnConflictClauseContext = NewEmptyOnConflictClauseContext()
+	InitEmptyOnConflictClauseContext(&p.OnConflictClauseContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*OnConflictClauseContext))
+	p.CopyAll(ctx.(*OnConflictClauseContext))
 
 	return p
 }
@@ -6241,46 +6497,43 @@ func (s *OnConflictContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) OnConflictClause() (localctx IOnConflictClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewOnConflictClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 42, PartiQLParserRULE_onConflictClause)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(469)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 35, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 35, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewOnConflictLegacyContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(456)
 			p.Match(PartiQLParserON)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(457)
 			p.Match(PartiQLParserCONFLICT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(458)
 			p.Match(PartiQLParserWHERE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(459)
@@ -6289,10 +6542,18 @@ func (p *PartiQLParser) OnConflictClause() (localctx IOnConflictClauseContext) {
 		{
 			p.SetState(460)
 			p.Match(PartiQLParserDO)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(461)
 			p.Match(PartiQLParserNOTHING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -6301,13 +6562,24 @@ func (p *PartiQLParser) OnConflictClause() (localctx IOnConflictClauseContext) {
 		{
 			p.SetState(463)
 			p.Match(PartiQLParserON)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(464)
 			p.Match(PartiQLParserCONFLICT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(466)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserON || _la == PartiQLParserPAREN_LEFT {
@@ -6322,9 +6594,21 @@ func (p *PartiQLParser) OnConflictClause() (localctx IOnConflictClauseContext) {
 			p.ConflictAction()
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IConflictTargetContext is an interface to support dynamic dispatch.
@@ -6350,15 +6634,20 @@ type IConflictTargetContext interface {
 }
 
 type ConflictTargetContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyConflictTargetContext() *ConflictTargetContext {
 	var p = new(ConflictTargetContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_conflictTarget
 	return p
+}
+
+func InitEmptyConflictTargetContext(p *ConflictTargetContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_conflictTarget
 }
 
 func (*ConflictTargetContext) IsConflictTargetContext() {}
@@ -6366,7 +6655,7 @@ func (*ConflictTargetContext) IsConflictTargetContext() {}
 func NewConflictTargetContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ConflictTargetContext {
 	var p = new(ConflictTargetContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_conflictTarget
@@ -6478,31 +6767,15 @@ func (s *ConflictTargetContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ConflictTarget() (localctx IConflictTargetContext) {
-	this := p
-	_ = this
-
 	localctx = NewConflictTargetContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 44, PartiQLParserRULE_conflictTarget)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(485)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserPAREN_LEFT:
@@ -6510,6 +6783,10 @@ func (p *PartiQLParser) ConflictTarget() (localctx IConflictTargetContext) {
 		{
 			p.SetState(471)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(472)
@@ -6517,12 +6794,19 @@ func (p *PartiQLParser) ConflictTarget() (localctx IConflictTargetContext) {
 		}
 		p.SetState(477)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for _la == PartiQLParserCOMMA {
 			{
 				p.SetState(473)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(474)
@@ -6531,11 +6815,18 @@ func (p *PartiQLParser) ConflictTarget() (localctx IConflictTargetContext) {
 
 			p.SetState(479)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 		{
 			p.SetState(480)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserON:
@@ -6543,10 +6834,18 @@ func (p *PartiQLParser) ConflictTarget() (localctx IConflictTargetContext) {
 		{
 			p.SetState(482)
 			p.Match(PartiQLParserON)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(483)
 			p.Match(PartiQLParserCONSTRAINT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(484)
@@ -6554,10 +6853,21 @@ func (p *PartiQLParser) ConflictTarget() (localctx IConflictTargetContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IConstraintNameContext is an interface to support dynamic dispatch.
@@ -6575,15 +6885,20 @@ type IConstraintNameContext interface {
 }
 
 type ConstraintNameContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyConstraintNameContext() *ConstraintNameContext {
 	var p = new(ConstraintNameContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_constraintName
 	return p
+}
+
+func InitEmptyConstraintNameContext(p *ConstraintNameContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_constraintName
 }
 
 func (*ConstraintNameContext) IsConstraintNameContext() {}
@@ -6591,7 +6906,7 @@ func (*ConstraintNameContext) IsConstraintNameContext() {}
 func NewConstraintNameContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ConstraintNameContext {
 	var p = new(ConstraintNameContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_constraintName
@@ -6638,35 +6953,25 @@ func (s *ConstraintNameContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ConstraintName() (localctx IConstraintNameContext) {
-	this := p
-	_ = this
-
 	localctx = NewConstraintNameContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 46, PartiQLParserRULE_constraintName)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(487)
 		p.SymbolPrimitive()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IConflictActionContext is an interface to support dynamic dispatch.
@@ -6689,15 +6994,20 @@ type IConflictActionContext interface {
 }
 
 type ConflictActionContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyConflictActionContext() *ConflictActionContext {
 	var p = new(ConflictActionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_conflictAction
 	return p
+}
+
+func InitEmptyConflictActionContext(p *ConflictActionContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_conflictAction
 }
 
 func (*ConflictActionContext) IsConflictActionContext() {}
@@ -6705,7 +7015,7 @@ func (*ConflictActionContext) IsConflictActionContext() {}
 func NewConflictActionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ConflictActionContext {
 	var p = new(ConflictActionContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_conflictAction
@@ -6784,40 +7094,32 @@ func (s *ConflictActionContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ConflictAction() (localctx IConflictActionContext) {
-	this := p
-	_ = this
-
 	localctx = NewConflictActionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 48, PartiQLParserRULE_conflictAction)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(497)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 38, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 38, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(489)
 			p.Match(PartiQLParserDO)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(490)
 			p.Match(PartiQLParserNOTHING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -6825,10 +7127,18 @@ func (p *PartiQLParser) ConflictAction() (localctx IConflictActionContext) {
 		{
 			p.SetState(491)
 			p.Match(PartiQLParserDO)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(492)
 			p.Match(PartiQLParserREPLACE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(493)
@@ -6840,19 +7150,39 @@ func (p *PartiQLParser) ConflictAction() (localctx IConflictActionContext) {
 		{
 			p.SetState(494)
 			p.Match(PartiQLParserDO)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(495)
 			p.Match(PartiQLParserUPDATE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(496)
 			p.DoUpdate()
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDoReplaceContext is an interface to support dynamic dispatch.
@@ -6870,15 +7200,20 @@ type IDoReplaceContext interface {
 }
 
 type DoReplaceContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyDoReplaceContext() *DoReplaceContext {
 	var p = new(DoReplaceContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_doReplace
 	return p
+}
+
+func InitEmptyDoReplaceContext(p *DoReplaceContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_doReplace
 }
 
 func (*DoReplaceContext) IsDoReplaceContext() {}
@@ -6886,7 +7221,7 @@ func (*DoReplaceContext) IsDoReplaceContext() {}
 func NewDoReplaceContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DoReplaceContext {
 	var p = new(DoReplaceContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_doReplace
@@ -6921,35 +7256,29 @@ func (s *DoReplaceContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) DoReplace() (localctx IDoReplaceContext) {
-	this := p
-	_ = this
-
 	localctx = NewDoReplaceContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 50, PartiQLParserRULE_doReplace)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(499)
 		p.Match(PartiQLParserEXCLUDED)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDoUpdateContext is an interface to support dynamic dispatch.
@@ -6967,15 +7296,20 @@ type IDoUpdateContext interface {
 }
 
 type DoUpdateContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyDoUpdateContext() *DoUpdateContext {
 	var p = new(DoUpdateContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_doUpdate
 	return p
+}
+
+func InitEmptyDoUpdateContext(p *DoUpdateContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_doUpdate
 }
 
 func (*DoUpdateContext) IsDoUpdateContext() {}
@@ -6983,7 +7317,7 @@ func (*DoUpdateContext) IsDoUpdateContext() {}
 func NewDoUpdateContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DoUpdateContext {
 	var p = new(DoUpdateContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_doUpdate
@@ -7018,35 +7352,29 @@ func (s *DoUpdateContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) DoUpdate() (localctx IDoUpdateContext) {
-	this := p
-	_ = this
-
 	localctx = NewDoUpdateContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 52, PartiQLParserRULE_doUpdate)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(501)
 		p.Match(PartiQLParserEXCLUDED)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IUpdateClauseContext is an interface to support dynamic dispatch.
@@ -7065,15 +7393,20 @@ type IUpdateClauseContext interface {
 }
 
 type UpdateClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyUpdateClauseContext() *UpdateClauseContext {
 	var p = new(UpdateClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_updateClause
 	return p
+}
+
+func InitEmptyUpdateClauseContext(p *UpdateClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_updateClause
 }
 
 func (*UpdateClauseContext) IsUpdateClauseContext() {}
@@ -7081,7 +7414,7 @@ func (*UpdateClauseContext) IsUpdateClauseContext() {}
 func NewUpdateClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *UpdateClauseContext {
 	var p = new(UpdateClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_updateClause
@@ -7132,39 +7465,33 @@ func (s *UpdateClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) UpdateClause() (localctx IUpdateClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewUpdateClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 54, PartiQLParserRULE_updateClause)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(503)
 		p.Match(PartiQLParserUPDATE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(504)
 		p.TableBaseReference()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ISetCommandContext is an interface to support dynamic dispatch.
@@ -7186,15 +7513,20 @@ type ISetCommandContext interface {
 }
 
 type SetCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptySetCommandContext() *SetCommandContext {
 	var p = new(SetCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_setCommand
 	return p
+}
+
+func InitEmptySetCommandContext(p *SetCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_setCommand
 }
 
 func (*SetCommandContext) IsSetCommandContext() {}
@@ -7202,7 +7534,7 @@ func (*SetCommandContext) IsSetCommandContext() {}
 func NewSetCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SetCommandContext {
 	var p = new(SetCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_setCommand
@@ -7286,33 +7618,18 @@ func (s *SetCommandContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) SetCommand() (localctx ISetCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewSetCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 56, PartiQLParserRULE_setCommand)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(506)
 		p.Match(PartiQLParserSET)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(507)
@@ -7320,12 +7637,19 @@ func (p *PartiQLParser) SetCommand() (localctx ISetCommandContext) {
 	}
 	p.SetState(512)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserCOMMA {
 		{
 			p.SetState(508)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(509)
@@ -7334,10 +7658,23 @@ func (p *PartiQLParser) SetCommand() (localctx ISetCommandContext) {
 
 		p.SetState(514)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ISetAssignmentContext is an interface to support dynamic dispatch.
@@ -7357,15 +7694,20 @@ type ISetAssignmentContext interface {
 }
 
 type SetAssignmentContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptySetAssignmentContext() *SetAssignmentContext {
 	var p = new(SetAssignmentContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_setAssignment
 	return p
+}
+
+func InitEmptySetAssignmentContext(p *SetAssignmentContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_setAssignment
 }
 
 func (*SetAssignmentContext) IsSetAssignmentContext() {}
@@ -7373,7 +7715,7 @@ func (*SetAssignmentContext) IsSetAssignmentContext() {}
 func NewSetAssignmentContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SetAssignmentContext {
 	var p = new(SetAssignmentContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_setAssignment
@@ -7440,28 +7782,8 @@ func (s *SetAssignmentContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) SetAssignment() (localctx ISetAssignmentContext) {
-	this := p
-	_ = this
-
 	localctx = NewSetAssignmentContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 58, PartiQLParserRULE_setAssignment)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(515)
@@ -7470,13 +7792,27 @@ func (p *PartiQLParser) SetAssignment() (localctx ISetAssignmentContext) {
 	{
 		p.SetState(516)
 		p.Match(PartiQLParserEQ)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(517)
 		p.Expr()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDeleteCommandContext is an interface to support dynamic dispatch.
@@ -7497,15 +7833,20 @@ type IDeleteCommandContext interface {
 }
 
 type DeleteCommandContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyDeleteCommandContext() *DeleteCommandContext {
 	var p = new(DeleteCommandContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_deleteCommand
 	return p
+}
+
+func InitEmptyDeleteCommandContext(p *DeleteCommandContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_deleteCommand
 }
 
 func (*DeleteCommandContext) IsDeleteCommandContext() {}
@@ -7513,7 +7854,7 @@ func (*DeleteCommandContext) IsDeleteCommandContext() {}
 func NewDeleteCommandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DeleteCommandContext {
 	var p = new(DeleteCommandContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_deleteCommand
@@ -7596,33 +7937,18 @@ func (s *DeleteCommandContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) DeleteCommand() (localctx IDeleteCommandContext) {
-	this := p
-	_ = this
-
 	localctx = NewDeleteCommandContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 60, PartiQLParserRULE_deleteCommand)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(519)
 		p.Match(PartiQLParserDELETE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(520)
@@ -7630,6 +7956,9 @@ func (p *PartiQLParser) DeleteCommand() (localctx IDeleteCommandContext) {
 	}
 	p.SetState(522)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserWHERE {
@@ -7641,6 +7970,9 @@ func (p *PartiQLParser) DeleteCommand() (localctx IDeleteCommandContext) {
 	}
 	p.SetState(525)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserRETURNING {
@@ -7651,7 +7983,17 @@ func (p *PartiQLParser) DeleteCommand() (localctx IDeleteCommandContext) {
 
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IReturningClauseContext is an interface to support dynamic dispatch.
@@ -7673,15 +8015,20 @@ type IReturningClauseContext interface {
 }
 
 type ReturningClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyReturningClauseContext() *ReturningClauseContext {
 	var p = new(ReturningClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_returningClause
 	return p
+}
+
+func InitEmptyReturningClauseContext(p *ReturningClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_returningClause
 }
 
 func (*ReturningClauseContext) IsReturningClauseContext() {}
@@ -7689,7 +8036,7 @@ func (*ReturningClauseContext) IsReturningClauseContext() {}
 func NewReturningClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ReturningClauseContext {
 	var p = new(ReturningClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_returningClause
@@ -7773,33 +8120,18 @@ func (s *ReturningClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ReturningClause() (localctx IReturningClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewReturningClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 62, PartiQLParserRULE_returningClause)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(527)
 		p.Match(PartiQLParserRETURNING)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(528)
@@ -7807,12 +8139,19 @@ func (p *PartiQLParser) ReturningClause() (localctx IReturningClauseContext) {
 	}
 	p.SetState(533)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserCOMMA {
 		{
 			p.SetState(529)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(530)
@@ -7821,10 +8160,23 @@ func (p *PartiQLParser) ReturningClause() (localctx IReturningClauseContext) {
 
 		p.SetState(535)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IReturningColumnContext is an interface to support dynamic dispatch.
@@ -7865,7 +8217,7 @@ type IReturningColumnContext interface {
 }
 
 type ReturningColumnContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	status antlr.Token
 	age    antlr.Token
@@ -7874,9 +8226,14 @@ type ReturningColumnContext struct {
 
 func NewEmptyReturningColumnContext() *ReturningColumnContext {
 	var p = new(ReturningColumnContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_returningColumn
 	return p
+}
+
+func InitEmptyReturningColumnContext(p *ReturningColumnContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_returningColumn
 }
 
 func (*ReturningColumnContext) IsReturningColumnContext() {}
@@ -7884,7 +8241,7 @@ func (*ReturningColumnContext) IsReturningColumnContext() {}
 func NewReturningColumnContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ReturningColumnContext {
 	var p = new(ReturningColumnContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_returningColumn
@@ -7963,32 +8320,17 @@ func (s *ReturningColumnContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ReturningColumn() (localctx IReturningColumnContext) {
-	this := p
-	_ = this
-
 	localctx = NewReturningColumnContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 64, PartiQLParserRULE_returningColumn)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(542)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 43, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 43, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
@@ -8030,6 +8372,10 @@ func (p *PartiQLParser) ReturningColumn() (localctx IReturningColumnContext) {
 		{
 			p.SetState(538)
 			p.Match(PartiQLParserASTERISK)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -8078,9 +8424,21 @@ func (p *PartiQLParser) ReturningColumn() (localctx IReturningColumnContext) {
 			localctx.(*ReturningColumnContext).col = _x
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IFromClauseSimpleContext is an interface to support dynamic dispatch.
@@ -8094,15 +8452,20 @@ type IFromClauseSimpleContext interface {
 }
 
 type FromClauseSimpleContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyFromClauseSimpleContext() *FromClauseSimpleContext {
 	var p = new(FromClauseSimpleContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_fromClauseSimple
 	return p
+}
+
+func InitEmptyFromClauseSimpleContext(p *FromClauseSimpleContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_fromClauseSimple
 }
 
 func (*FromClauseSimpleContext) IsFromClauseSimpleContext() {}
@@ -8110,7 +8473,7 @@ func (*FromClauseSimpleContext) IsFromClauseSimpleContext() {}
 func NewFromClauseSimpleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FromClauseSimpleContext {
 	var p = new(FromClauseSimpleContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_fromClauseSimple
@@ -8120,8 +8483,8 @@ func NewFromClauseSimpleContext(parser antlr.Parser, parent antlr.ParserRuleCont
 
 func (s *FromClauseSimpleContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *FromClauseSimpleContext) CopyFrom(ctx *FromClauseSimpleContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *FromClauseSimpleContext) CopyAll(ctx *FromClauseSimpleContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *FromClauseSimpleContext) GetRuleContext() antlr.RuleContext {
@@ -8133,15 +8496,15 @@ func (s *FromClauseSimpleContext) ToStringTree(ruleNames []string, recog antlr.R
 }
 
 type FromClauseSimpleExplicitContext struct {
-	*FromClauseSimpleContext
+	FromClauseSimpleContext
 }
 
 func NewFromClauseSimpleExplicitContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FromClauseSimpleExplicitContext {
 	var p = new(FromClauseSimpleExplicitContext)
 
-	p.FromClauseSimpleContext = NewEmptyFromClauseSimpleContext()
+	InitEmptyFromClauseSimpleContext(&p.FromClauseSimpleContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*FromClauseSimpleContext))
+	p.CopyAll(ctx.(*FromClauseSimpleContext))
 
 	return p
 }
@@ -8231,15 +8594,15 @@ func (s *FromClauseSimpleExplicitContext) ExitRule(listener antlr.ParseTreeListe
 }
 
 type FromClauseSimpleImplicitContext struct {
-	*FromClauseSimpleContext
+	FromClauseSimpleContext
 }
 
 func NewFromClauseSimpleImplicitContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FromClauseSimpleImplicitContext {
 	var p = new(FromClauseSimpleImplicitContext)
 
-	p.FromClauseSimpleContext = NewEmptyFromClauseSimpleContext()
+	InitEmptyFromClauseSimpleContext(&p.FromClauseSimpleContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*FromClauseSimpleContext))
+	p.CopyAll(ctx.(*FromClauseSimpleContext))
 
 	return p
 }
@@ -8297,38 +8660,27 @@ func (s *FromClauseSimpleImplicitContext) ExitRule(listener antlr.ParseTreeListe
 }
 
 func (p *PartiQLParser) FromClauseSimple() (localctx IFromClauseSimpleContext) {
-	this := p
-	_ = this
-
 	localctx = NewFromClauseSimpleContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 66, PartiQLParserRULE_fromClauseSimple)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(559)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 47, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 47, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewFromClauseSimpleExplicitContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(544)
 			p.Match(PartiQLParserFROM)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(545)
@@ -8336,6 +8688,9 @@ func (p *PartiQLParser) FromClauseSimple() (localctx IFromClauseSimpleContext) {
 		}
 		p.SetState(547)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserAS {
@@ -8347,6 +8702,9 @@ func (p *PartiQLParser) FromClauseSimple() (localctx IFromClauseSimpleContext) {
 		}
 		p.SetState(550)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserAT {
@@ -8358,6 +8716,9 @@ func (p *PartiQLParser) FromClauseSimple() (localctx IFromClauseSimpleContext) {
 		}
 		p.SetState(553)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserBY {
@@ -8374,6 +8735,10 @@ func (p *PartiQLParser) FromClauseSimple() (localctx IFromClauseSimpleContext) {
 		{
 			p.SetState(555)
 			p.Match(PartiQLParserFROM)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(556)
@@ -8384,9 +8749,21 @@ func (p *PartiQLParser) FromClauseSimple() (localctx IFromClauseSimpleContext) {
 			p.SymbolPrimitive()
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IWhereClauseContext is an interface to support dynamic dispatch.
@@ -8411,16 +8788,21 @@ type IWhereClauseContext interface {
 }
 
 type WhereClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	arg    IExprContext
 }
 
 func NewEmptyWhereClauseContext() *WhereClauseContext {
 	var p = new(WhereClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_whereClause
 	return p
+}
+
+func InitEmptyWhereClauseContext(p *WhereClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_whereClause
 }
 
 func (*WhereClauseContext) IsWhereClauseContext() {}
@@ -8428,7 +8810,7 @@ func (*WhereClauseContext) IsWhereClauseContext() {}
 func NewWhereClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *WhereClauseContext {
 	var p = new(WhereClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_whereClause
@@ -8483,32 +8865,16 @@ func (s *WhereClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) WhereClause() (localctx IWhereClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewWhereClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 68, PartiQLParserRULE_whereClause)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(561)
 		p.Match(PartiQLParserWHERE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(562)
@@ -8518,7 +8884,17 @@ func (p *PartiQLParser) WhereClause() (localctx IWhereClauseContext) {
 		localctx.(*WhereClauseContext).arg = _x
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ISelectClauseContext is an interface to support dynamic dispatch.
@@ -8532,15 +8908,20 @@ type ISelectClauseContext interface {
 }
 
 type SelectClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptySelectClauseContext() *SelectClauseContext {
 	var p = new(SelectClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_selectClause
 	return p
+}
+
+func InitEmptySelectClauseContext(p *SelectClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_selectClause
 }
 
 func (*SelectClauseContext) IsSelectClauseContext() {}
@@ -8548,7 +8929,7 @@ func (*SelectClauseContext) IsSelectClauseContext() {}
 func NewSelectClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SelectClauseContext {
 	var p = new(SelectClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_selectClause
@@ -8558,8 +8939,8 @@ func NewSelectClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 
 func (s *SelectClauseContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *SelectClauseContext) CopyFrom(ctx *SelectClauseContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *SelectClauseContext) CopyAll(ctx *SelectClauseContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *SelectClauseContext) GetRuleContext() antlr.RuleContext {
@@ -8571,15 +8952,15 @@ func (s *SelectClauseContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 type SelectAllContext struct {
-	*SelectClauseContext
+	SelectClauseContext
 }
 
 func NewSelectAllContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SelectAllContext {
 	var p = new(SelectAllContext)
 
-	p.SelectClauseContext = NewEmptySelectClauseContext()
+	InitEmptySelectClauseContext(&p.SelectClauseContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*SelectClauseContext))
+	p.CopyAll(ctx.(*SelectClauseContext))
 
 	return p
 }
@@ -8625,15 +9006,15 @@ func (s *SelectAllContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type SelectValueContext struct {
-	*SelectClauseContext
+	SelectClauseContext
 }
 
 func NewSelectValueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SelectValueContext {
 	var p = new(SelectValueContext)
 
-	p.SelectClauseContext = NewEmptySelectClauseContext()
+	InitEmptySelectClauseContext(&p.SelectClauseContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*SelectClauseContext))
+	p.CopyAll(ctx.(*SelectClauseContext))
 
 	return p
 }
@@ -8695,15 +9076,15 @@ func (s *SelectValueContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type SelectItemsContext struct {
-	*SelectClauseContext
+	SelectClauseContext
 }
 
 func NewSelectItemsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SelectItemsContext {
 	var p = new(SelectItemsContext)
 
-	p.SelectClauseContext = NewEmptySelectClauseContext()
+	InitEmptySelectClauseContext(&p.SelectClauseContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*SelectClauseContext))
+	p.CopyAll(ctx.(*SelectClauseContext))
 
 	return p
 }
@@ -8761,7 +9142,7 @@ func (s *SelectItemsContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type SelectPivotContext struct {
-	*SelectClauseContext
+	SelectClauseContext
 	pivot IExprContext
 	at    IExprContext
 }
@@ -8769,9 +9150,9 @@ type SelectPivotContext struct {
 func NewSelectPivotContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SelectPivotContext {
 	var p = new(SelectPivotContext)
 
-	p.SelectClauseContext = NewEmptySelectClauseContext()
+	InitEmptySelectClauseContext(&p.SelectClauseContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*SelectClauseContext))
+	p.CopyAll(ctx.(*SelectClauseContext))
 
 	return p
 }
@@ -8850,41 +9231,33 @@ func (s *SelectPivotContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) SelectClause() (localctx ISelectClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewSelectClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 70, PartiQLParserRULE_selectClause)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(585)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 51, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 51, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewSelectAllContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(564)
 			p.Match(PartiQLParserSELECT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(566)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserALL || _la == PartiQLParserDISTINCT {
@@ -8897,6 +9270,10 @@ func (p *PartiQLParser) SelectClause() (localctx ISelectClauseContext) {
 		{
 			p.SetState(568)
 			p.Match(PartiQLParserASTERISK)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -8905,9 +9282,16 @@ func (p *PartiQLParser) SelectClause() (localctx ISelectClauseContext) {
 		{
 			p.SetState(569)
 			p.Match(PartiQLParserSELECT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(571)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserALL || _la == PartiQLParserDISTINCT {
@@ -8928,9 +9312,16 @@ func (p *PartiQLParser) SelectClause() (localctx ISelectClauseContext) {
 		{
 			p.SetState(574)
 			p.Match(PartiQLParserSELECT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(576)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserALL || _la == PartiQLParserDISTINCT {
@@ -8943,6 +9334,10 @@ func (p *PartiQLParser) SelectClause() (localctx ISelectClauseContext) {
 		{
 			p.SetState(578)
 			p.Match(PartiQLParserVALUE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(579)
@@ -8955,6 +9350,10 @@ func (p *PartiQLParser) SelectClause() (localctx ISelectClauseContext) {
 		{
 			p.SetState(580)
 			p.Match(PartiQLParserPIVOT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(581)
@@ -8966,6 +9365,10 @@ func (p *PartiQLParser) SelectClause() (localctx ISelectClauseContext) {
 		{
 			p.SetState(582)
 			p.Match(PartiQLParserAT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(583)
@@ -8975,9 +9378,21 @@ func (p *PartiQLParser) SelectClause() (localctx ISelectClauseContext) {
 			localctx.(*SelectPivotContext).at = _x
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IProjectionItemsContext is an interface to support dynamic dispatch.
@@ -8998,15 +9413,20 @@ type IProjectionItemsContext interface {
 }
 
 type ProjectionItemsContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyProjectionItemsContext() *ProjectionItemsContext {
 	var p = new(ProjectionItemsContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_projectionItems
 	return p
+}
+
+func InitEmptyProjectionItemsContext(p *ProjectionItemsContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_projectionItems
 }
 
 func (*ProjectionItemsContext) IsProjectionItemsContext() {}
@@ -9014,7 +9434,7 @@ func (*ProjectionItemsContext) IsProjectionItemsContext() {}
 func NewProjectionItemsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ProjectionItemsContext {
 	var p = new(ProjectionItemsContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_projectionItems
@@ -9094,28 +9514,9 @@ func (s *ProjectionItemsContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ProjectionItems() (localctx IProjectionItemsContext) {
-	this := p
-	_ = this
-
 	localctx = NewProjectionItemsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 72, PartiQLParserRULE_projectionItems)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -9124,12 +9525,19 @@ func (p *PartiQLParser) ProjectionItems() (localctx IProjectionItemsContext) {
 	}
 	p.SetState(592)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserCOMMA {
 		{
 			p.SetState(588)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(589)
@@ -9138,10 +9546,23 @@ func (p *PartiQLParser) ProjectionItems() (localctx IProjectionItemsContext) {
 
 		p.SetState(594)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IProjectionItemContext is an interface to support dynamic dispatch.
@@ -9161,15 +9582,20 @@ type IProjectionItemContext interface {
 }
 
 type ProjectionItemContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyProjectionItemContext() *ProjectionItemContext {
 	var p = new(ProjectionItemContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_projectionItem
 	return p
+}
+
+func InitEmptyProjectionItemContext(p *ProjectionItemContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_projectionItem
 }
 
 func (*ProjectionItemContext) IsProjectionItemContext() {}
@@ -9177,7 +9603,7 @@ func (*ProjectionItemContext) IsProjectionItemContext() {}
 func NewProjectionItemContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ProjectionItemContext {
 	var p = new(ProjectionItemContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_projectionItem
@@ -9244,28 +9670,9 @@ func (s *ProjectionItemContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ProjectionItem() (localctx IProjectionItemContext) {
-	this := p
-	_ = this
-
 	localctx = NewProjectionItemContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 74, PartiQLParserRULE_projectionItem)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -9274,17 +9681,27 @@ func (p *PartiQLParser) ProjectionItem() (localctx IProjectionItemContext) {
 	}
 	p.SetState(600)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserAS || _la == PartiQLParserIDENTIFIER || _la == PartiQLParserIDENTIFIER_QUOTED {
 		p.SetState(597)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserAS {
 			{
 				p.SetState(596)
 				p.Match(PartiQLParserAS)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
@@ -9295,7 +9712,17 @@ func (p *PartiQLParser) ProjectionItem() (localctx IProjectionItemContext) {
 
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ISetQuantifierStrategyContext is an interface to support dynamic dispatch.
@@ -9314,15 +9741,20 @@ type ISetQuantifierStrategyContext interface {
 }
 
 type SetQuantifierStrategyContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptySetQuantifierStrategyContext() *SetQuantifierStrategyContext {
 	var p = new(SetQuantifierStrategyContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_setQuantifierStrategy
 	return p
+}
+
+func InitEmptySetQuantifierStrategyContext(p *SetQuantifierStrategyContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_setQuantifierStrategy
 }
 
 func (*SetQuantifierStrategyContext) IsSetQuantifierStrategyContext() {}
@@ -9330,7 +9762,7 @@ func (*SetQuantifierStrategyContext) IsSetQuantifierStrategyContext() {}
 func NewSetQuantifierStrategyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SetQuantifierStrategyContext {
 	var p = new(SetQuantifierStrategyContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_setQuantifierStrategy
@@ -9369,28 +9801,9 @@ func (s *SetQuantifierStrategyContext) ExitRule(listener antlr.ParseTreeListener
 }
 
 func (p *PartiQLParser) SetQuantifierStrategy() (localctx ISetQuantifierStrategyContext) {
-	this := p
-	_ = this
-
 	localctx = NewSetQuantifierStrategyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 76, PartiQLParserRULE_setQuantifierStrategy)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -9405,7 +9818,17 @@ func (p *PartiQLParser) SetQuantifierStrategy() (localctx ISetQuantifierStrategy
 		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ILetClauseContext is an interface to support dynamic dispatch.
@@ -9427,15 +9850,20 @@ type ILetClauseContext interface {
 }
 
 type LetClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyLetClauseContext() *LetClauseContext {
 	var p = new(LetClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_letClause
 	return p
+}
+
+func InitEmptyLetClauseContext(p *LetClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_letClause
 }
 
 func (*LetClauseContext) IsLetClauseContext() {}
@@ -9443,7 +9871,7 @@ func (*LetClauseContext) IsLetClauseContext() {}
 func NewLetClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LetClauseContext {
 	var p = new(LetClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_letClause
@@ -9527,34 +9955,18 @@ func (s *LetClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) LetClause() (localctx ILetClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewLetClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 78, PartiQLParserRULE_letClause)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(604)
 		p.Match(PartiQLParserLET)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(605)
@@ -9562,13 +9974,22 @@ func (p *PartiQLParser) LetClause() (localctx ILetClauseContext) {
 	}
 	p.SetState(610)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 55, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 55, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
 				p.SetState(606)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(607)
@@ -9578,10 +9999,26 @@ func (p *PartiQLParser) LetClause() (localctx ILetClauseContext) {
 		}
 		p.SetState(612)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 55, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 55, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ILetBindingContext is an interface to support dynamic dispatch.
@@ -9601,15 +10038,20 @@ type ILetBindingContext interface {
 }
 
 type LetBindingContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyLetBindingContext() *LetBindingContext {
 	var p = new(LetBindingContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_letBinding
 	return p
+}
+
+func InitEmptyLetBindingContext(p *LetBindingContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_letBinding
 }
 
 func (*LetBindingContext) IsLetBindingContext() {}
@@ -9617,7 +10059,7 @@ func (*LetBindingContext) IsLetBindingContext() {}
 func NewLetBindingContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LetBindingContext {
 	var p = new(LetBindingContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_letBinding
@@ -9684,28 +10126,8 @@ func (s *LetBindingContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) LetBinding() (localctx ILetBindingContext) {
-	this := p
-	_ = this
-
 	localctx = NewLetBindingContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 80, PartiQLParserRULE_letBinding)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(613)
@@ -9714,13 +10136,27 @@ func (p *PartiQLParser) LetBinding() (localctx ILetBindingContext) {
 	{
 		p.SetState(614)
 		p.Match(PartiQLParserAS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(615)
 		p.SymbolPrimitive()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IOrderByClauseContext is an interface to support dynamic dispatch.
@@ -9743,15 +10179,20 @@ type IOrderByClauseContext interface {
 }
 
 type OrderByClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyOrderByClauseContext() *OrderByClauseContext {
 	var p = new(OrderByClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_orderByClause
 	return p
+}
+
+func InitEmptyOrderByClauseContext(p *OrderByClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_orderByClause
 }
 
 func (*OrderByClauseContext) IsOrderByClauseContext() {}
@@ -9759,7 +10200,7 @@ func (*OrderByClauseContext) IsOrderByClauseContext() {}
 func NewOrderByClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OrderByClauseContext {
 	var p = new(OrderByClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_orderByClause
@@ -9847,38 +10288,26 @@ func (s *OrderByClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) OrderByClause() (localctx IOrderByClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewOrderByClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 82, PartiQLParserRULE_orderByClause)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(617)
 		p.Match(PartiQLParserORDER)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(618)
 		p.Match(PartiQLParserBY)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(619)
@@ -9886,13 +10315,22 @@ func (p *PartiQLParser) OrderByClause() (localctx IOrderByClauseContext) {
 	}
 	p.SetState(624)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 56, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 56, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
 				p.SetState(620)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(621)
@@ -9902,10 +10340,26 @@ func (p *PartiQLParser) OrderByClause() (localctx IOrderByClauseContext) {
 		}
 		p.SetState(626)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 56, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 56, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IOrderSortSpecContext is an interface to support dynamic dispatch.
@@ -9940,7 +10394,7 @@ type IOrderSortSpecContext interface {
 }
 
 type OrderSortSpecContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	dir    antlr.Token
 	nulls  antlr.Token
@@ -9948,9 +10402,14 @@ type OrderSortSpecContext struct {
 
 func NewEmptyOrderSortSpecContext() *OrderSortSpecContext {
 	var p = new(OrderSortSpecContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_orderSortSpec
 	return p
+}
+
+func InitEmptyOrderSortSpecContext(p *OrderSortSpecContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_orderSortSpec
 }
 
 func (*OrderSortSpecContext) IsOrderSortSpecContext() {}
@@ -9958,7 +10417,7 @@ func (*OrderSortSpecContext) IsOrderSortSpecContext() {}
 func NewOrderSortSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OrderSortSpecContext {
 	var p = new(OrderSortSpecContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_orderSortSpec
@@ -10033,28 +10492,9 @@ func (s *OrderSortSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) OrderSortSpec() (localctx IOrderSortSpecContext) {
-	this := p
-	_ = this
-
 	localctx = NewOrderSortSpecContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 84, PartiQLParserRULE_orderSortSpec)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -10064,7 +10504,7 @@ func (p *PartiQLParser) OrderSortSpec() (localctx IOrderSortSpecContext) {
 	p.SetState(629)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 57, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 57, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(628)
 
@@ -10084,14 +10524,20 @@ func (p *PartiQLParser) OrderSortSpec() (localctx IOrderSortSpecContext) {
 			}
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 	p.SetState(633)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 58, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 58, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(631)
 			p.Match(PartiQLParserNULLS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(632)
@@ -10112,9 +10558,21 @@ func (p *PartiQLParser) OrderSortSpec() (localctx IOrderSortSpecContext) {
 			}
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IGroupClauseContext is an interface to support dynamic dispatch.
@@ -10139,15 +10597,20 @@ type IGroupClauseContext interface {
 }
 
 type GroupClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyGroupClauseContext() *GroupClauseContext {
 	var p = new(GroupClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_groupClause
 	return p
+}
+
+func InitEmptyGroupClauseContext(p *GroupClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_groupClause
 }
 
 func (*GroupClauseContext) IsGroupClauseContext() {}
@@ -10155,7 +10618,7 @@ func (*GroupClauseContext) IsGroupClauseContext() {}
 func NewGroupClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *GroupClauseContext {
 	var p = new(GroupClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_groupClause
@@ -10263,28 +10726,9 @@ func (s *GroupClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) GroupClause() (localctx IGroupClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewGroupClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 86, PartiQLParserRULE_groupClause)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	var _alt int
 
@@ -10292,21 +10736,36 @@ func (p *PartiQLParser) GroupClause() (localctx IGroupClauseContext) {
 	{
 		p.SetState(635)
 		p.Match(PartiQLParserGROUP)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(637)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserPARTIAL {
 		{
 			p.SetState(636)
 			p.Match(PartiQLParserPARTIAL)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	}
 	{
 		p.SetState(639)
 		p.Match(PartiQLParserBY)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(640)
@@ -10314,13 +10773,22 @@ func (p *PartiQLParser) GroupClause() (localctx IGroupClauseContext) {
 	}
 	p.SetState(645)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 60, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 60, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
 				p.SetState(641)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(642)
@@ -10330,20 +10798,38 @@ func (p *PartiQLParser) GroupClause() (localctx IGroupClauseContext) {
 		}
 		p.SetState(647)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 60, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 60, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 	p.SetState(649)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 61, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 61, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(648)
 			p.GroupAlias()
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IGroupAliasContext is an interface to support dynamic dispatch.
@@ -10363,15 +10849,20 @@ type IGroupAliasContext interface {
 }
 
 type GroupAliasContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyGroupAliasContext() *GroupAliasContext {
 	var p = new(GroupAliasContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_groupAlias
 	return p
+}
+
+func InitEmptyGroupAliasContext(p *GroupAliasContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_groupAlias
 }
 
 func (*GroupAliasContext) IsGroupAliasContext() {}
@@ -10379,7 +10870,7 @@ func (*GroupAliasContext) IsGroupAliasContext() {}
 func NewGroupAliasContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *GroupAliasContext {
 	var p = new(GroupAliasContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_groupAlias
@@ -10434,43 +10925,41 @@ func (s *GroupAliasContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) GroupAlias() (localctx IGroupAliasContext) {
-	this := p
-	_ = this
-
 	localctx = NewGroupAliasContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 88, PartiQLParserRULE_groupAlias)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(651)
 		p.Match(PartiQLParserGROUP)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(652)
 		p.Match(PartiQLParserAS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(653)
 		p.SymbolPrimitive()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IGroupKeyContext is an interface to support dynamic dispatch.
@@ -10496,16 +10985,21 @@ type IGroupKeyContext interface {
 }
 
 type GroupKeyContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	key    IExprSelectContext
 }
 
 func NewEmptyGroupKeyContext() *GroupKeyContext {
 	var p = new(GroupKeyContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_groupKey
 	return p
+}
+
+func InitEmptyGroupKeyContext(p *GroupKeyContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_groupKey
 }
 
 func (*GroupKeyContext) IsGroupKeyContext() {}
@@ -10513,7 +11007,7 @@ func (*GroupKeyContext) IsGroupKeyContext() {}
 func NewGroupKeyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *GroupKeyContext {
 	var p = new(GroupKeyContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_groupKey
@@ -10584,28 +11078,8 @@ func (s *GroupKeyContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) GroupKey() (localctx IGroupKeyContext) {
-	this := p
-	_ = this
-
 	localctx = NewGroupKeyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 90, PartiQLParserRULE_groupKey)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(655)
@@ -10617,19 +11091,35 @@ func (p *PartiQLParser) GroupKey() (localctx IGroupKeyContext) {
 	p.SetState(658)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 62, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 62, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(656)
 			p.Match(PartiQLParserAS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(657)
 			p.SymbolPrimitive()
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IOverContext is an interface to support dynamic dispatch.
@@ -10651,15 +11141,20 @@ type IOverContext interface {
 }
 
 type OverContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyOverContext() *OverContext {
 	var p = new(OverContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_over
 	return p
+}
+
+func InitEmptyOverContext(p *OverContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_over
 }
 
 func (*OverContext) IsOverContext() {}
@@ -10667,7 +11162,7 @@ func (*OverContext) IsOverContext() {}
 func NewOverContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OverContext {
 	var p = new(OverContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_over
@@ -10742,40 +11237,32 @@ func (s *OverContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Over() (localctx IOverContext) {
-	this := p
-	_ = this
-
 	localctx = NewOverContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 92, PartiQLParserRULE_over)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(660)
 		p.Match(PartiQLParserOVER)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(661)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(663)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserPARTITION {
@@ -10787,6 +11274,9 @@ func (p *PartiQLParser) Over() (localctx IOverContext) {
 	}
 	p.SetState(666)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserORDER {
@@ -10799,9 +11289,23 @@ func (p *PartiQLParser) Over() (localctx IOverContext) {
 	{
 		p.SetState(668)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IWindowPartitionListContext is an interface to support dynamic dispatch.
@@ -10824,15 +11328,20 @@ type IWindowPartitionListContext interface {
 }
 
 type WindowPartitionListContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyWindowPartitionListContext() *WindowPartitionListContext {
 	var p = new(WindowPartitionListContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_windowPartitionList
 	return p
+}
+
+func InitEmptyWindowPartitionListContext(p *WindowPartitionListContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_windowPartitionList
 }
 
 func (*WindowPartitionListContext) IsWindowPartitionListContext() {}
@@ -10840,7 +11349,7 @@ func (*WindowPartitionListContext) IsWindowPartitionListContext() {}
 func NewWindowPartitionListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *WindowPartitionListContext {
 	var p = new(WindowPartitionListContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_windowPartitionList
@@ -10928,37 +11437,26 @@ func (s *WindowPartitionListContext) ExitRule(listener antlr.ParseTreeListener) 
 }
 
 func (p *PartiQLParser) WindowPartitionList() (localctx IWindowPartitionListContext) {
-	this := p
-	_ = this
-
 	localctx = NewWindowPartitionListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 94, PartiQLParserRULE_windowPartitionList)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(670)
 		p.Match(PartiQLParserPARTITION)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(671)
 		p.Match(PartiQLParserBY)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(672)
@@ -10966,12 +11464,19 @@ func (p *PartiQLParser) WindowPartitionList() (localctx IWindowPartitionListCont
 	}
 	p.SetState(677)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserCOMMA {
 		{
 			p.SetState(673)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(674)
@@ -10980,10 +11485,23 @@ func (p *PartiQLParser) WindowPartitionList() (localctx IWindowPartitionListCont
 
 		p.SetState(679)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IWindowSortSpecListContext is an interface to support dynamic dispatch.
@@ -11006,15 +11524,20 @@ type IWindowSortSpecListContext interface {
 }
 
 type WindowSortSpecListContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyWindowSortSpecListContext() *WindowSortSpecListContext {
 	var p = new(WindowSortSpecListContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_windowSortSpecList
 	return p
+}
+
+func InitEmptyWindowSortSpecListContext(p *WindowSortSpecListContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_windowSortSpecList
 }
 
 func (*WindowSortSpecListContext) IsWindowSortSpecListContext() {}
@@ -11022,7 +11545,7 @@ func (*WindowSortSpecListContext) IsWindowSortSpecListContext() {}
 func NewWindowSortSpecListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *WindowSortSpecListContext {
 	var p = new(WindowSortSpecListContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_windowSortSpecList
@@ -11110,37 +11633,26 @@ func (s *WindowSortSpecListContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) WindowSortSpecList() (localctx IWindowSortSpecListContext) {
-	this := p
-	_ = this
-
 	localctx = NewWindowSortSpecListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 96, PartiQLParserRULE_windowSortSpecList)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(680)
 		p.Match(PartiQLParserORDER)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(681)
 		p.Match(PartiQLParserBY)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(682)
@@ -11148,12 +11660,19 @@ func (p *PartiQLParser) WindowSortSpecList() (localctx IWindowSortSpecListContex
 	}
 	p.SetState(687)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserCOMMA {
 		{
 			p.SetState(683)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(684)
@@ -11162,10 +11681,23 @@ func (p *PartiQLParser) WindowSortSpecList() (localctx IWindowSortSpecListContex
 
 		p.SetState(689)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IHavingClauseContext is an interface to support dynamic dispatch.
@@ -11190,16 +11722,21 @@ type IHavingClauseContext interface {
 }
 
 type HavingClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	arg    IExprSelectContext
 }
 
 func NewEmptyHavingClauseContext() *HavingClauseContext {
 	var p = new(HavingClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_havingClause
 	return p
+}
+
+func InitEmptyHavingClauseContext(p *HavingClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_havingClause
 }
 
 func (*HavingClauseContext) IsHavingClauseContext() {}
@@ -11207,7 +11744,7 @@ func (*HavingClauseContext) IsHavingClauseContext() {}
 func NewHavingClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *HavingClauseContext {
 	var p = new(HavingClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_havingClause
@@ -11262,32 +11799,16 @@ func (s *HavingClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) HavingClause() (localctx IHavingClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewHavingClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 98, PartiQLParserRULE_havingClause)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(690)
 		p.Match(PartiQLParserHAVING)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(691)
@@ -11297,7 +11818,17 @@ func (p *PartiQLParser) HavingClause() (localctx IHavingClauseContext) {
 		localctx.(*HavingClauseContext).arg = _x
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IFromClauseContext is an interface to support dynamic dispatch.
@@ -11316,15 +11847,20 @@ type IFromClauseContext interface {
 }
 
 type FromClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyFromClauseContext() *FromClauseContext {
 	var p = new(FromClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_fromClause
 	return p
+}
+
+func InitEmptyFromClauseContext(p *FromClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_fromClause
 }
 
 func (*FromClauseContext) IsFromClauseContext() {}
@@ -11332,7 +11868,7 @@ func (*FromClauseContext) IsFromClauseContext() {}
 func NewFromClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FromClauseContext {
 	var p = new(FromClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_fromClause
@@ -11383,39 +11919,33 @@ func (s *FromClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) FromClause() (localctx IFromClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewFromClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 100, PartiQLParserRULE_fromClause)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(693)
 		p.Match(PartiQLParserFROM)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(694)
 		p.tableReference(0)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IWhereClauseSelectContext is an interface to support dynamic dispatch.
@@ -11440,16 +11970,21 @@ type IWhereClauseSelectContext interface {
 }
 
 type WhereClauseSelectContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	arg    IExprSelectContext
 }
 
 func NewEmptyWhereClauseSelectContext() *WhereClauseSelectContext {
 	var p = new(WhereClauseSelectContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_whereClauseSelect
 	return p
+}
+
+func InitEmptyWhereClauseSelectContext(p *WhereClauseSelectContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_whereClauseSelect
 }
 
 func (*WhereClauseSelectContext) IsWhereClauseSelectContext() {}
@@ -11457,7 +11992,7 @@ func (*WhereClauseSelectContext) IsWhereClauseSelectContext() {}
 func NewWhereClauseSelectContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *WhereClauseSelectContext {
 	var p = new(WhereClauseSelectContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_whereClauseSelect
@@ -11512,32 +12047,16 @@ func (s *WhereClauseSelectContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) WhereClauseSelect() (localctx IWhereClauseSelectContext) {
-	this := p
-	_ = this
-
 	localctx = NewWhereClauseSelectContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 102, PartiQLParserRULE_whereClauseSelect)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(696)
 		p.Match(PartiQLParserWHERE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(697)
@@ -11547,7 +12066,17 @@ func (p *PartiQLParser) WhereClauseSelect() (localctx IWhereClauseSelectContext)
 		localctx.(*WhereClauseSelectContext).arg = _x
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IOffsetByClauseContext is an interface to support dynamic dispatch.
@@ -11572,16 +12101,21 @@ type IOffsetByClauseContext interface {
 }
 
 type OffsetByClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	arg    IExprSelectContext
 }
 
 func NewEmptyOffsetByClauseContext() *OffsetByClauseContext {
 	var p = new(OffsetByClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_offsetByClause
 	return p
+}
+
+func InitEmptyOffsetByClauseContext(p *OffsetByClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_offsetByClause
 }
 
 func (*OffsetByClauseContext) IsOffsetByClauseContext() {}
@@ -11589,7 +12123,7 @@ func (*OffsetByClauseContext) IsOffsetByClauseContext() {}
 func NewOffsetByClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OffsetByClauseContext {
 	var p = new(OffsetByClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_offsetByClause
@@ -11644,32 +12178,16 @@ func (s *OffsetByClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) OffsetByClause() (localctx IOffsetByClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewOffsetByClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 104, PartiQLParserRULE_offsetByClause)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(699)
 		p.Match(PartiQLParserOFFSET)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(700)
@@ -11679,7 +12197,17 @@ func (p *PartiQLParser) OffsetByClause() (localctx IOffsetByClauseContext) {
 		localctx.(*OffsetByClauseContext).arg = _x
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ILimitClauseContext is an interface to support dynamic dispatch.
@@ -11704,16 +12232,21 @@ type ILimitClauseContext interface {
 }
 
 type LimitClauseContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	arg    IExprSelectContext
 }
 
 func NewEmptyLimitClauseContext() *LimitClauseContext {
 	var p = new(LimitClauseContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_limitClause
 	return p
+}
+
+func InitEmptyLimitClauseContext(p *LimitClauseContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_limitClause
 }
 
 func (*LimitClauseContext) IsLimitClauseContext() {}
@@ -11721,7 +12254,7 @@ func (*LimitClauseContext) IsLimitClauseContext() {}
 func NewLimitClauseContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LimitClauseContext {
 	var p = new(LimitClauseContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_limitClause
@@ -11776,32 +12309,16 @@ func (s *LimitClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) LimitClause() (localctx ILimitClauseContext) {
-	this := p
-	_ = this
-
 	localctx = NewLimitClauseContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 106, PartiQLParserRULE_limitClause)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(702)
 		p.Match(PartiQLParserLIMIT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(703)
@@ -11811,7 +12328,17 @@ func (p *PartiQLParser) LimitClause() (localctx ILimitClauseContext) {
 		localctx.(*LimitClauseContext).arg = _x
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IGpmlPatternContext is an interface to support dynamic dispatch.
@@ -11836,16 +12363,21 @@ type IGpmlPatternContext interface {
 }
 
 type GpmlPatternContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser   antlr.Parser
 	selector IMatchSelectorContext
 }
 
 func NewEmptyGpmlPatternContext() *GpmlPatternContext {
 	var p = new(GpmlPatternContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_gpmlPattern
 	return p
+}
+
+func InitEmptyGpmlPatternContext(p *GpmlPatternContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_gpmlPattern
 }
 
 func (*GpmlPatternContext) IsGpmlPatternContext() {}
@@ -11853,7 +12385,7 @@ func (*GpmlPatternContext) IsGpmlPatternContext() {}
 func NewGpmlPatternContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *GpmlPatternContext {
 	var p = new(GpmlPatternContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_gpmlPattern
@@ -11920,33 +12452,13 @@ func (s *GpmlPatternContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) GpmlPattern() (localctx IGpmlPatternContext) {
-	this := p
-	_ = this
-
 	localctx = NewGpmlPatternContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 108, PartiQLParserRULE_gpmlPattern)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	p.SetState(706)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 67, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 67, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(705)
 
@@ -11955,13 +12467,25 @@ func (p *PartiQLParser) GpmlPattern() (localctx IGpmlPatternContext) {
 			localctx.(*GpmlPatternContext).selector = _x
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 	{
 		p.SetState(708)
 		p.MatchPattern()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IGpmlPatternListContext is an interface to support dynamic dispatch.
@@ -11989,16 +12513,21 @@ type IGpmlPatternListContext interface {
 }
 
 type GpmlPatternListContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser   antlr.Parser
 	selector IMatchSelectorContext
 }
 
 func NewEmptyGpmlPatternListContext() *GpmlPatternListContext {
 	var p = new(GpmlPatternListContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_gpmlPatternList
 	return p
+}
+
+func InitEmptyGpmlPatternListContext(p *GpmlPatternListContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_gpmlPatternList
 }
 
 func (*GpmlPatternListContext) IsGpmlPatternListContext() {}
@@ -12006,7 +12535,7 @@ func (*GpmlPatternListContext) IsGpmlPatternListContext() {}
 func NewGpmlPatternListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *GpmlPatternListContext {
 	var p = new(GpmlPatternListContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_gpmlPatternList
@@ -12106,32 +12635,16 @@ func (s *GpmlPatternListContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) GpmlPatternList() (localctx IGpmlPatternListContext) {
-	this := p
-	_ = this
-
 	localctx = NewGpmlPatternListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 110, PartiQLParserRULE_gpmlPatternList)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	p.SetState(711)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserALL || _la == PartiQLParserANY || _la == PartiQLParserSHORTEST {
@@ -12150,12 +12663,19 @@ func (p *PartiQLParser) GpmlPatternList() (localctx IGpmlPatternListContext) {
 	}
 	p.SetState(718)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserCOMMA {
 		{
 			p.SetState(714)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(715)
@@ -12164,10 +12684,23 @@ func (p *PartiQLParser) GpmlPatternList() (localctx IGpmlPatternListContext) {
 
 		p.SetState(720)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IMatchPatternContext is an interface to support dynamic dispatch.
@@ -12200,7 +12733,7 @@ type IMatchPatternContext interface {
 }
 
 type MatchPatternContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser     antlr.Parser
 	restrictor IPatternRestrictorContext
 	variable   IPatternPathVariableContext
@@ -12208,9 +12741,14 @@ type MatchPatternContext struct {
 
 func NewEmptyMatchPatternContext() *MatchPatternContext {
 	var p = new(MatchPatternContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_matchPattern
 	return p
+}
+
+func InitEmptyMatchPatternContext(p *MatchPatternContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_matchPattern
 }
 
 func (*MatchPatternContext) IsMatchPatternContext() {}
@@ -12218,7 +12756,7 @@ func (*MatchPatternContext) IsMatchPatternContext() {}
 func NewMatchPatternContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MatchPatternContext {
 	var p = new(MatchPatternContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_matchPattern
@@ -12330,35 +12868,15 @@ func (s *MatchPatternContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) MatchPattern() (localctx IMatchPatternContext) {
-	this := p
-	_ = this
-
 	localctx = NewMatchPatternContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 112, PartiQLParserRULE_matchPattern)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
 	p.SetState(722)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 70, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 70, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(721)
 
@@ -12367,11 +12885,13 @@ func (p *PartiQLParser) MatchPattern() (localctx IMatchPatternContext) {
 			localctx.(*MatchPatternContext).restrictor = _x
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 	p.SetState(725)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 71, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 71, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(724)
 
@@ -12380,11 +12900,18 @@ func (p *PartiQLParser) MatchPattern() (localctx IMatchPatternContext) {
 			localctx.(*MatchPatternContext).variable = _x
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 	p.SetState(730)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 72, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 72, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
@@ -12395,10 +12922,26 @@ func (p *PartiQLParser) MatchPattern() (localctx IMatchPatternContext) {
 		}
 		p.SetState(732)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 72, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 72, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IGraphPartContext is an interface to support dynamic dispatch.
@@ -12418,15 +12961,20 @@ type IGraphPartContext interface {
 }
 
 type GraphPartContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyGraphPartContext() *GraphPartContext {
 	var p = new(GraphPartContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_graphPart
 	return p
+}
+
+func InitEmptyGraphPartContext(p *GraphPartContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_graphPart
 }
 
 func (*GraphPartContext) IsGraphPartContext() {}
@@ -12434,7 +12982,7 @@ func (*GraphPartContext) IsGraphPartContext() {}
 func NewGraphPartContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *GraphPartContext {
 	var p = new(GraphPartContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_graphPart
@@ -12513,31 +13061,15 @@ func (s *GraphPartContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) GraphPart() (localctx IGraphPartContext) {
-	this := p
-	_ = this
-
 	localctx = NewGraphPartContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 114, PartiQLParserRULE_graphPart)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(736)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 73, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 73, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
@@ -12559,9 +13091,21 @@ func (p *PartiQLParser) GraphPart() (localctx IGraphPartContext) {
 			p.Pattern()
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IMatchSelectorContext is an interface to support dynamic dispatch.
@@ -12575,15 +13119,20 @@ type IMatchSelectorContext interface {
 }
 
 type MatchSelectorContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyMatchSelectorContext() *MatchSelectorContext {
 	var p = new(MatchSelectorContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_matchSelector
 	return p
+}
+
+func InitEmptyMatchSelectorContext(p *MatchSelectorContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_matchSelector
 }
 
 func (*MatchSelectorContext) IsMatchSelectorContext() {}
@@ -12591,7 +13140,7 @@ func (*MatchSelectorContext) IsMatchSelectorContext() {}
 func NewMatchSelectorContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MatchSelectorContext {
 	var p = new(MatchSelectorContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_matchSelector
@@ -12601,8 +13150,8 @@ func NewMatchSelectorContext(parser antlr.Parser, parent antlr.ParserRuleContext
 
 func (s *MatchSelectorContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *MatchSelectorContext) CopyFrom(ctx *MatchSelectorContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *MatchSelectorContext) CopyAll(ctx *MatchSelectorContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *MatchSelectorContext) GetRuleContext() antlr.RuleContext {
@@ -12614,16 +13163,16 @@ func (s *MatchSelectorContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 type SelectorAnyContext struct {
-	*MatchSelectorContext
+	MatchSelectorContext
 	k antlr.Token
 }
 
 func NewSelectorAnyContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SelectorAnyContext {
 	var p = new(SelectorAnyContext)
 
-	p.MatchSelectorContext = NewEmptyMatchSelectorContext()
+	InitEmptyMatchSelectorContext(&p.MatchSelectorContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*MatchSelectorContext))
+	p.CopyAll(ctx.(*MatchSelectorContext))
 
 	return p
 }
@@ -12657,16 +13206,16 @@ func (s *SelectorAnyContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type SelectorShortestContext struct {
-	*MatchSelectorContext
+	MatchSelectorContext
 	k antlr.Token
 }
 
 func NewSelectorShortestContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SelectorShortestContext {
 	var p = new(SelectorShortestContext)
 
-	p.MatchSelectorContext = NewEmptyMatchSelectorContext()
+	InitEmptyMatchSelectorContext(&p.MatchSelectorContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*MatchSelectorContext))
+	p.CopyAll(ctx.(*MatchSelectorContext))
 
 	return p
 }
@@ -12704,16 +13253,16 @@ func (s *SelectorShortestContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type SelectorBasicContext struct {
-	*MatchSelectorContext
+	MatchSelectorContext
 	mod antlr.Token
 }
 
 func NewSelectorBasicContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SelectorBasicContext {
 	var p = new(SelectorBasicContext)
 
-	p.MatchSelectorContext = NewEmptyMatchSelectorContext()
+	InitEmptyMatchSelectorContext(&p.MatchSelectorContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*MatchSelectorContext))
+	p.CopyAll(ctx.(*MatchSelectorContext))
 
 	return p
 }
@@ -12751,32 +13300,17 @@ func (s *SelectorBasicContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) MatchSelector() (localctx IMatchSelectorContext) {
-	this := p
-	_ = this
-
 	localctx = NewMatchSelectorContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 116, PartiQLParserRULE_matchSelector)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(749)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 76, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 76, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewSelectorBasicContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
@@ -12801,6 +13335,10 @@ func (p *PartiQLParser) MatchSelector() (localctx IMatchSelectorContext) {
 		{
 			p.SetState(739)
 			p.Match(PartiQLParserSHORTEST)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -12809,19 +13347,29 @@ func (p *PartiQLParser) MatchSelector() (localctx IMatchSelectorContext) {
 		{
 			p.SetState(740)
 			p.Match(PartiQLParserANY)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(742)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 74, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 74, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(741)
 
 				var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 				localctx.(*SelectorAnyContext).k = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case 3:
@@ -12830,6 +13378,10 @@ func (p *PartiQLParser) MatchSelector() (localctx IMatchSelectorContext) {
 		{
 			p.SetState(744)
 			p.Match(PartiQLParserSHORTEST)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(745)
@@ -12837,21 +13389,43 @@ func (p *PartiQLParser) MatchSelector() (localctx IMatchSelectorContext) {
 			var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 			localctx.(*SelectorShortestContext).k = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(747)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 75, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 75, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(746)
 				p.Match(PartiQLParserGROUP)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPatternPathVariableContext is an interface to support dynamic dispatch.
@@ -12870,15 +13444,20 @@ type IPatternPathVariableContext interface {
 }
 
 type PatternPathVariableContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyPatternPathVariableContext() *PatternPathVariableContext {
 	var p = new(PatternPathVariableContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_patternPathVariable
 	return p
+}
+
+func InitEmptyPatternPathVariableContext(p *PatternPathVariableContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_patternPathVariable
 }
 
 func (*PatternPathVariableContext) IsPatternPathVariableContext() {}
@@ -12886,7 +13465,7 @@ func (*PatternPathVariableContext) IsPatternPathVariableContext() {}
 func NewPatternPathVariableContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PatternPathVariableContext {
 	var p = new(PatternPathVariableContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_patternPathVariable
@@ -12937,28 +13516,8 @@ func (s *PatternPathVariableContext) ExitRule(listener antlr.ParseTreeListener) 
 }
 
 func (p *PartiQLParser) PatternPathVariable() (localctx IPatternPathVariableContext) {
-	this := p
-	_ = this
-
 	localctx = NewPatternPathVariableContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 118, PartiQLParserRULE_patternPathVariable)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(751)
@@ -12967,9 +13526,23 @@ func (p *PartiQLParser) PatternPathVariable() (localctx IPatternPathVariableCont
 	{
 		p.SetState(752)
 		p.Match(PartiQLParserEQ)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPatternRestrictorContext is an interface to support dynamic dispatch.
@@ -12993,16 +13566,21 @@ type IPatternRestrictorContext interface {
 }
 
 type PatternRestrictorContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser     antlr.Parser
 	restrictor antlr.Token
 }
 
 func NewEmptyPatternRestrictorContext() *PatternRestrictorContext {
 	var p = new(PatternRestrictorContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_patternRestrictor
 	return p
+}
+
+func InitEmptyPatternRestrictorContext(p *PatternRestrictorContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_patternRestrictor
 }
 
 func (*PatternRestrictorContext) IsPatternRestrictorContext() {}
@@ -13010,7 +13588,7 @@ func (*PatternRestrictorContext) IsPatternRestrictorContext() {}
 func NewPatternRestrictorContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PatternRestrictorContext {
 	var p = new(PatternRestrictorContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_patternRestrictor
@@ -13049,28 +13627,8 @@ func (s *PatternRestrictorContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) PatternRestrictor() (localctx IPatternRestrictorContext) {
-	this := p
-	_ = this
-
 	localctx = NewPatternRestrictorContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 120, PartiQLParserRULE_patternRestrictor)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(754)
@@ -13078,9 +13636,23 @@ func (p *PartiQLParser) PatternRestrictor() (localctx IPatternRestrictorContext)
 		var _m = p.Match(PartiQLParserIDENTIFIER)
 
 		localctx.(*PatternRestrictorContext).restrictor = _m
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // INodeContext is an interface to support dynamic dispatch.
@@ -13102,15 +13674,20 @@ type INodeContext interface {
 }
 
 type NodeContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyNodeContext() *NodeContext {
 	var p = new(NodeContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_node
 	return p
+}
+
+func InitEmptyNodeContext(p *NodeContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_node
 }
 
 func (*NodeContext) IsNodeContext() {}
@@ -13118,7 +13695,7 @@ func (*NodeContext) IsNodeContext() {}
 func NewNodeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *NodeContext {
 	var p = new(NodeContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_node
@@ -13205,36 +13782,24 @@ func (s *NodeContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Node() (localctx INodeContext) {
-	this := p
-	_ = this
-
 	localctx = NewNodeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 122, PartiQLParserRULE_node)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(756)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(758)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserIDENTIFIER || _la == PartiQLParserIDENTIFIER_QUOTED {
@@ -13246,6 +13811,9 @@ func (p *PartiQLParser) Node() (localctx INodeContext) {
 	}
 	p.SetState(761)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserCOLON {
@@ -13257,6 +13825,9 @@ func (p *PartiQLParser) Node() (localctx INodeContext) {
 	}
 	p.SetState(764)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserWHERE {
@@ -13269,9 +13840,23 @@ func (p *PartiQLParser) Node() (localctx INodeContext) {
 	{
 		p.SetState(766)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IEdgeContext is an interface to support dynamic dispatch.
@@ -13285,15 +13870,20 @@ type IEdgeContext interface {
 }
 
 type EdgeContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyEdgeContext() *EdgeContext {
 	var p = new(EdgeContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_edge
 	return p
+}
+
+func InitEmptyEdgeContext(p *EdgeContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_edge
 }
 
 func (*EdgeContext) IsEdgeContext() {}
@@ -13301,7 +13891,7 @@ func (*EdgeContext) IsEdgeContext() {}
 func NewEdgeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *EdgeContext {
 	var p = new(EdgeContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_edge
@@ -13311,8 +13901,8 @@ func NewEdgeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 
 func (s *EdgeContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *EdgeContext) CopyFrom(ctx *EdgeContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *EdgeContext) CopyAll(ctx *EdgeContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *EdgeContext) GetRuleContext() antlr.RuleContext {
@@ -13324,16 +13914,16 @@ func (s *EdgeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 type EdgeWithSpecContext struct {
-	*EdgeContext
+	EdgeContext
 	quantifier IPatternQuantifierContext
 }
 
 func NewEdgeWithSpecContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeWithSpecContext {
 	var p = new(EdgeWithSpecContext)
 
-	p.EdgeContext = NewEmptyEdgeContext()
+	InitEmptyEdgeContext(&p.EdgeContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeContext))
+	p.CopyAll(ctx.(*EdgeContext))
 
 	return p
 }
@@ -13391,16 +13981,16 @@ func (s *EdgeWithSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type EdgeAbbreviatedContext struct {
-	*EdgeContext
+	EdgeContext
 	quantifier IPatternQuantifierContext
 }
 
 func NewEdgeAbbreviatedContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeAbbreviatedContext {
 	var p = new(EdgeAbbreviatedContext)
 
-	p.EdgeContext = NewEmptyEdgeContext()
+	InitEmptyEdgeContext(&p.EdgeContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeContext))
+	p.CopyAll(ctx.(*EdgeContext))
 
 	return p
 }
@@ -13458,31 +14048,15 @@ func (s *EdgeAbbreviatedContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Edge() (localctx IEdgeContext) {
-	this := p
-	_ = this
-
 	localctx = NewEdgeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 124, PartiQLParserRULE_edge)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(776)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 82, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 82, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewEdgeWithSpecContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
@@ -13493,7 +14067,7 @@ func (p *PartiQLParser) Edge() (localctx IEdgeContext) {
 		p.SetState(770)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 80, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 80, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(769)
 
@@ -13502,6 +14076,8 @@ func (p *PartiQLParser) Edge() (localctx IEdgeContext) {
 				localctx.(*EdgeWithSpecContext).quantifier = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case 2:
@@ -13514,7 +14090,7 @@ func (p *PartiQLParser) Edge() (localctx IEdgeContext) {
 		p.SetState(774)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 81, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 81, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(773)
 
@@ -13523,11 +14099,25 @@ func (p *PartiQLParser) Edge() (localctx IEdgeContext) {
 				localctx.(*EdgeAbbreviatedContext).quantifier = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPatternContext is an interface to support dynamic dispatch.
@@ -13578,7 +14168,7 @@ type IPatternContext interface {
 }
 
 type PatternContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser     antlr.Parser
 	restrictor IPatternRestrictorContext
 	variable   IPatternPathVariableContext
@@ -13588,9 +14178,14 @@ type PatternContext struct {
 
 func NewEmptyPatternContext() *PatternContext {
 	var p = new(PatternContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_pattern
 	return p
+}
+
+func InitEmptyPatternContext(p *PatternContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_pattern
 }
 
 func (*PatternContext) IsPatternContext() {}
@@ -13598,7 +14193,7 @@ func (*PatternContext) IsPatternContext() {}
 func NewPatternContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PatternContext {
 	var p = new(PatternContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_pattern
@@ -13766,31 +14361,15 @@ func (s *PatternContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
-	this := p
-	_ = this
-
 	localctx = NewPatternContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 126, PartiQLParserRULE_pattern)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(816)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserPAREN_LEFT:
@@ -13798,11 +14377,15 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 		{
 			p.SetState(778)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(780)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 83, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 83, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(779)
 
@@ -13811,9 +14394,14 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 				localctx.(*PatternContext).restrictor = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(783)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserIDENTIFIER || _la == PartiQLParserIDENTIFIER_QUOTED {
@@ -13828,6 +14416,9 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 		}
 		p.SetState(786)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for ok := true; ok; ok = ((int64((_la-270)) & ^0x3f) == 0 && ((int64(1)<<(_la-270))&559121) != 0) {
@@ -13838,10 +14429,16 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 
 			p.SetState(788)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 		p.SetState(791)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserWHERE {
@@ -13857,11 +14454,15 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 		{
 			p.SetState(793)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(795)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 87, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 87, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(794)
 
@@ -13870,6 +14471,8 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 				localctx.(*PatternContext).quantifier = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case PartiQLParserBRACKET_LEFT:
@@ -13877,11 +14480,15 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 		{
 			p.SetState(797)
 			p.Match(PartiQLParserBRACKET_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(799)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 88, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 88, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(798)
 
@@ -13890,9 +14497,14 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 				localctx.(*PatternContext).restrictor = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(802)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserIDENTIFIER || _la == PartiQLParserIDENTIFIER_QUOTED {
@@ -13907,6 +14519,9 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 		}
 		p.SetState(805)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for ok := true; ok; ok = ((int64((_la-270)) & ^0x3f) == 0 && ((int64(1)<<(_la-270))&559121) != 0) {
@@ -13917,10 +14532,16 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 
 			p.SetState(807)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 		p.SetState(810)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserWHERE {
@@ -13936,11 +14557,15 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 		{
 			p.SetState(812)
 			p.Match(PartiQLParserBRACKET_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(814)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 92, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 92, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(813)
 
@@ -13949,13 +14574,26 @@ func (p *PartiQLParser) Pattern() (localctx IPatternContext) {
 				localctx.(*PatternContext).quantifier = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPatternQuantifierContext is an interface to support dynamic dispatch.
@@ -13997,7 +14635,7 @@ type IPatternQuantifierContext interface {
 }
 
 type PatternQuantifierContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	quant  antlr.Token
 	lower  antlr.Token
@@ -14006,9 +14644,14 @@ type PatternQuantifierContext struct {
 
 func NewEmptyPatternQuantifierContext() *PatternQuantifierContext {
 	var p = new(PatternQuantifierContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_patternQuantifier
 	return p
+}
+
+func InitEmptyPatternQuantifierContext(p *PatternQuantifierContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_patternQuantifier
 }
 
 func (*PatternQuantifierContext) IsPatternQuantifierContext() {}
@@ -14016,7 +14659,7 @@ func (*PatternQuantifierContext) IsPatternQuantifierContext() {}
 func NewPatternQuantifierContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PatternQuantifierContext {
 	var p = new(PatternQuantifierContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_patternQuantifier
@@ -14087,31 +14730,15 @@ func (s *PatternQuantifierContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) PatternQuantifier() (localctx IPatternQuantifierContext) {
-	this := p
-	_ = this
-
 	localctx = NewPatternQuantifierContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 128, PartiQLParserRULE_patternQuantifier)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(826)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserPLUS, PartiQLParserASTERISK:
@@ -14140,6 +14767,10 @@ func (p *PartiQLParser) PatternQuantifier() (localctx IPatternQuantifierContext)
 		{
 			p.SetState(819)
 			p.Match(PartiQLParserBRACE_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(820)
@@ -14147,13 +14778,24 @@ func (p *PartiQLParser) PatternQuantifier() (localctx IPatternQuantifierContext)
 			var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 			localctx.(*PatternQuantifierContext).lower = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(821)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(823)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserLITERAL_INTEGER {
@@ -14163,19 +14805,38 @@ func (p *PartiQLParser) PatternQuantifier() (localctx IPatternQuantifierContext)
 				var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 				localctx.(*PatternQuantifierContext).upper = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
 		{
 			p.SetState(825)
 			p.Match(PartiQLParserBRACE_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IEdgeWSpecContext is an interface to support dynamic dispatch.
@@ -14189,15 +14850,20 @@ type IEdgeWSpecContext interface {
 }
 
 type EdgeWSpecContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyEdgeWSpecContext() *EdgeWSpecContext {
 	var p = new(EdgeWSpecContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_edgeWSpec
 	return p
+}
+
+func InitEmptyEdgeWSpecContext(p *EdgeWSpecContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_edgeWSpec
 }
 
 func (*EdgeWSpecContext) IsEdgeWSpecContext() {}
@@ -14205,7 +14871,7 @@ func (*EdgeWSpecContext) IsEdgeWSpecContext() {}
 func NewEdgeWSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *EdgeWSpecContext {
 	var p = new(EdgeWSpecContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_edgeWSpec
@@ -14215,8 +14881,8 @@ func NewEdgeWSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *EdgeWSpecContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *EdgeWSpecContext) CopyFrom(ctx *EdgeWSpecContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *EdgeWSpecContext) CopyAll(ctx *EdgeWSpecContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *EdgeWSpecContext) GetRuleContext() antlr.RuleContext {
@@ -14228,15 +14894,15 @@ func (s *EdgeWSpecContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 type EdgeSpecLeftContext struct {
-	*EdgeWSpecContext
+	EdgeWSpecContext
 }
 
 func NewEdgeSpecLeftContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeSpecLeftContext {
 	var p = new(EdgeSpecLeftContext)
 
-	p.EdgeWSpecContext = NewEmptyEdgeWSpecContext()
+	InitEmptyEdgeWSpecContext(&p.EdgeWSpecContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeWSpecContext))
+	p.CopyAll(ctx.(*EdgeWSpecContext))
 
 	return p
 }
@@ -14286,15 +14952,15 @@ func (s *EdgeSpecLeftContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type EdgeSpecUndirectedLeftContext struct {
-	*EdgeWSpecContext
+	EdgeWSpecContext
 }
 
 func NewEdgeSpecUndirectedLeftContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeSpecUndirectedLeftContext {
 	var p = new(EdgeSpecUndirectedLeftContext)
 
-	p.EdgeWSpecContext = NewEmptyEdgeWSpecContext()
+	InitEmptyEdgeWSpecContext(&p.EdgeWSpecContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeWSpecContext))
+	p.CopyAll(ctx.(*EdgeWSpecContext))
 
 	return p
 }
@@ -14344,15 +15010,15 @@ func (s *EdgeSpecUndirectedLeftContext) ExitRule(listener antlr.ParseTreeListene
 }
 
 type EdgeSpecBidirectionalContext struct {
-	*EdgeWSpecContext
+	EdgeWSpecContext
 }
 
 func NewEdgeSpecBidirectionalContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeSpecBidirectionalContext {
 	var p = new(EdgeSpecBidirectionalContext)
 
-	p.EdgeWSpecContext = NewEmptyEdgeWSpecContext()
+	InitEmptyEdgeWSpecContext(&p.EdgeWSpecContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeWSpecContext))
+	p.CopyAll(ctx.(*EdgeWSpecContext))
 
 	return p
 }
@@ -14406,15 +15072,15 @@ func (s *EdgeSpecBidirectionalContext) ExitRule(listener antlr.ParseTreeListener
 }
 
 type EdgeSpecRightContext struct {
-	*EdgeWSpecContext
+	EdgeWSpecContext
 }
 
 func NewEdgeSpecRightContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeSpecRightContext {
 	var p = new(EdgeSpecRightContext)
 
-	p.EdgeWSpecContext = NewEmptyEdgeWSpecContext()
+	InitEmptyEdgeWSpecContext(&p.EdgeWSpecContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeWSpecContext))
+	p.CopyAll(ctx.(*EdgeWSpecContext))
 
 	return p
 }
@@ -14464,15 +15130,15 @@ func (s *EdgeSpecRightContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type EdgeSpecUndirectedBidirectionalContext struct {
-	*EdgeWSpecContext
+	EdgeWSpecContext
 }
 
 func NewEdgeSpecUndirectedBidirectionalContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeSpecUndirectedBidirectionalContext {
 	var p = new(EdgeSpecUndirectedBidirectionalContext)
 
-	p.EdgeWSpecContext = NewEmptyEdgeWSpecContext()
+	InitEmptyEdgeWSpecContext(&p.EdgeWSpecContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeWSpecContext))
+	p.CopyAll(ctx.(*EdgeWSpecContext))
 
 	return p
 }
@@ -14518,15 +15184,15 @@ func (s *EdgeSpecUndirectedBidirectionalContext) ExitRule(listener antlr.ParseTr
 }
 
 type EdgeSpecUndirectedContext struct {
-	*EdgeWSpecContext
+	EdgeWSpecContext
 }
 
 func NewEdgeSpecUndirectedContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeSpecUndirectedContext {
 	var p = new(EdgeSpecUndirectedContext)
 
-	p.EdgeWSpecContext = NewEmptyEdgeWSpecContext()
+	InitEmptyEdgeWSpecContext(&p.EdgeWSpecContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeWSpecContext))
+	p.CopyAll(ctx.(*EdgeWSpecContext))
 
 	return p
 }
@@ -14572,15 +15238,15 @@ func (s *EdgeSpecUndirectedContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type EdgeSpecUndirectedRightContext struct {
-	*EdgeWSpecContext
+	EdgeWSpecContext
 }
 
 func NewEdgeSpecUndirectedRightContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *EdgeSpecUndirectedRightContext {
 	var p = new(EdgeSpecUndirectedRightContext)
 
-	p.EdgeWSpecContext = NewEmptyEdgeWSpecContext()
+	InitEmptyEdgeWSpecContext(&p.EdgeWSpecContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*EdgeWSpecContext))
+	p.CopyAll(ctx.(*EdgeWSpecContext))
 
 	return p
 }
@@ -14630,37 +15296,25 @@ func (s *EdgeSpecUndirectedRightContext) ExitRule(listener antlr.ParseTreeListen
 }
 
 func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
-	this := p
-	_ = this
-
 	localctx = NewEdgeWSpecContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 130, PartiQLParserRULE_edgeWSpec)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(862)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 96, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 96, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewEdgeSpecRightContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(828)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(829)
@@ -14669,10 +15323,18 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(830)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(831)
 			p.Match(PartiQLParserANGLE_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -14681,6 +15343,10 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(833)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(834)
@@ -14689,6 +15355,10 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(835)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 3:
@@ -14697,10 +15367,18 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(837)
 			p.Match(PartiQLParserANGLE_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(838)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(839)
@@ -14709,6 +15387,10 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(840)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 4:
@@ -14717,6 +15399,10 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(842)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(843)
@@ -14725,10 +15411,18 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(844)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(845)
 			p.Match(PartiQLParserANGLE_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 5:
@@ -14737,10 +15431,18 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(847)
 			p.Match(PartiQLParserANGLE_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(848)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(849)
@@ -14749,6 +15451,10 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(850)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 6:
@@ -14757,10 +15463,18 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(852)
 			p.Match(PartiQLParserANGLE_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(853)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(854)
@@ -14769,10 +15483,18 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(855)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(856)
 			p.Match(PartiQLParserANGLE_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 7:
@@ -14781,6 +15503,10 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(858)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(859)
@@ -14789,11 +15515,27 @@ func (p *PartiQLParser) EdgeWSpec() (localctx IEdgeWSpecContext) {
 		{
 			p.SetState(860)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IEdgeSpecContext is an interface to support dynamic dispatch.
@@ -14815,15 +15557,20 @@ type IEdgeSpecContext interface {
 }
 
 type EdgeSpecContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyEdgeSpecContext() *EdgeSpecContext {
 	var p = new(EdgeSpecContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_edgeSpec
 	return p
+}
+
+func InitEmptyEdgeSpecContext(p *EdgeSpecContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_edgeSpec
 }
 
 func (*EdgeSpecContext) IsEdgeSpecContext() {}
@@ -14831,7 +15578,7 @@ func (*EdgeSpecContext) IsEdgeSpecContext() {}
 func NewEdgeSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *EdgeSpecContext {
 	var p = new(EdgeSpecContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_edgeSpec
@@ -14918,36 +15665,24 @@ func (s *EdgeSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) EdgeSpec() (localctx IEdgeSpecContext) {
-	this := p
-	_ = this
-
 	localctx = NewEdgeSpecContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 132, PartiQLParserRULE_edgeSpec)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(864)
 		p.Match(PartiQLParserBRACKET_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(866)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserIDENTIFIER || _la == PartiQLParserIDENTIFIER_QUOTED {
@@ -14959,6 +15694,9 @@ func (p *PartiQLParser) EdgeSpec() (localctx IEdgeSpecContext) {
 	}
 	p.SetState(869)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserCOLON {
@@ -14970,6 +15708,9 @@ func (p *PartiQLParser) EdgeSpec() (localctx IEdgeSpecContext) {
 	}
 	p.SetState(872)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserWHERE {
@@ -14982,9 +15723,23 @@ func (p *PartiQLParser) EdgeSpec() (localctx IEdgeSpecContext) {
 	{
 		p.SetState(874)
 		p.Match(PartiQLParserBRACKET_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPatternPartLabelContext is an interface to support dynamic dispatch.
@@ -15003,15 +15758,20 @@ type IPatternPartLabelContext interface {
 }
 
 type PatternPartLabelContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyPatternPartLabelContext() *PatternPartLabelContext {
 	var p = new(PatternPartLabelContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_patternPartLabel
 	return p
+}
+
+func InitEmptyPatternPartLabelContext(p *PatternPartLabelContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_patternPartLabel
 }
 
 func (*PatternPartLabelContext) IsPatternPartLabelContext() {}
@@ -15019,7 +15779,7 @@ func (*PatternPartLabelContext) IsPatternPartLabelContext() {}
 func NewPatternPartLabelContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PatternPartLabelContext {
 	var p = new(PatternPartLabelContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_patternPartLabel
@@ -15070,39 +15830,33 @@ func (s *PatternPartLabelContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) PatternPartLabel() (localctx IPatternPartLabelContext) {
-	this := p
-	_ = this
-
 	localctx = NewPatternPartLabelContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 134, PartiQLParserRULE_patternPartLabel)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(876)
 		p.Match(PartiQLParserCOLON)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(877)
 		p.SymbolPrimitive()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IEdgeAbbrevContext is an interface to support dynamic dispatch.
@@ -15123,15 +15877,20 @@ type IEdgeAbbrevContext interface {
 }
 
 type EdgeAbbrevContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyEdgeAbbrevContext() *EdgeAbbrevContext {
 	var p = new(EdgeAbbrevContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_edgeAbbrev
 	return p
+}
+
+func InitEmptyEdgeAbbrevContext(p *EdgeAbbrevContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_edgeAbbrev
 }
 
 func (*EdgeAbbrevContext) IsEdgeAbbrevContext() {}
@@ -15139,7 +15898,7 @@ func (*EdgeAbbrevContext) IsEdgeAbbrevContext() {}
 func NewEdgeAbbrevContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *EdgeAbbrevContext {
 	var p = new(EdgeAbbrevContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_edgeAbbrev
@@ -15186,37 +15945,26 @@ func (s *EdgeAbbrevContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) EdgeAbbrev() (localctx IEdgeAbbrevContext) {
-	this := p
-	_ = this
-
 	localctx = NewEdgeAbbrevContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 136, PartiQLParserRULE_edgeAbbrev)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(891)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 102, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 102, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(879)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -15224,10 +15972,18 @@ func (p *PartiQLParser) EdgeAbbrev() (localctx IEdgeAbbrevContext) {
 		{
 			p.SetState(880)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(881)
 			p.Match(PartiQLParserANGLE_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 3:
@@ -15235,43 +15991,80 @@ func (p *PartiQLParser) EdgeAbbrev() (localctx IEdgeAbbrevContext) {
 		{
 			p.SetState(882)
 			p.Match(PartiQLParserANGLE_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(883)
 			p.Match(PartiQLParserTILDE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 4:
 		p.EnterOuterAlt(localctx, 4)
 		p.SetState(885)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserANGLE_LEFT {
 			{
 				p.SetState(884)
 				p.Match(PartiQLParserANGLE_LEFT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
 		{
 			p.SetState(887)
 			p.Match(PartiQLParserMINUS)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(889)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 101, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 101, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(888)
 				p.Match(PartiQLParserANGLE_RIGHT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ITableReferenceContext is an interface to support dynamic dispatch.
@@ -15285,15 +16078,20 @@ type ITableReferenceContext interface {
 }
 
 type TableReferenceContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyTableReferenceContext() *TableReferenceContext {
 	var p = new(TableReferenceContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_tableReference
 	return p
+}
+
+func InitEmptyTableReferenceContext(p *TableReferenceContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_tableReference
 }
 
 func (*TableReferenceContext) IsTableReferenceContext() {}
@@ -15301,7 +16099,7 @@ func (*TableReferenceContext) IsTableReferenceContext() {}
 func NewTableReferenceContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TableReferenceContext {
 	var p = new(TableReferenceContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_tableReference
@@ -15311,8 +16109,8 @@ func NewTableReferenceContext(parser antlr.Parser, parent antlr.ParserRuleContex
 
 func (s *TableReferenceContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *TableReferenceContext) CopyFrom(ctx *TableReferenceContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *TableReferenceContext) CopyAll(ctx *TableReferenceContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *TableReferenceContext) GetRuleContext() antlr.RuleContext {
@@ -15324,15 +16122,15 @@ func (s *TableReferenceContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 type TableWrappedContext struct {
-	*TableReferenceContext
+	TableReferenceContext
 }
 
 func NewTableWrappedContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TableWrappedContext {
 	var p = new(TableWrappedContext)
 
-	p.TableReferenceContext = NewEmptyTableReferenceContext()
+	InitEmptyTableReferenceContext(&p.TableReferenceContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TableReferenceContext))
+	p.CopyAll(ctx.(*TableReferenceContext))
 
 	return p
 }
@@ -15378,7 +16176,7 @@ func (s *TableWrappedContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TableCrossJoinContext struct {
-	*TableReferenceContext
+	TableReferenceContext
 	lhs ITableReferenceContext
 	rhs IJoinRhsContext
 }
@@ -15386,9 +16184,9 @@ type TableCrossJoinContext struct {
 func NewTableCrossJoinContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TableCrossJoinContext {
 	var p = new(TableCrossJoinContext)
 
-	p.TableReferenceContext = NewEmptyTableReferenceContext()
+	InitEmptyTableReferenceContext(&p.TableReferenceContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TableReferenceContext))
+	p.CopyAll(ctx.(*TableReferenceContext))
 
 	return p
 }
@@ -15478,7 +16276,7 @@ func (s *TableCrossJoinContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TableQualifiedJoinContext struct {
-	*TableReferenceContext
+	TableReferenceContext
 	lhs ITableReferenceContext
 	rhs IJoinRhsContext
 }
@@ -15486,9 +16284,9 @@ type TableQualifiedJoinContext struct {
 func NewTableQualifiedJoinContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TableQualifiedJoinContext {
 	var p = new(TableQualifiedJoinContext)
 
-	p.TableReferenceContext = NewEmptyTableReferenceContext()
+	InitEmptyTableReferenceContext(&p.TableReferenceContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TableReferenceContext))
+	p.CopyAll(ctx.(*TableReferenceContext))
 
 	return p
 }
@@ -15586,15 +16384,15 @@ func (s *TableQualifiedJoinContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TableRefBaseContext struct {
-	*TableReferenceContext
+	TableReferenceContext
 }
 
 func NewTableRefBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TableRefBaseContext {
 	var p = new(TableRefBaseContext)
 
-	p.TableReferenceContext = NewEmptyTableReferenceContext()
+	InitEmptyTableReferenceContext(&p.TableReferenceContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TableReferenceContext))
+	p.CopyAll(ctx.(*TableReferenceContext))
 
 	return p
 }
@@ -15636,10 +16434,8 @@ func (p *PartiQLParser) TableReference() (localctx ITableReferenceContext) {
 }
 
 func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewTableReferenceContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx ITableReferenceContext = localctx
@@ -15648,28 +16444,16 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 	p.EnterRecursionRule(localctx, 138, PartiQLParserRULE_tableReference, _p)
 	var _la int
 
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
 	p.SetState(899)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 103, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 103, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewTableRefBaseContext(p, localctx)
 		p.SetParserRuleContext(localctx)
@@ -15687,6 +16471,10 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 		{
 			p.SetState(895)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(896)
@@ -15695,14 +16483,25 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 		{
 			p.SetState(897)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(921)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 107, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 107, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -15711,7 +16510,11 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 			_prevctx = localctx
 			p.SetState(919)
 			p.GetErrorHandler().Sync(p)
-			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 106, p.GetParserRuleContext()) {
+			if p.HasError() {
+				goto errorExit
+			}
+
+			switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 106, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewTableCrossJoinContext(p, NewTableReferenceContext(p, _parentctx, _parentState))
 				localctx.(*TableCrossJoinContext).lhs = _prevctx
@@ -15720,10 +16523,14 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 				p.SetState(901)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 5)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
+					goto errorExit
 				}
 				p.SetState(903)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if ((int64((_la-94)) & ^0x3f) == 0 && ((int64(1)<<(_la-94))&144115188612734977) != 0) || _la == PartiQLParserRIGHT {
@@ -15736,10 +16543,18 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 				{
 					p.SetState(905)
 					p.Match(PartiQLParserCROSS)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(906)
 					p.Match(PartiQLParserJOIN)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(907)
@@ -15757,11 +16572,16 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 				p.SetState(908)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 4)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
+					goto errorExit
 				}
 				{
 					p.SetState(909)
 					p.Match(PartiQLParserCOMMA)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(910)
@@ -15779,10 +16599,14 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 				p.SetState(911)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
+					goto errorExit
 				}
 				p.SetState(913)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if ((int64((_la-94)) & ^0x3f) == 0 && ((int64(1)<<(_la-94))&144115188612734977) != 0) || _la == PartiQLParserRIGHT {
@@ -15795,6 +16619,10 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 				{
 					p.SetState(915)
 					p.Match(PartiQLParserJOIN)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(916)
@@ -15808,15 +16636,33 @@ func (p *PartiQLParser) tableReference(_p int) (localctx ITableReferenceContext)
 					p.JoinSpec()
 				}
 
+			case antlr.ATNInvalidAltNumber:
+				goto errorExit
 			}
 
 		}
 		p.SetState(923)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 107, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 107, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ITableNonJoinContext is an interface to support dynamic dispatch.
@@ -15835,15 +16681,20 @@ type ITableNonJoinContext interface {
 }
 
 type TableNonJoinContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyTableNonJoinContext() *TableNonJoinContext {
 	var p = new(TableNonJoinContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_tableNonJoin
 	return p
+}
+
+func InitEmptyTableNonJoinContext(p *TableNonJoinContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_tableNonJoin
 }
 
 func (*TableNonJoinContext) IsTableNonJoinContext() {}
@@ -15851,7 +16702,7 @@ func (*TableNonJoinContext) IsTableNonJoinContext() {}
 func NewTableNonJoinContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TableNonJoinContext {
 	var p = new(TableNonJoinContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_tableNonJoin
@@ -15914,30 +16765,13 @@ func (s *TableNonJoinContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) TableNonJoin() (localctx ITableNonJoinContext) {
-	this := p
-	_ = this
-
 	localctx = NewTableNonJoinContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 140, PartiQLParserRULE_tableNonJoin)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(926)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserAVG, PartiQLParserBIT_LENGTH, PartiQLParserCASE, PartiQLParserCAST, PartiQLParserCHARACTER_LENGTH, PartiQLParserCHAR_LENGTH, PartiQLParserCOALESCE, PartiQLParserCOUNT, PartiQLParserDATE, PartiQLParserEXISTS, PartiQLParserEXTRACT, PartiQLParserDATE_ADD, PartiQLParserDATE_DIFF, PartiQLParserFALSE, PartiQLParserLOWER, PartiQLParserMAX, PartiQLParserMIN, PartiQLParserNOT, PartiQLParserNULL, PartiQLParserNULLIF, PartiQLParserOCTET_LENGTH, PartiQLParserSELECT, PartiQLParserSIZE, PartiQLParserSUBSTRING, PartiQLParserSUM, PartiQLParserTIME, PartiQLParserTRIM, PartiQLParserTRUE, PartiQLParserUPPER, PartiQLParserVALUES, PartiQLParserLAG, PartiQLParserLEAD, PartiQLParserCAN_CAST, PartiQLParserCAN_LOSSLESS_CAST, PartiQLParserMISSING, PartiQLParserPIVOT, PartiQLParserLIST, PartiQLParserSEXP, PartiQLParserPLUS, PartiQLParserMINUS, PartiQLParserAT_SIGN, PartiQLParserANGLE_DOUBLE_LEFT, PartiQLParserBRACKET_LEFT, PartiQLParserBRACE_LEFT, PartiQLParserPAREN_LEFT, PartiQLParserQUESTION_MARK, PartiQLParserLITERAL_STRING, PartiQLParserLITERAL_INTEGER, PartiQLParserLITERAL_DECIMAL, PartiQLParserIDENTIFIER, PartiQLParserIDENTIFIER_QUOTED, PartiQLParserION_CLOSURE:
@@ -15955,10 +16789,21 @@ func (p *PartiQLParser) TableNonJoin() (localctx ITableNonJoinContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ITableBaseReferenceContext is an interface to support dynamic dispatch.
@@ -15972,15 +16817,20 @@ type ITableBaseReferenceContext interface {
 }
 
 type TableBaseReferenceContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyTableBaseReferenceContext() *TableBaseReferenceContext {
 	var p = new(TableBaseReferenceContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_tableBaseReference
 	return p
+}
+
+func InitEmptyTableBaseReferenceContext(p *TableBaseReferenceContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_tableBaseReference
 }
 
 func (*TableBaseReferenceContext) IsTableBaseReferenceContext() {}
@@ -15988,7 +16838,7 @@ func (*TableBaseReferenceContext) IsTableBaseReferenceContext() {}
 func NewTableBaseReferenceContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TableBaseReferenceContext {
 	var p = new(TableBaseReferenceContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_tableBaseReference
@@ -15998,8 +16848,8 @@ func NewTableBaseReferenceContext(parser antlr.Parser, parent antlr.ParserRuleCo
 
 func (s *TableBaseReferenceContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *TableBaseReferenceContext) CopyFrom(ctx *TableBaseReferenceContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *TableBaseReferenceContext) CopyAll(ctx *TableBaseReferenceContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *TableBaseReferenceContext) GetRuleContext() antlr.RuleContext {
@@ -16011,16 +16861,16 @@ func (s *TableBaseReferenceContext) ToStringTree(ruleNames []string, recog antlr
 }
 
 type TableBaseRefSymbolContext struct {
-	*TableBaseReferenceContext
+	TableBaseReferenceContext
 	source IExprSelectContext
 }
 
 func NewTableBaseRefSymbolContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TableBaseRefSymbolContext {
 	var p = new(TableBaseRefSymbolContext)
 
-	p.TableBaseReferenceContext = NewEmptyTableBaseReferenceContext()
+	InitEmptyTableBaseReferenceContext(&p.TableBaseReferenceContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TableBaseReferenceContext))
+	p.CopyAll(ctx.(*TableBaseReferenceContext))
 
 	return p
 }
@@ -16078,16 +16928,16 @@ func (s *TableBaseRefSymbolContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TableBaseRefClausesContext struct {
-	*TableBaseReferenceContext
+	TableBaseReferenceContext
 	source IExprSelectContext
 }
 
 func NewTableBaseRefClausesContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TableBaseRefClausesContext {
 	var p = new(TableBaseRefClausesContext)
 
-	p.TableBaseReferenceContext = NewEmptyTableBaseReferenceContext()
+	InitEmptyTableBaseReferenceContext(&p.TableBaseReferenceContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TableBaseReferenceContext))
+	p.CopyAll(ctx.(*TableBaseReferenceContext))
 
 	return p
 }
@@ -16177,16 +17027,16 @@ func (s *TableBaseRefClausesContext) ExitRule(listener antlr.ParseTreeListener) 
 }
 
 type TableBaseRefMatchContext struct {
-	*TableBaseReferenceContext
+	TableBaseReferenceContext
 	source IExprGraphMatchOneContext
 }
 
 func NewTableBaseRefMatchContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TableBaseRefMatchContext {
 	var p = new(TableBaseRefMatchContext)
 
-	p.TableBaseReferenceContext = NewEmptyTableBaseReferenceContext()
+	InitEmptyTableBaseReferenceContext(&p.TableBaseReferenceContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TableBaseReferenceContext))
+	p.CopyAll(ctx.(*TableBaseReferenceContext))
 
 	return p
 }
@@ -16276,31 +17126,15 @@ func (s *TableBaseRefMatchContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) TableBaseReference() (localctx ITableBaseReferenceContext) {
-	this := p
-	_ = this
-
 	localctx = NewTableBaseReferenceContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 142, PartiQLParserRULE_tableBaseReference)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(951)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 115, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 115, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewTableBaseRefSymbolContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
@@ -16329,32 +17163,38 @@ func (p *PartiQLParser) TableBaseReference() (localctx ITableBaseReferenceContex
 		p.SetState(933)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 109, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 109, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(932)
 				p.AsIdent()
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(936)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 110, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 110, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(935)
 				p.AtIdent()
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(939)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 111, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 111, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(938)
 				p.ByIdent()
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case 3:
@@ -16370,37 +17210,55 @@ func (p *PartiQLParser) TableBaseReference() (localctx ITableBaseReferenceContex
 		p.SetState(943)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 112, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 112, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(942)
 				p.AsIdent()
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(946)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 113, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 113, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(945)
 				p.AtIdent()
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(949)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 114, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 114, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(948)
 				p.ByIdent()
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ITableUnpivotContext is an interface to support dynamic dispatch.
@@ -16422,15 +17280,20 @@ type ITableUnpivotContext interface {
 }
 
 type TableUnpivotContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyTableUnpivotContext() *TableUnpivotContext {
 	var p = new(TableUnpivotContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_tableUnpivot
 	return p
+}
+
+func InitEmptyTableUnpivotContext(p *TableUnpivotContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_tableUnpivot
 }
 
 func (*TableUnpivotContext) IsTableUnpivotContext() {}
@@ -16438,7 +17301,7 @@ func (*TableUnpivotContext) IsTableUnpivotContext() {}
 func NewTableUnpivotContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TableUnpivotContext {
 	var p = new(TableUnpivotContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_tableUnpivot
@@ -16537,32 +17400,16 @@ func (s *TableUnpivotContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) TableUnpivot() (localctx ITableUnpivotContext) {
-	this := p
-	_ = this
-
 	localctx = NewTableUnpivotContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 144, PartiQLParserRULE_tableUnpivot)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(953)
 		p.Match(PartiQLParserUNPIVOT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(954)
@@ -16571,35 +17418,51 @@ func (p *PartiQLParser) TableUnpivot() (localctx ITableUnpivotContext) {
 	p.SetState(956)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 116, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 116, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(955)
 			p.AsIdent()
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 	p.SetState(959)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 117, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 117, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(958)
 			p.AtIdent()
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 	p.SetState(962)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 118, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 118, p.GetParserRuleContext()) == 1 {
 		{
 			p.SetState(961)
 			p.ByIdent()
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IJoinRhsContext is an interface to support dynamic dispatch.
@@ -16613,15 +17476,20 @@ type IJoinRhsContext interface {
 }
 
 type JoinRhsContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyJoinRhsContext() *JoinRhsContext {
 	var p = new(JoinRhsContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_joinRhs
 	return p
+}
+
+func InitEmptyJoinRhsContext(p *JoinRhsContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_joinRhs
 }
 
 func (*JoinRhsContext) IsJoinRhsContext() {}
@@ -16629,7 +17497,7 @@ func (*JoinRhsContext) IsJoinRhsContext() {}
 func NewJoinRhsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *JoinRhsContext {
 	var p = new(JoinRhsContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_joinRhs
@@ -16639,8 +17507,8 @@ func NewJoinRhsContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *JoinRhsContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *JoinRhsContext) CopyFrom(ctx *JoinRhsContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *JoinRhsContext) CopyAll(ctx *JoinRhsContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *JoinRhsContext) GetRuleContext() antlr.RuleContext {
@@ -16652,15 +17520,15 @@ func (s *JoinRhsContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 type JoinRhsBaseContext struct {
-	*JoinRhsContext
+	JoinRhsContext
 }
 
 func NewJoinRhsBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *JoinRhsBaseContext {
 	var p = new(JoinRhsBaseContext)
 
-	p.JoinRhsContext = NewEmptyJoinRhsContext()
+	InitEmptyJoinRhsContext(&p.JoinRhsContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*JoinRhsContext))
+	p.CopyAll(ctx.(*JoinRhsContext))
 
 	return p
 }
@@ -16698,15 +17566,15 @@ func (s *JoinRhsBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type JoinRhsTableJoinedContext struct {
-	*JoinRhsContext
+	JoinRhsContext
 }
 
 func NewJoinRhsTableJoinedContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *JoinRhsTableJoinedContext {
 	var p = new(JoinRhsTableJoinedContext)
 
-	p.JoinRhsContext = NewEmptyJoinRhsContext()
+	InitEmptyJoinRhsContext(&p.JoinRhsContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*JoinRhsContext))
+	p.CopyAll(ctx.(*JoinRhsContext))
 
 	return p
 }
@@ -16752,31 +17620,15 @@ func (s *JoinRhsTableJoinedContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) JoinRhs() (localctx IJoinRhsContext) {
-	this := p
-	_ = this
-
 	localctx = NewJoinRhsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 146, PartiQLParserRULE_joinRhs)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(969)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 119, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 119, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewJoinRhsBaseContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
@@ -16791,6 +17643,10 @@ func (p *PartiQLParser) JoinRhs() (localctx IJoinRhsContext) {
 		{
 			p.SetState(965)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(966)
@@ -16799,11 +17655,27 @@ func (p *PartiQLParser) JoinRhs() (localctx IJoinRhsContext) {
 		{
 			p.SetState(967)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IJoinSpecContext is an interface to support dynamic dispatch.
@@ -16822,15 +17694,20 @@ type IJoinSpecContext interface {
 }
 
 type JoinSpecContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyJoinSpecContext() *JoinSpecContext {
 	var p = new(JoinSpecContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_joinSpec
 	return p
+}
+
+func InitEmptyJoinSpecContext(p *JoinSpecContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_joinSpec
 }
 
 func (*JoinSpecContext) IsJoinSpecContext() {}
@@ -16838,7 +17715,7 @@ func (*JoinSpecContext) IsJoinSpecContext() {}
 func NewJoinSpecContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *JoinSpecContext {
 	var p = new(JoinSpecContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_joinSpec
@@ -16889,39 +17766,33 @@ func (s *JoinSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) JoinSpec() (localctx IJoinSpecContext) {
-	this := p
-	_ = this
-
 	localctx = NewJoinSpecContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 148, PartiQLParserRULE_joinSpec)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(971)
 		p.Match(PartiQLParserON)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(972)
 		p.Expr()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IJoinTypeContext is an interface to support dynamic dispatch.
@@ -16949,16 +17820,21 @@ type IJoinTypeContext interface {
 }
 
 type JoinTypeContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	mod    antlr.Token
 }
 
 func NewEmptyJoinTypeContext() *JoinTypeContext {
 	var p = new(JoinTypeContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_joinType
 	return p
+}
+
+func InitEmptyJoinTypeContext(p *JoinTypeContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_joinType
 }
 
 func (*JoinTypeContext) IsJoinTypeContext() {}
@@ -16966,7 +17842,7 @@ func (*JoinTypeContext) IsJoinTypeContext() {}
 func NewJoinTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *JoinTypeContext {
 	var p = new(JoinTypeContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_joinType
@@ -17021,31 +17897,15 @@ func (s *JoinTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) JoinType() (localctx IJoinTypeContext) {
-	this := p
-	_ = this
-
 	localctx = NewJoinTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 150, PartiQLParserRULE_joinType)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(988)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserINNER:
@@ -17056,6 +17916,10 @@ func (p *PartiQLParser) JoinType() (localctx IJoinTypeContext) {
 			var _m = p.Match(PartiQLParserINNER)
 
 			localctx.(*JoinTypeContext).mod = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserLEFT:
@@ -17066,15 +17930,26 @@ func (p *PartiQLParser) JoinType() (localctx IJoinTypeContext) {
 			var _m = p.Match(PartiQLParserLEFT)
 
 			localctx.(*JoinTypeContext).mod = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(977)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserOUTER {
 			{
 				p.SetState(976)
 				p.Match(PartiQLParserOUTER)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
@@ -17087,15 +17962,26 @@ func (p *PartiQLParser) JoinType() (localctx IJoinTypeContext) {
 			var _m = p.Match(PartiQLParserRIGHT)
 
 			localctx.(*JoinTypeContext).mod = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(981)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserOUTER {
 			{
 				p.SetState(980)
 				p.Match(PartiQLParserOUTER)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
@@ -17108,15 +17994,26 @@ func (p *PartiQLParser) JoinType() (localctx IJoinTypeContext) {
 			var _m = p.Match(PartiQLParserFULL)
 
 			localctx.(*JoinTypeContext).mod = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(985)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserOUTER {
 			{
 				p.SetState(984)
 				p.Match(PartiQLParserOUTER)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
@@ -17129,13 +18026,28 @@ func (p *PartiQLParser) JoinType() (localctx IJoinTypeContext) {
 			var _m = p.Match(PartiQLParserOUTER)
 
 			localctx.(*JoinTypeContext).mod = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprContext is an interface to support dynamic dispatch.
@@ -17153,15 +18065,20 @@ type IExprContext interface {
 }
 
 type ExprContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprContext() *ExprContext {
 	var p = new(ExprContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_expr
 	return p
+}
+
+func InitEmptyExprContext(p *ExprContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_expr
 }
 
 func (*ExprContext) IsExprContext() {}
@@ -17169,7 +18086,7 @@ func (*ExprContext) IsExprContext() {}
 func NewExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprContext {
 	var p = new(ExprContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_expr
@@ -17216,35 +18133,25 @@ func (s *ExprContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Expr() (localctx IExprContext) {
-	this := p
-	_ = this
-
 	localctx = NewExprContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 152, PartiQLParserRULE_expr)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(990)
 		p.exprBagOp(0)
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprBagOpContext is an interface to support dynamic dispatch.
@@ -17258,15 +18165,20 @@ type IExprBagOpContext interface {
 }
 
 type ExprBagOpContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprBagOpContext() *ExprBagOpContext {
 	var p = new(ExprBagOpContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprBagOp
 	return p
+}
+
+func InitEmptyExprBagOpContext(p *ExprBagOpContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprBagOp
 }
 
 func (*ExprBagOpContext) IsExprBagOpContext() {}
@@ -17274,7 +18186,7 @@ func (*ExprBagOpContext) IsExprBagOpContext() {}
 func NewExprBagOpContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprBagOpContext {
 	var p = new(ExprBagOpContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprBagOp
@@ -17284,8 +18196,8 @@ func NewExprBagOpContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *ExprBagOpContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprBagOpContext) CopyFrom(ctx *ExprBagOpContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *ExprBagOpContext) CopyAll(ctx *ExprBagOpContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *ExprBagOpContext) GetRuleContext() antlr.RuleContext {
@@ -17297,7 +18209,7 @@ func (s *ExprBagOpContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 type IntersectContext struct {
-	*ExprBagOpContext
+	ExprBagOpContext
 	lhs IExprBagOpContext
 	rhs IExprSelectContext
 }
@@ -17305,9 +18217,9 @@ type IntersectContext struct {
 func NewIntersectContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *IntersectContext {
 	var p = new(IntersectContext)
 
-	p.ExprBagOpContext = NewEmptyExprBagOpContext()
+	InitEmptyExprBagOpContext(&p.ExprBagOpContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprBagOpContext))
+	p.CopyAll(ctx.(*ExprBagOpContext))
 
 	return p
 }
@@ -17385,15 +18297,15 @@ func (s *IntersectContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type QueryBaseContext struct {
-	*ExprBagOpContext
+	ExprBagOpContext
 }
 
 func NewQueryBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *QueryBaseContext {
 	var p = new(QueryBaseContext)
 
-	p.ExprBagOpContext = NewEmptyExprBagOpContext()
+	InitEmptyExprBagOpContext(&p.ExprBagOpContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprBagOpContext))
+	p.CopyAll(ctx.(*ExprBagOpContext))
 
 	return p
 }
@@ -17431,7 +18343,7 @@ func (s *QueryBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type ExceptContext struct {
-	*ExprBagOpContext
+	ExprBagOpContext
 	lhs IExprBagOpContext
 	rhs IExprSelectContext
 }
@@ -17439,9 +18351,9 @@ type ExceptContext struct {
 func NewExceptContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExceptContext {
 	var p = new(ExceptContext)
 
-	p.ExprBagOpContext = NewEmptyExprBagOpContext()
+	InitEmptyExprBagOpContext(&p.ExprBagOpContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprBagOpContext))
+	p.CopyAll(ctx.(*ExprBagOpContext))
 
 	return p
 }
@@ -17519,7 +18431,7 @@ func (s *ExceptContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type UnionContext struct {
-	*ExprBagOpContext
+	ExprBagOpContext
 	lhs IExprBagOpContext
 	rhs IExprSelectContext
 }
@@ -17527,9 +18439,9 @@ type UnionContext struct {
 func NewUnionContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *UnionContext {
 	var p = new(UnionContext)
 
-	p.ExprBagOpContext = NewEmptyExprBagOpContext()
+	InitEmptyExprBagOpContext(&p.ExprBagOpContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprBagOpContext))
+	p.CopyAll(ctx.(*ExprBagOpContext))
 
 	return p
 }
@@ -17611,10 +18523,8 @@ func (p *PartiQLParser) ExprBagOp() (localctx IExprBagOpContext) {
 }
 
 func (p *PartiQLParser) exprBagOp(_p int) (localctx IExprBagOpContext) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewExprBagOpContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExprBagOpContext = localctx
@@ -17622,22 +18532,6 @@ func (p *PartiQLParser) exprBagOp(_p int) (localctx IExprBagOpContext) {
 	_startState := 154
 	p.EnterRecursionRule(localctx, 154, PartiQLParserRULE_exprBagOp, _p)
 	var _la int
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	var _alt int
 
@@ -17654,8 +18548,13 @@ func (p *PartiQLParser) exprBagOp(_p int) (localctx IExprBagOpContext) {
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(1024)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 131, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 131, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -17664,7 +18563,11 @@ func (p *PartiQLParser) exprBagOp(_p int) (localctx IExprBagOpContext) {
 			_prevctx = localctx
 			p.SetState(1022)
 			p.GetErrorHandler().Sync(p)
-			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 130, p.GetParserRuleContext()) {
+			if p.HasError() {
+				goto errorExit
+			}
+
+			switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 130, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewExceptContext(p, NewExprBagOpContext(p, _parentctx, _parentState))
 				localctx.(*ExceptContext).lhs = _prevctx
@@ -17673,25 +18576,40 @@ func (p *PartiQLParser) exprBagOp(_p int) (localctx IExprBagOpContext) {
 				p.SetState(995)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 4)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
+					goto errorExit
 				}
 				p.SetState(997)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserOUTER {
 					{
 						p.SetState(996)
 						p.Match(PartiQLParserOUTER)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 
 				}
 				{
 					p.SetState(999)
 					p.Match(PartiQLParserEXCEPT)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				p.SetState(1001)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserALL || _la == PartiQLParserDISTINCT {
@@ -17724,25 +18642,40 @@ func (p *PartiQLParser) exprBagOp(_p int) (localctx IExprBagOpContext) {
 				p.SetState(1004)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
+					goto errorExit
 				}
 				p.SetState(1006)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserOUTER {
 					{
 						p.SetState(1005)
 						p.Match(PartiQLParserOUTER)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 
 				}
 				{
 					p.SetState(1008)
 					p.Match(PartiQLParserUNION)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				p.SetState(1010)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserALL || _la == PartiQLParserDISTINCT {
@@ -17775,25 +18708,40 @@ func (p *PartiQLParser) exprBagOp(_p int) (localctx IExprBagOpContext) {
 				p.SetState(1013)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+					goto errorExit
 				}
 				p.SetState(1015)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserOUTER {
 					{
 						p.SetState(1014)
 						p.Match(PartiQLParserOUTER)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 
 				}
 				{
 					p.SetState(1017)
 					p.Match(PartiQLParserINTERSECT)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				p.SetState(1019)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserALL || _la == PartiQLParserDISTINCT {
@@ -17818,15 +18766,33 @@ func (p *PartiQLParser) exprBagOp(_p int) (localctx IExprBagOpContext) {
 					localctx.(*IntersectContext).rhs = _x
 				}
 
+			case antlr.ATNInvalidAltNumber:
+				goto errorExit
 			}
 
 		}
 		p.SetState(1026)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 131, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 131, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprSelectContext is an interface to support dynamic dispatch.
@@ -17840,15 +18806,20 @@ type IExprSelectContext interface {
 }
 
 type ExprSelectContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprSelectContext() *ExprSelectContext {
 	var p = new(ExprSelectContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprSelect
 	return p
+}
+
+func InitEmptyExprSelectContext(p *ExprSelectContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprSelect
 }
 
 func (*ExprSelectContext) IsExprSelectContext() {}
@@ -17856,7 +18827,7 @@ func (*ExprSelectContext) IsExprSelectContext() {}
 func NewExprSelectContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprSelectContext {
 	var p = new(ExprSelectContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprSelect
@@ -17866,8 +18837,8 @@ func NewExprSelectContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 
 func (s *ExprSelectContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprSelectContext) CopyFrom(ctx *ExprSelectContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *ExprSelectContext) CopyAll(ctx *ExprSelectContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *ExprSelectContext) GetRuleContext() antlr.RuleContext {
@@ -17879,15 +18850,15 @@ func (s *ExprSelectContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 }
 
 type SfwBaseContext struct {
-	*ExprSelectContext
+	ExprSelectContext
 }
 
 func NewSfwBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SfwBaseContext {
 	var p = new(SfwBaseContext)
 
-	p.ExprSelectContext = NewEmptyExprSelectContext()
+	InitEmptyExprSelectContext(&p.ExprSelectContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprSelectContext))
+	p.CopyAll(ctx.(*ExprSelectContext))
 
 	return p
 }
@@ -17925,7 +18896,7 @@ func (s *SfwBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type SfwQueryContext struct {
-	*ExprSelectContext
+	ExprSelectContext
 	select_ ISelectClauseContext
 	from    IFromClauseContext
 	let     ILetClauseContext
@@ -17940,9 +18911,9 @@ type SfwQueryContext struct {
 func NewSfwQueryContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *SfwQueryContext {
 	var p = new(SfwQueryContext)
 
-	p.ExprSelectContext = NewEmptyExprSelectContext()
+	InitEmptyExprSelectContext(&p.ExprSelectContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprSelectContext))
+	p.CopyAll(ctx.(*ExprSelectContext))
 
 	return p
 }
@@ -18144,30 +19115,13 @@ func (s *SfwQueryContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
-	this := p
-	_ = this
-
 	localctx = NewExprSelectContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 156, PartiQLParserRULE_exprSelect)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1051)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserSELECT, PartiQLParserPIVOT:
@@ -18190,7 +19144,7 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 		p.SetState(1030)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 132, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 132, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1029)
 
@@ -18199,11 +19153,13 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 				localctx.(*SfwQueryContext).let = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(1033)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 133, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 133, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1032)
 
@@ -18212,11 +19168,13 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 				localctx.(*SfwQueryContext).where = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(1036)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 134, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 134, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1035)
 
@@ -18225,11 +19183,13 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 				localctx.(*SfwQueryContext).group = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(1039)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 135, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 135, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1038)
 
@@ -18238,11 +19198,13 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 				localctx.(*SfwQueryContext).having = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(1042)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 136, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 136, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1041)
 
@@ -18251,11 +19213,13 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 				localctx.(*SfwQueryContext).order = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(1045)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 137, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 137, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1044)
 
@@ -18264,11 +19228,13 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 				localctx.(*SfwQueryContext).limit = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(1048)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 138, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 138, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1047)
 
@@ -18277,6 +19243,8 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 				localctx.(*SfwQueryContext).offset = _x
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case PartiQLParserAVG, PartiQLParserBIT_LENGTH, PartiQLParserCASE, PartiQLParserCAST, PartiQLParserCHARACTER_LENGTH, PartiQLParserCHAR_LENGTH, PartiQLParserCOALESCE, PartiQLParserCOUNT, PartiQLParserDATE, PartiQLParserEXISTS, PartiQLParserEXTRACT, PartiQLParserDATE_ADD, PartiQLParserDATE_DIFF, PartiQLParserFALSE, PartiQLParserLOWER, PartiQLParserMAX, PartiQLParserMIN, PartiQLParserNOT, PartiQLParserNULL, PartiQLParserNULLIF, PartiQLParserOCTET_LENGTH, PartiQLParserSIZE, PartiQLParserSUBSTRING, PartiQLParserSUM, PartiQLParserTIME, PartiQLParserTRIM, PartiQLParserTRUE, PartiQLParserUPPER, PartiQLParserVALUES, PartiQLParserLAG, PartiQLParserLEAD, PartiQLParserCAN_CAST, PartiQLParserCAN_LOSSLESS_CAST, PartiQLParserMISSING, PartiQLParserLIST, PartiQLParserSEXP, PartiQLParserPLUS, PartiQLParserMINUS, PartiQLParserAT_SIGN, PartiQLParserANGLE_DOUBLE_LEFT, PartiQLParserBRACKET_LEFT, PartiQLParserBRACE_LEFT, PartiQLParserPAREN_LEFT, PartiQLParserQUESTION_MARK, PartiQLParserLITERAL_STRING, PartiQLParserLITERAL_INTEGER, PartiQLParserLITERAL_DECIMAL, PartiQLParserIDENTIFIER, PartiQLParserIDENTIFIER_QUOTED, PartiQLParserION_CLOSURE:
@@ -18288,10 +19256,21 @@ func (p *PartiQLParser) ExprSelect() (localctx IExprSelectContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprOrContext is an interface to support dynamic dispatch.
@@ -18305,15 +19284,20 @@ type IExprOrContext interface {
 }
 
 type ExprOrContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprOrContext() *ExprOrContext {
 	var p = new(ExprOrContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprOr
 	return p
+}
+
+func InitEmptyExprOrContext(p *ExprOrContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprOr
 }
 
 func (*ExprOrContext) IsExprOrContext() {}
@@ -18321,7 +19305,7 @@ func (*ExprOrContext) IsExprOrContext() {}
 func NewExprOrContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprOrContext {
 	var p = new(ExprOrContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprOr
@@ -18331,8 +19315,8 @@ func NewExprOrContext(parser antlr.Parser, parent antlr.ParserRuleContext, invok
 
 func (s *ExprOrContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprOrContext) CopyFrom(ctx *ExprOrContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *ExprOrContext) CopyAll(ctx *ExprOrContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *ExprOrContext) GetRuleContext() antlr.RuleContext {
@@ -18344,7 +19328,7 @@ func (s *ExprOrContext) ToStringTree(ruleNames []string, recog antlr.Recognizer)
 }
 
 type OrContext struct {
-	*ExprOrContext
+	ExprOrContext
 	lhs IExprOrContext
 	rhs IExprAndContext
 }
@@ -18352,9 +19336,9 @@ type OrContext struct {
 func NewOrContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *OrContext {
 	var p = new(OrContext)
 
-	p.ExprOrContext = NewEmptyExprOrContext()
+	InitEmptyExprOrContext(&p.ExprOrContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprOrContext))
+	p.CopyAll(ctx.(*ExprOrContext))
 
 	return p
 }
@@ -18420,16 +19404,16 @@ func (s *OrContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type ExprOrBaseContext struct {
-	*ExprOrContext
+	ExprOrContext
 	alt IExprAndContext
 }
 
 func NewExprOrBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprOrBaseContext {
 	var p = new(ExprOrBaseContext)
 
-	p.ExprOrContext = NewEmptyExprOrContext()
+	InitEmptyExprOrContext(&p.ExprOrContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprOrContext))
+	p.CopyAll(ctx.(*ExprOrContext))
 
 	return p
 }
@@ -18475,33 +19459,14 @@ func (p *PartiQLParser) ExprOr() (localctx IExprOrContext) {
 }
 
 func (p *PartiQLParser) exprOr(_p int) (localctx IExprOrContext) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewExprOrContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExprOrContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
 	_startState := 158
 	p.EnterRecursionRule(localctx, 158, PartiQLParserRULE_exprOr, _p)
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -18520,8 +19485,13 @@ func (p *PartiQLParser) exprOr(_p int) (localctx IExprOrContext) {
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(1061)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 140, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 140, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -18535,11 +19505,16 @@ func (p *PartiQLParser) exprOr(_p int) (localctx IExprOrContext) {
 			p.SetState(1056)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				goto errorExit
 			}
 			{
 				p.SetState(1057)
 				p.Match(PartiQLParserOR)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1058)
@@ -18552,10 +19527,26 @@ func (p *PartiQLParser) exprOr(_p int) (localctx IExprOrContext) {
 		}
 		p.SetState(1063)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 140, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 140, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprAndContext is an interface to support dynamic dispatch.
@@ -18569,15 +19560,20 @@ type IExprAndContext interface {
 }
 
 type ExprAndContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprAndContext() *ExprAndContext {
 	var p = new(ExprAndContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprAnd
 	return p
+}
+
+func InitEmptyExprAndContext(p *ExprAndContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprAnd
 }
 
 func (*ExprAndContext) IsExprAndContext() {}
@@ -18585,7 +19581,7 @@ func (*ExprAndContext) IsExprAndContext() {}
 func NewExprAndContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprAndContext {
 	var p = new(ExprAndContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprAnd
@@ -18595,8 +19591,8 @@ func NewExprAndContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *ExprAndContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprAndContext) CopyFrom(ctx *ExprAndContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *ExprAndContext) CopyAll(ctx *ExprAndContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *ExprAndContext) GetRuleContext() antlr.RuleContext {
@@ -18608,16 +19604,16 @@ func (s *ExprAndContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 type ExprAndBaseContext struct {
-	*ExprAndContext
+	ExprAndContext
 	alt IExprNotContext
 }
 
 func NewExprAndBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprAndBaseContext {
 	var p = new(ExprAndBaseContext)
 
-	p.ExprAndContext = NewEmptyExprAndContext()
+	InitEmptyExprAndContext(&p.ExprAndContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprAndContext))
+	p.CopyAll(ctx.(*ExprAndContext))
 
 	return p
 }
@@ -18659,7 +19655,7 @@ func (s *ExprAndBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type AndContext struct {
-	*ExprAndContext
+	ExprAndContext
 	lhs IExprAndContext
 	op  antlr.Token
 	rhs IExprNotContext
@@ -18668,9 +19664,9 @@ type AndContext struct {
 func NewAndContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *AndContext {
 	var p = new(AndContext)
 
-	p.ExprAndContext = NewEmptyExprAndContext()
+	InitEmptyExprAndContext(&p.ExprAndContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprAndContext))
+	p.CopyAll(ctx.(*ExprAndContext))
 
 	return p
 }
@@ -18744,33 +19740,14 @@ func (p *PartiQLParser) ExprAnd() (localctx IExprAndContext) {
 }
 
 func (p *PartiQLParser) exprAnd(_p int) (localctx IExprAndContext) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewExprAndContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExprAndContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
 	_startState := 160
 	p.EnterRecursionRule(localctx, 160, PartiQLParserRULE_exprAnd, _p)
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -18789,8 +19766,13 @@ func (p *PartiQLParser) exprAnd(_p int) (localctx IExprAndContext) {
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(1072)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 141, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 141, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -18804,7 +19786,8 @@ func (p *PartiQLParser) exprAnd(_p int) (localctx IExprAndContext) {
 			p.SetState(1067)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				goto errorExit
 			}
 			{
 				p.SetState(1068)
@@ -18812,6 +19795,10 @@ func (p *PartiQLParser) exprAnd(_p int) (localctx IExprAndContext) {
 				var _m = p.Match(PartiQLParserAND)
 
 				localctx.(*AndContext).op = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1069)
@@ -18824,10 +19811,26 @@ func (p *PartiQLParser) exprAnd(_p int) (localctx IExprAndContext) {
 		}
 		p.SetState(1074)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 141, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 141, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprNotContext is an interface to support dynamic dispatch.
@@ -18841,15 +19844,20 @@ type IExprNotContext interface {
 }
 
 type ExprNotContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprNotContext() *ExprNotContext {
 	var p = new(ExprNotContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprNot
 	return p
+}
+
+func InitEmptyExprNotContext(p *ExprNotContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprNot
 }
 
 func (*ExprNotContext) IsExprNotContext() {}
@@ -18857,7 +19865,7 @@ func (*ExprNotContext) IsExprNotContext() {}
 func NewExprNotContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprNotContext {
 	var p = new(ExprNotContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprNot
@@ -18867,8 +19875,8 @@ func NewExprNotContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *ExprNotContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprNotContext) CopyFrom(ctx *ExprNotContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *ExprNotContext) CopyAll(ctx *ExprNotContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *ExprNotContext) GetRuleContext() antlr.RuleContext {
@@ -18880,7 +19888,7 @@ func (s *ExprNotContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 type NotContext struct {
-	*ExprNotContext
+	ExprNotContext
 	op  antlr.Token
 	rhs IExprNotContext
 }
@@ -18888,9 +19896,9 @@ type NotContext struct {
 func NewNotContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *NotContext {
 	var p = new(NotContext)
 
-	p.ExprNotContext = NewEmptyExprNotContext()
+	InitEmptyExprNotContext(&p.ExprNotContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprNotContext))
+	p.CopyAll(ctx.(*ExprNotContext))
 
 	return p
 }
@@ -18940,16 +19948,16 @@ func (s *NotContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type ExprNotBaseContext struct {
-	*ExprNotContext
+	ExprNotContext
 	alt IExprPredicateContext
 }
 
 func NewExprNotBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprNotBaseContext {
 	var p = new(ExprNotBaseContext)
 
-	p.ExprNotContext = NewEmptyExprNotContext()
+	InitEmptyExprNotContext(&p.ExprNotContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprNotContext))
+	p.CopyAll(ctx.(*ExprNotContext))
 
 	return p
 }
@@ -18991,30 +19999,13 @@ func (s *ExprNotBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ExprNot() (localctx IExprNotContext) {
-	this := p
-	_ = this
-
 	localctx = NewExprNotContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 162, PartiQLParserRULE_exprNot)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1078)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserNOT:
@@ -19026,6 +20017,10 @@ func (p *PartiQLParser) ExprNot() (localctx IExprNotContext) {
 			var _m = p.Match(PartiQLParserNOT)
 
 			localctx.(*NotContext).op = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1076)
@@ -19047,10 +20042,21 @@ func (p *PartiQLParser) ExprNot() (localctx IExprNotContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprPredicateContext is an interface to support dynamic dispatch.
@@ -19064,15 +20070,20 @@ type IExprPredicateContext interface {
 }
 
 type ExprPredicateContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprPredicateContext() *ExprPredicateContext {
 	var p = new(ExprPredicateContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprPredicate
 	return p
+}
+
+func InitEmptyExprPredicateContext(p *ExprPredicateContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprPredicate
 }
 
 func (*ExprPredicateContext) IsExprPredicateContext() {}
@@ -19080,7 +20091,7 @@ func (*ExprPredicateContext) IsExprPredicateContext() {}
 func NewExprPredicateContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprPredicateContext {
 	var p = new(ExprPredicateContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprPredicate
@@ -19090,8 +20101,8 @@ func NewExprPredicateContext(parser antlr.Parser, parent antlr.ParserRuleContext
 
 func (s *ExprPredicateContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprPredicateContext) CopyFrom(ctx *ExprPredicateContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *ExprPredicateContext) CopyAll(ctx *ExprPredicateContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *ExprPredicateContext) GetRuleContext() antlr.RuleContext {
@@ -19103,7 +20114,7 @@ func (s *ExprPredicateContext) ToStringTree(ruleNames []string, recog antlr.Reco
 }
 
 type PredicateInContext struct {
-	*ExprPredicateContext
+	ExprPredicateContext
 	lhs IExprPredicateContext
 	rhs IMathOp00Context
 }
@@ -19111,9 +20122,9 @@ type PredicateInContext struct {
 func NewPredicateInContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PredicateInContext {
 	var p = new(PredicateInContext)
 
-	p.ExprPredicateContext = NewEmptyExprPredicateContext()
+	InitEmptyExprPredicateContext(&p.ExprPredicateContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprPredicateContext))
+	p.CopyAll(ctx.(*ExprPredicateContext))
 
 	return p
 }
@@ -19207,7 +20218,7 @@ func (s *PredicateInContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type PredicateBetweenContext struct {
-	*ExprPredicateContext
+	ExprPredicateContext
 	lhs   IExprPredicateContext
 	lower IMathOp00Context
 	upper IMathOp00Context
@@ -19216,9 +20227,9 @@ type PredicateBetweenContext struct {
 func NewPredicateBetweenContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PredicateBetweenContext {
 	var p = new(PredicateBetweenContext)
 
-	p.ExprPredicateContext = NewEmptyExprPredicateContext()
+	InitEmptyExprPredicateContext(&p.ExprPredicateContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprPredicateContext))
+	p.CopyAll(ctx.(*ExprPredicateContext))
 
 	return p
 }
@@ -19321,16 +20332,16 @@ func (s *PredicateBetweenContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type PredicateBaseContext struct {
-	*ExprPredicateContext
+	ExprPredicateContext
 	alt IMathOp00Context
 }
 
 func NewPredicateBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PredicateBaseContext {
 	var p = new(PredicateBaseContext)
 
-	p.ExprPredicateContext = NewEmptyExprPredicateContext()
+	InitEmptyExprPredicateContext(&p.ExprPredicateContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprPredicateContext))
+	p.CopyAll(ctx.(*ExprPredicateContext))
 
 	return p
 }
@@ -19372,7 +20383,7 @@ func (s *PredicateBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type PredicateComparisonContext struct {
-	*ExprPredicateContext
+	ExprPredicateContext
 	lhs IExprPredicateContext
 	op  antlr.Token
 	rhs IMathOp00Context
@@ -19381,9 +20392,9 @@ type PredicateComparisonContext struct {
 func NewPredicateComparisonContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PredicateComparisonContext {
 	var p = new(PredicateComparisonContext)
 
-	p.ExprPredicateContext = NewEmptyExprPredicateContext()
+	InitEmptyExprPredicateContext(&p.ExprPredicateContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprPredicateContext))
+	p.CopyAll(ctx.(*ExprPredicateContext))
 
 	return p
 }
@@ -19473,16 +20484,16 @@ func (s *PredicateComparisonContext) ExitRule(listener antlr.ParseTreeListener) 
 }
 
 type PredicateIsContext struct {
-	*ExprPredicateContext
+	ExprPredicateContext
 	lhs IExprPredicateContext
 }
 
 func NewPredicateIsContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PredicateIsContext {
 	var p = new(PredicateIsContext)
 
-	p.ExprPredicateContext = NewEmptyExprPredicateContext()
+	InitEmptyExprPredicateContext(&p.ExprPredicateContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprPredicateContext))
+	p.CopyAll(ctx.(*ExprPredicateContext))
 
 	return p
 }
@@ -19548,7 +20559,7 @@ func (s *PredicateIsContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type PredicateLikeContext struct {
-	*ExprPredicateContext
+	ExprPredicateContext
 	lhs    IExprPredicateContext
 	rhs    IMathOp00Context
 	escape IExprContext
@@ -19557,9 +20568,9 @@ type PredicateLikeContext struct {
 func NewPredicateLikeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PredicateLikeContext {
 	var p = new(PredicateLikeContext)
 
-	p.ExprPredicateContext = NewEmptyExprPredicateContext()
+	InitEmptyExprPredicateContext(&p.ExprPredicateContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprPredicateContext))
+	p.CopyAll(ctx.(*ExprPredicateContext))
 
 	return p
 }
@@ -19657,10 +20668,8 @@ func (p *PartiQLParser) ExprPredicate() (localctx IExprPredicateContext) {
 }
 
 func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewExprPredicateContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExprPredicateContext = localctx
@@ -19668,22 +20677,6 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 	_startState := 164
 	p.EnterRecursionRule(localctx, 164, PartiQLParserRULE_exprPredicate, _p)
 	var _la int
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	var _alt int
 
@@ -19703,8 +20696,13 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(1128)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 150, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 150, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -19713,7 +20711,11 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 			_prevctx = localctx
 			p.SetState(1126)
 			p.GetErrorHandler().Sync(p)
-			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 149, p.GetParserRuleContext()) {
+			if p.HasError() {
+				goto errorExit
+			}
+
+			switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 149, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewPredicateComparisonContext(p, NewExprPredicateContext(p, _parentctx, _parentState))
 				localctx.(*PredicateComparisonContext).lhs = _prevctx
@@ -19722,7 +20724,8 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				p.SetState(1083)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 7)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 7)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 7)", ""))
+					goto errorExit
 				}
 				{
 					p.SetState(1084)
@@ -19758,20 +20761,32 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				p.SetState(1086)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 6)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 6)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 6)", ""))
+					goto errorExit
 				}
 				{
 					p.SetState(1087)
 					p.Match(PartiQLParserIS)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				p.SetState(1089)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserNOT {
 					{
 						p.SetState(1088)
 						p.Match(PartiQLParserNOT)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 
 				}
@@ -19788,26 +20803,42 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				p.SetState(1092)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 5)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
+					goto errorExit
 				}
 				p.SetState(1094)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserNOT {
 					{
 						p.SetState(1093)
 						p.Match(PartiQLParserNOT)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 
 				}
 				{
 					p.SetState(1096)
 					p.Match(PartiQLParserIN)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1097)
 					p.Match(PartiQLParserPAREN_LEFT)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1098)
@@ -19816,6 +20847,10 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				{
 					p.SetState(1099)
 					p.Match(PartiQLParserPAREN_RIGHT)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 
 			case 4:
@@ -19826,22 +20861,34 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				p.SetState(1101)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 4)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
+					goto errorExit
 				}
 				p.SetState(1103)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserNOT {
 					{
 						p.SetState(1102)
 						p.Match(PartiQLParserNOT)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 
 				}
 				{
 					p.SetState(1105)
 					p.Match(PartiQLParserIN)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1106)
@@ -19859,22 +20906,34 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				p.SetState(1107)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
+					goto errorExit
 				}
 				p.SetState(1109)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserNOT {
 					{
 						p.SetState(1108)
 						p.Match(PartiQLParserNOT)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 
 				}
 				{
 					p.SetState(1111)
 					p.Match(PartiQLParserLIKE)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1112)
@@ -19886,10 +20945,14 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				p.SetState(1115)
 				p.GetErrorHandler().Sync(p)
 
-				if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 147, p.GetParserRuleContext()) == 1 {
+				if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 147, p.GetParserRuleContext()) == 1 {
 					{
 						p.SetState(1113)
 						p.Match(PartiQLParserESCAPE)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 					{
 						p.SetState(1114)
@@ -19899,6 +20962,8 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 						localctx.(*PredicateLikeContext).escape = _x
 					}
 
+				} else if p.HasError() { // JIM
+					goto errorExit
 				}
 
 			case 6:
@@ -19909,22 +20974,34 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				p.SetState(1117)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+					p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+					goto errorExit
 				}
 				p.SetState(1119)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 
 				if _la == PartiQLParserNOT {
 					{
 						p.SetState(1118)
 						p.Match(PartiQLParserNOT)
+						if p.HasError() {
+							// Recognition error - abort rule
+							goto errorExit
+						}
 					}
 
 				}
 				{
 					p.SetState(1121)
 					p.Match(PartiQLParserBETWEEN)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1122)
@@ -19936,6 +21013,10 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 				{
 					p.SetState(1123)
 					p.Match(PartiQLParserAND)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1124)
@@ -19945,15 +21026,33 @@ func (p *PartiQLParser) exprPredicate(_p int) (localctx IExprPredicateContext) {
 					localctx.(*PredicateBetweenContext).upper = _x
 				}
 
+			case antlr.ATNInvalidAltNumber:
+				goto errorExit
 			}
 
 		}
 		p.SetState(1130)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 150, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 150, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IMathOp00Context is an interface to support dynamic dispatch.
@@ -19997,7 +21096,7 @@ type IMathOp00Context interface {
 }
 
 type MathOp00Context struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	lhs    IMathOp00Context
 	alt    IMathOp01Context
@@ -20007,9 +21106,14 @@ type MathOp00Context struct {
 
 func NewEmptyMathOp00Context() *MathOp00Context {
 	var p = new(MathOp00Context)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_mathOp00
 	return p
+}
+
+func InitEmptyMathOp00Context(p *MathOp00Context) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_mathOp00
 }
 
 func (*MathOp00Context) IsMathOp00Context() {}
@@ -20017,7 +21121,7 @@ func (*MathOp00Context) IsMathOp00Context() {}
 func NewMathOp00Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MathOp00Context {
 	var p = new(MathOp00Context)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_mathOp00
@@ -20104,33 +21208,14 @@ func (p *PartiQLParser) MathOp00() (localctx IMathOp00Context) {
 }
 
 func (p *PartiQLParser) mathOp00(_p int) (localctx IMathOp00Context) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewMathOp00Context(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IMathOp00Context = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
 	_startState := 166
 	p.EnterRecursionRule(localctx, 166, PartiQLParserRULE_mathOp00, _p)
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -20145,8 +21230,13 @@ func (p *PartiQLParser) mathOp00(_p int) (localctx IMathOp00Context) {
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(1139)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 151, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 151, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -20159,7 +21249,8 @@ func (p *PartiQLParser) mathOp00(_p int) (localctx IMathOp00Context) {
 			p.SetState(1134)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				goto errorExit
 			}
 			{
 				p.SetState(1135)
@@ -20167,6 +21258,10 @@ func (p *PartiQLParser) mathOp00(_p int) (localctx IMathOp00Context) {
 				var _m = p.Match(PartiQLParserCONCAT)
 
 				localctx.(*MathOp00Context).op = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1136)
@@ -20179,10 +21274,26 @@ func (p *PartiQLParser) mathOp00(_p int) (localctx IMathOp00Context) {
 		}
 		p.SetState(1141)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 151, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 151, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IMathOp01Context is an interface to support dynamic dispatch.
@@ -20227,7 +21338,7 @@ type IMathOp01Context interface {
 }
 
 type MathOp01Context struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	lhs    IMathOp01Context
 	alt    IMathOp02Context
@@ -20237,9 +21348,14 @@ type MathOp01Context struct {
 
 func NewEmptyMathOp01Context() *MathOp01Context {
 	var p = new(MathOp01Context)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_mathOp01
 	return p
+}
+
+func InitEmptyMathOp01Context(p *MathOp01Context) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_mathOp01
 }
 
 func (*MathOp01Context) IsMathOp01Context() {}
@@ -20247,7 +21363,7 @@ func (*MathOp01Context) IsMathOp01Context() {}
 func NewMathOp01Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MathOp01Context {
 	var p = new(MathOp01Context)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_mathOp01
@@ -20338,10 +21454,8 @@ func (p *PartiQLParser) MathOp01() (localctx IMathOp01Context) {
 }
 
 func (p *PartiQLParser) mathOp01(_p int) (localctx IMathOp01Context) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewMathOp01Context(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IMathOp01Context = localctx
@@ -20349,22 +21463,6 @@ func (p *PartiQLParser) mathOp01(_p int) (localctx IMathOp01Context) {
 	_startState := 168
 	p.EnterRecursionRule(localctx, 168, PartiQLParserRULE_mathOp01, _p)
 	var _la int
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	var _alt int
 
@@ -20380,8 +21478,13 @@ func (p *PartiQLParser) mathOp01(_p int) (localctx IMathOp01Context) {
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(1150)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 152, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 152, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -20394,7 +21497,8 @@ func (p *PartiQLParser) mathOp01(_p int) (localctx IMathOp01Context) {
 			p.SetState(1145)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				goto errorExit
 			}
 			{
 				p.SetState(1146)
@@ -20425,10 +21529,26 @@ func (p *PartiQLParser) mathOp01(_p int) (localctx IMathOp01Context) {
 		}
 		p.SetState(1152)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 152, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 152, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IMathOp02Context is an interface to support dynamic dispatch.
@@ -20474,7 +21594,7 @@ type IMathOp02Context interface {
 }
 
 type MathOp02Context struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	lhs    IMathOp02Context
 	alt    IValueExprContext
@@ -20484,9 +21604,14 @@ type MathOp02Context struct {
 
 func NewEmptyMathOp02Context() *MathOp02Context {
 	var p = new(MathOp02Context)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_mathOp02
 	return p
+}
+
+func InitEmptyMathOp02Context(p *MathOp02Context) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_mathOp02
 }
 
 func (*MathOp02Context) IsMathOp02Context() {}
@@ -20494,7 +21619,7 @@ func (*MathOp02Context) IsMathOp02Context() {}
 func NewMathOp02Context(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MathOp02Context {
 	var p = new(MathOp02Context)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_mathOp02
@@ -20589,10 +21714,8 @@ func (p *PartiQLParser) MathOp02() (localctx IMathOp02Context) {
 }
 
 func (p *PartiQLParser) mathOp02(_p int) (localctx IMathOp02Context) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewMathOp02Context(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IMathOp02Context = localctx
@@ -20600,22 +21723,6 @@ func (p *PartiQLParser) mathOp02(_p int) (localctx IMathOp02Context) {
 	_startState := 170
 	p.EnterRecursionRule(localctx, 170, PartiQLParserRULE_mathOp02, _p)
 	var _la int
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	var _alt int
 
@@ -20631,8 +21738,13 @@ func (p *PartiQLParser) mathOp02(_p int) (localctx IMathOp02Context) {
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(1161)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 153, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 153, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -20645,7 +21757,8 @@ func (p *PartiQLParser) mathOp02(_p int) (localctx IMathOp02Context) {
 			p.SetState(1156)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
+				goto errorExit
 			}
 			{
 				p.SetState(1157)
@@ -20676,10 +21789,26 @@ func (p *PartiQLParser) mathOp02(_p int) (localctx IMathOp02Context) {
 		}
 		p.SetState(1163)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 153, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 153, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IValueExprContext is an interface to support dynamic dispatch.
@@ -20718,7 +21847,7 @@ type IValueExprContext interface {
 }
 
 type ValueExprContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	sign   antlr.Token
 	rhs    IValueExprContext
@@ -20727,9 +21856,14 @@ type ValueExprContext struct {
 
 func NewEmptyValueExprContext() *ValueExprContext {
 	var p = new(ValueExprContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_valueExpr
 	return p
+}
+
+func InitEmptyValueExprContext(p *ValueExprContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_valueExpr
 }
 
 func (*ValueExprContext) IsValueExprContext() {}
@@ -20737,7 +21871,7 @@ func (*ValueExprContext) IsValueExprContext() {}
 func NewValueExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ValueExprContext {
 	var p = new(ValueExprContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_valueExpr
@@ -20820,31 +21954,15 @@ func (s *ValueExprContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ValueExpr() (localctx IValueExprContext) {
-	this := p
-	_ = this
-
 	localctx = NewValueExprContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 172, PartiQLParserRULE_valueExpr)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1167)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserPLUS, PartiQLParserMINUS:
@@ -20886,10 +22004,21 @@ func (p *PartiQLParser) ValueExpr() (localctx IValueExprContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprPrimaryContext is an interface to support dynamic dispatch.
@@ -20903,15 +22032,20 @@ type IExprPrimaryContext interface {
 }
 
 type ExprPrimaryContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprPrimaryContext() *ExprPrimaryContext {
 	var p = new(ExprPrimaryContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprPrimary
 	return p
+}
+
+func InitEmptyExprPrimaryContext(p *ExprPrimaryContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprPrimary
 }
 
 func (*ExprPrimaryContext) IsExprPrimaryContext() {}
@@ -20919,7 +22053,7 @@ func (*ExprPrimaryContext) IsExprPrimaryContext() {}
 func NewExprPrimaryContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprPrimaryContext {
 	var p = new(ExprPrimaryContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprPrimary
@@ -20929,8 +22063,8 @@ func NewExprPrimaryContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 
 func (s *ExprPrimaryContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprPrimaryContext) CopyFrom(ctx *ExprPrimaryContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *ExprPrimaryContext) CopyAll(ctx *ExprPrimaryContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *ExprPrimaryContext) GetRuleContext() antlr.RuleContext {
@@ -20942,15 +22076,15 @@ func (s *ExprPrimaryContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 type ExprPrimaryPathContext struct {
-	*ExprPrimaryContext
+	ExprPrimaryContext
 }
 
 func NewExprPrimaryPathContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprPrimaryPathContext {
 	var p = new(ExprPrimaryPathContext)
 
-	p.ExprPrimaryContext = NewEmptyExprPrimaryContext()
+	InitEmptyExprPrimaryContext(&p.ExprPrimaryContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprPrimaryContext))
+	p.CopyAll(ctx.(*ExprPrimaryContext))
 
 	return p
 }
@@ -21029,15 +22163,15 @@ func (s *ExprPrimaryPathContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type ExprPrimaryBaseContext struct {
-	*ExprPrimaryContext
+	ExprPrimaryContext
 }
 
 func NewExprPrimaryBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprPrimaryBaseContext {
 	var p = new(ExprPrimaryBaseContext)
 
-	p.ExprPrimaryContext = NewEmptyExprPrimaryContext()
+	InitEmptyExprPrimaryContext(&p.ExprPrimaryContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprPrimaryContext))
+	p.CopyAll(ctx.(*ExprPrimaryContext))
 
 	return p
 }
@@ -21351,39 +22485,24 @@ func (p *PartiQLParser) ExprPrimary() (localctx IExprPrimaryContext) {
 }
 
 func (p *PartiQLParser) exprPrimary(_p int) (localctx IExprPrimaryContext) {
-	this := p
-	_ = this
-
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
+
 	_parentState := p.GetState()
 	localctx = NewExprPrimaryContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExprPrimaryContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
 	_startState := 174
 	p.EnterRecursionRule(localctx, 174, PartiQLParserRULE_exprPrimary, _p)
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
 	p.SetState(1188)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 155, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 155, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewExprPrimaryBaseContext(p, localctx)
 		p.SetParserRuleContext(localctx)
@@ -21547,12 +22666,19 @@ func (p *PartiQLParser) exprPrimary(_p int) (localctx IExprPrimaryContext) {
 			p.WindowFunction()
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
 	p.SetState(1198)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 157, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 157, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			if p.GetParseListeners() != nil {
@@ -21564,10 +22690,14 @@ func (p *PartiQLParser) exprPrimary(_p int) (localctx IExprPrimaryContext) {
 			p.SetState(1190)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 6)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 6)", ""))
+				p.SetError(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 6)", ""))
+				goto errorExit
 			}
 			p.SetState(1192)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_alt = 1
 			for ok := true; ok; ok = _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 				switch _alt {
@@ -21578,21 +22708,41 @@ func (p *PartiQLParser) exprPrimary(_p int) (localctx IExprPrimaryContext) {
 					}
 
 				default:
-					panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+					p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+					goto errorExit
 				}
 
 				p.SetState(1194)
 				p.GetErrorHandler().Sync(p)
-				_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 156, p.GetParserRuleContext())
+				_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 156, p.GetParserRuleContext())
+				if p.HasError() {
+					goto errorExit
+				}
 			}
 
 		}
 		p.SetState(1200)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 157, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 157, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.UnrollRecursionContexts(_parentctx)
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprTermContext is an interface to support dynamic dispatch.
@@ -21606,15 +22756,20 @@ type IExprTermContext interface {
 }
 
 type ExprTermContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprTermContext() *ExprTermContext {
 	var p = new(ExprTermContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprTerm
 	return p
+}
+
+func InitEmptyExprTermContext(p *ExprTermContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprTerm
 }
 
 func (*ExprTermContext) IsExprTermContext() {}
@@ -21622,7 +22777,7 @@ func (*ExprTermContext) IsExprTermContext() {}
 func NewExprTermContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprTermContext {
 	var p = new(ExprTermContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprTerm
@@ -21632,8 +22787,8 @@ func NewExprTermContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 
 func (s *ExprTermContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ExprTermContext) CopyFrom(ctx *ExprTermContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *ExprTermContext) CopyAll(ctx *ExprTermContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *ExprTermContext) GetRuleContext() antlr.RuleContext {
@@ -21645,15 +22800,15 @@ func (s *ExprTermContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 type ExprTermWrappedQueryContext struct {
-	*ExprTermContext
+	ExprTermContext
 }
 
 func NewExprTermWrappedQueryContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprTermWrappedQueryContext {
 	var p = new(ExprTermWrappedQueryContext)
 
-	p.ExprTermContext = NewEmptyExprTermContext()
+	InitEmptyExprTermContext(&p.ExprTermContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprTermContext))
+	p.CopyAll(ctx.(*ExprTermContext))
 
 	return p
 }
@@ -21699,15 +22854,15 @@ func (s *ExprTermWrappedQueryContext) ExitRule(listener antlr.ParseTreeListener)
 }
 
 type ExprTermBaseContext struct {
-	*ExprTermContext
+	ExprTermContext
 }
 
 func NewExprTermBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *ExprTermBaseContext {
 	var p = new(ExprTermBaseContext)
 
-	p.ExprTermContext = NewEmptyExprTermContext()
+	InitEmptyExprTermContext(&p.ExprTermContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*ExprTermContext))
+	p.CopyAll(ctx.(*ExprTermContext))
 
 	return p
 }
@@ -21809,30 +22964,13 @@ func (s *ExprTermBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ExprTerm() (localctx IExprTermContext) {
-	this := p
-	_ = this
-
 	localctx = NewExprTermContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 176, PartiQLParserRULE_exprTerm)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1210)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserPAREN_LEFT:
@@ -21841,6 +22979,10 @@ func (p *PartiQLParser) ExprTerm() (localctx IExprTermContext) {
 		{
 			p.SetState(1201)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1202)
@@ -21849,6 +22991,10 @@ func (p *PartiQLParser) ExprTerm() (localctx IExprTermContext) {
 		{
 			p.SetState(1203)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserQUESTION_MARK:
@@ -21892,10 +23038,21 @@ func (p *PartiQLParser) ExprTerm() (localctx IExprTermContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // INullIfContext is an interface to support dynamic dispatch.
@@ -21918,15 +23075,20 @@ type INullIfContext interface {
 }
 
 type NullIfContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyNullIfContext() *NullIfContext {
 	var p = new(NullIfContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_nullIf
 	return p
+}
+
+func InitEmptyNullIfContext(p *NullIfContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_nullIf
 }
 
 func (*NullIfContext) IsNullIfContext() {}
@@ -21934,7 +23096,7 @@ func (*NullIfContext) IsNullIfContext() {}
 func NewNullIfContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *NullIfContext {
 	var p = new(NullIfContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_nullIf
@@ -22022,36 +23184,24 @@ func (s *NullIfContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) NullIf() (localctx INullIfContext) {
-	this := p
-	_ = this
-
 	localctx = NewNullIfContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 178, PartiQLParserRULE_nullIf)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1212)
 		p.Match(PartiQLParserNULLIF)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1213)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1214)
@@ -22060,6 +23210,10 @@ func (p *PartiQLParser) NullIf() (localctx INullIfContext) {
 	{
 		p.SetState(1215)
 		p.Match(PartiQLParserCOMMA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1216)
@@ -22068,9 +23222,23 @@ func (p *PartiQLParser) NullIf() (localctx INullIfContext) {
 	{
 		p.SetState(1217)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ICoalesceContext is an interface to support dynamic dispatch.
@@ -22094,15 +23262,20 @@ type ICoalesceContext interface {
 }
 
 type CoalesceContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyCoalesceContext() *CoalesceContext {
 	var p = new(CoalesceContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_coalesce
 	return p
+}
+
+func InitEmptyCoalesceContext(p *CoalesceContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_coalesce
 }
 
 func (*CoalesceContext) IsCoalesceContext() {}
@@ -22110,7 +23283,7 @@ func (*CoalesceContext) IsCoalesceContext() {}
 func NewCoalesceContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *CoalesceContext {
 	var p = new(CoalesceContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_coalesce
@@ -22202,37 +23375,26 @@ func (s *CoalesceContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Coalesce() (localctx ICoalesceContext) {
-	this := p
-	_ = this
-
 	localctx = NewCoalesceContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 180, PartiQLParserRULE_coalesce)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1219)
 		p.Match(PartiQLParserCOALESCE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1220)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1221)
@@ -22240,12 +23402,19 @@ func (p *PartiQLParser) Coalesce() (localctx ICoalesceContext) {
 	}
 	p.SetState(1226)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserCOMMA {
 		{
 			p.SetState(1222)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1223)
@@ -22254,14 +23423,31 @@ func (p *PartiQLParser) Coalesce() (localctx ICoalesceContext) {
 
 		p.SetState(1228)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
 		p.SetState(1229)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ICaseExprContext is an interface to support dynamic dispatch.
@@ -22317,7 +23503,7 @@ type ICaseExprContext interface {
 }
 
 type CaseExprContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	case_  IExprContext
 	_expr  IExprContext
@@ -22328,9 +23514,14 @@ type CaseExprContext struct {
 
 func NewEmptyCaseExprContext() *CaseExprContext {
 	var p = new(CaseExprContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_caseExpr
 	return p
+}
+
+func InitEmptyCaseExprContext(p *CaseExprContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_caseExpr
 }
 
 func (*CaseExprContext) IsCaseExprContext() {}
@@ -22338,7 +23529,7 @@ func (*CaseExprContext) IsCaseExprContext() {}
 func NewCaseExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *CaseExprContext {
 	var p = new(CaseExprContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_caseExpr
@@ -22458,36 +23649,24 @@ func (s *CaseExprContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) CaseExpr() (localctx ICaseExprContext) {
-	this := p
-	_ = this
-
 	localctx = NewCaseExprContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 182, PartiQLParserRULE_caseExpr)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1231)
 		p.Match(PartiQLParserCASE)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(1233)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -22502,12 +23681,19 @@ func (p *PartiQLParser) CaseExpr() (localctx ICaseExprContext) {
 	}
 	p.SetState(1240)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for ok := true; ok; ok = _la == PartiQLParserWHEN {
 		{
 			p.SetState(1235)
 			p.Match(PartiQLParserWHEN)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1236)
@@ -22520,6 +23706,10 @@ func (p *PartiQLParser) CaseExpr() (localctx ICaseExprContext) {
 		{
 			p.SetState(1237)
 			p.Match(PartiQLParserTHEN)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1238)
@@ -22532,16 +23722,26 @@ func (p *PartiQLParser) CaseExpr() (localctx ICaseExprContext) {
 
 		p.SetState(1242)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 	p.SetState(1246)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserELSE {
 		{
 			p.SetState(1244)
 			p.Match(PartiQLParserELSE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1245)
@@ -22555,9 +23755,23 @@ func (p *PartiQLParser) CaseExpr() (localctx ICaseExprContext) {
 	{
 		p.SetState(1248)
 		p.Match(PartiQLParserEND)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IValuesContext is an interface to support dynamic dispatch.
@@ -22579,15 +23793,20 @@ type IValuesContext interface {
 }
 
 type ValuesContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyValuesContext() *ValuesContext {
 	var p = new(ValuesContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_values
 	return p
+}
+
+func InitEmptyValuesContext(p *ValuesContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_values
 }
 
 func (*ValuesContext) IsValuesContext() {}
@@ -22595,7 +23814,7 @@ func (*ValuesContext) IsValuesContext() {}
 func NewValuesContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ValuesContext {
 	var p = new(ValuesContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_values
@@ -22679,34 +23898,18 @@ func (s *ValuesContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Values() (localctx IValuesContext) {
-	this := p
-	_ = this
-
 	localctx = NewValuesContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 184, PartiQLParserRULE_values)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1250)
 		p.Match(PartiQLParserVALUES)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1251)
@@ -22714,13 +23917,22 @@ func (p *PartiQLParser) Values() (localctx IValuesContext) {
 	}
 	p.SetState(1256)
 	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 163, p.GetParserRuleContext())
-
+	if p.HasError() {
+		goto errorExit
+	}
+	_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 163, p.GetParserRuleContext())
+	if p.HasError() {
+		goto errorExit
+	}
 	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 		if _alt == 1 {
 			{
 				p.SetState(1252)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1253)
@@ -22730,10 +23942,26 @@ func (p *PartiQLParser) Values() (localctx IValuesContext) {
 		}
 		p.SetState(1258)
 		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 163, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
+		_alt = p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 163, p.GetParserRuleContext())
+		if p.HasError() {
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IValueRowContext is an interface to support dynamic dispatch.
@@ -22756,15 +23984,20 @@ type IValueRowContext interface {
 }
 
 type ValueRowContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyValueRowContext() *ValueRowContext {
 	var p = new(ValueRowContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_valueRow
 	return p
+}
+
+func InitEmptyValueRowContext(p *ValueRowContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_valueRow
 }
 
 func (*ValueRowContext) IsValueRowContext() {}
@@ -22772,7 +24005,7 @@ func (*ValueRowContext) IsValueRowContext() {}
 func NewValueRowContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ValueRowContext {
 	var p = new(ValueRowContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_valueRow
@@ -22860,33 +24093,18 @@ func (s *ValueRowContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ValueRow() (localctx IValueRowContext) {
-	this := p
-	_ = this
-
 	localctx = NewValueRowContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 186, PartiQLParserRULE_valueRow)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1259)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1260)
@@ -22894,12 +24112,19 @@ func (p *PartiQLParser) ValueRow() (localctx IValueRowContext) {
 	}
 	p.SetState(1265)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == PartiQLParserCOMMA {
 		{
 			p.SetState(1261)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1262)
@@ -22908,14 +24133,31 @@ func (p *PartiQLParser) ValueRow() (localctx IValueRowContext) {
 
 		p.SetState(1267)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
 		p.SetState(1268)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IValueListContext is an interface to support dynamic dispatch.
@@ -22938,15 +24180,20 @@ type IValueListContext interface {
 }
 
 type ValueListContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyValueListContext() *ValueListContext {
 	var p = new(ValueListContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_valueList
 	return p
+}
+
+func InitEmptyValueListContext(p *ValueListContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_valueList
 }
 
 func (*ValueListContext) IsValueListContext() {}
@@ -22954,7 +24201,7 @@ func (*ValueListContext) IsValueListContext() {}
 func NewValueListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ValueListContext {
 	var p = new(ValueListContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_valueList
@@ -23042,33 +24289,18 @@ func (s *ValueListContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ValueList() (localctx IValueListContext) {
-	this := p
-	_ = this
-
 	localctx = NewValueListContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 188, PartiQLParserRULE_valueList)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1270)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1271)
@@ -23076,12 +24308,19 @@ func (p *PartiQLParser) ValueList() (localctx IValueListContext) {
 	}
 	p.SetState(1274)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	for ok := true; ok; ok = _la == PartiQLParserCOMMA {
 		{
 			p.SetState(1272)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1273)
@@ -23090,14 +24329,31 @@ func (p *PartiQLParser) ValueList() (localctx IValueListContext) {
 
 		p.SetState(1276)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
 		p.SetState(1278)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ISequenceConstructorContext is an interface to support dynamic dispatch.
@@ -23128,16 +24384,21 @@ type ISequenceConstructorContext interface {
 }
 
 type SequenceConstructorContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser   antlr.Parser
 	datatype antlr.Token
 }
 
 func NewEmptySequenceConstructorContext() *SequenceConstructorContext {
 	var p = new(SequenceConstructorContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_sequenceConstructor
 	return p
+}
+
+func InitEmptySequenceConstructorContext(p *SequenceConstructorContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_sequenceConstructor
 }
 
 func (*SequenceConstructorContext) IsSequenceConstructorContext() {}
@@ -23145,7 +24406,7 @@ func (*SequenceConstructorContext) IsSequenceConstructorContext() {}
 func NewSequenceConstructorContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SequenceConstructorContext {
 	var p = new(SequenceConstructorContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_sequenceConstructor
@@ -23245,28 +24506,9 @@ func (s *SequenceConstructorContext) ExitRule(listener antlr.ParseTreeListener) 
 }
 
 func (p *PartiQLParser) SequenceConstructor() (localctx ISequenceConstructorContext) {
-	this := p
-	_ = this
-
 	localctx = NewSequenceConstructorContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 190, PartiQLParserRULE_sequenceConstructor)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -23290,9 +24532,16 @@ func (p *PartiQLParser) SequenceConstructor() (localctx ISequenceConstructorCont
 	{
 		p.SetState(1281)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(1290)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -23302,12 +24551,19 @@ func (p *PartiQLParser) SequenceConstructor() (localctx ISequenceConstructorCont
 		}
 		p.SetState(1287)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for _la == PartiQLParserCOMMA {
 			{
 				p.SetState(1283)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1284)
@@ -23316,6 +24572,9 @@ func (p *PartiQLParser) SequenceConstructor() (localctx ISequenceConstructorCont
 
 			p.SetState(1289)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 
@@ -23323,9 +24582,23 @@ func (p *PartiQLParser) SequenceConstructor() (localctx ISequenceConstructorCont
 	{
 		p.SetState(1292)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ISubstringContext is an interface to support dynamic dispatch.
@@ -23351,15 +24624,20 @@ type ISubstringContext interface {
 }
 
 type SubstringContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptySubstringContext() *SubstringContext {
 	var p = new(SubstringContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_substring
 	return p
+}
+
+func InitEmptySubstringContext(p *SubstringContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_substring
 }
 
 func (*SubstringContext) IsSubstringContext() {}
@@ -23367,7 +24645,7 @@ func (*SubstringContext) IsSubstringContext() {}
 func NewSubstringContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SubstringContext {
 	var p = new(SubstringContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_substring
@@ -23467,41 +24745,34 @@ func (s *SubstringContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Substring() (localctx ISubstringContext) {
-	this := p
-	_ = this
-
 	localctx = NewSubstringContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 192, PartiQLParserRULE_substring)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1320)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 172, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 172, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1294)
 			p.Match(PartiQLParserSUBSTRING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1295)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1296)
@@ -23509,12 +24780,19 @@ func (p *PartiQLParser) Substring() (localctx ISubstringContext) {
 		}
 		p.SetState(1303)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserCOMMA {
 			{
 				p.SetState(1297)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1298)
@@ -23522,12 +24800,19 @@ func (p *PartiQLParser) Substring() (localctx ISubstringContext) {
 			}
 			p.SetState(1301)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 
 			if _la == PartiQLParserCOMMA {
 				{
 					p.SetState(1299)
 					p.Match(PartiQLParserCOMMA)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1300)
@@ -23540,6 +24825,10 @@ func (p *PartiQLParser) Substring() (localctx ISubstringContext) {
 		{
 			p.SetState(1305)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -23547,10 +24836,18 @@ func (p *PartiQLParser) Substring() (localctx ISubstringContext) {
 		{
 			p.SetState(1307)
 			p.Match(PartiQLParserSUBSTRING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1308)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1309)
@@ -23558,12 +24855,19 @@ func (p *PartiQLParser) Substring() (localctx ISubstringContext) {
 		}
 		p.SetState(1316)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserFROM {
 			{
 				p.SetState(1310)
 				p.Match(PartiQLParserFROM)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1311)
@@ -23571,12 +24875,19 @@ func (p *PartiQLParser) Substring() (localctx ISubstringContext) {
 			}
 			p.SetState(1314)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 
 			if _la == PartiQLParserFOR {
 				{
 					p.SetState(1312)
 					p.Match(PartiQLParserFOR)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1313)
@@ -23589,11 +24900,27 @@ func (p *PartiQLParser) Substring() (localctx ISubstringContext) {
 		{
 			p.SetState(1318)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IAggregateContext is an interface to support dynamic dispatch.
@@ -23607,15 +24934,20 @@ type IAggregateContext interface {
 }
 
 type AggregateContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyAggregateContext() *AggregateContext {
 	var p = new(AggregateContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_aggregate
 	return p
+}
+
+func InitEmptyAggregateContext(p *AggregateContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_aggregate
 }
 
 func (*AggregateContext) IsAggregateContext() {}
@@ -23623,7 +24955,7 @@ func (*AggregateContext) IsAggregateContext() {}
 func NewAggregateContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *AggregateContext {
 	var p = new(AggregateContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_aggregate
@@ -23633,8 +24965,8 @@ func NewAggregateContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *AggregateContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *AggregateContext) CopyFrom(ctx *AggregateContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *AggregateContext) CopyAll(ctx *AggregateContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *AggregateContext) GetRuleContext() antlr.RuleContext {
@@ -23646,16 +24978,16 @@ func (s *AggregateContext) ToStringTree(ruleNames []string, recog antlr.Recogniz
 }
 
 type AggregateBaseContext struct {
-	*AggregateContext
+	AggregateContext
 	func_ antlr.Token
 }
 
 func NewAggregateBaseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *AggregateBaseContext {
 	var p = new(AggregateBaseContext)
 
-	p.AggregateContext = NewEmptyAggregateContext()
+	InitEmptyAggregateContext(&p.AggregateContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*AggregateContext))
+	p.CopyAll(ctx.(*AggregateContext))
 
 	return p
 }
@@ -23741,16 +25073,16 @@ func (s *AggregateBaseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type CountAllContext struct {
-	*AggregateContext
+	AggregateContext
 	func_ antlr.Token
 }
 
 func NewCountAllContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *CountAllContext {
 	var p = new(CountAllContext)
 
-	p.AggregateContext = NewEmptyAggregateContext()
+	InitEmptyAggregateContext(&p.AggregateContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*AggregateContext))
+	p.CopyAll(ctx.(*AggregateContext))
 
 	return p
 }
@@ -23792,32 +25124,17 @@ func (s *CountAllContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Aggregate() (localctx IAggregateContext) {
-	this := p
-	_ = this
-
 	localctx = NewAggregateContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 194, PartiQLParserRULE_aggregate)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1334)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 174, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 174, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewCountAllContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
@@ -23827,18 +25144,34 @@ func (p *PartiQLParser) Aggregate() (localctx IAggregateContext) {
 			var _m = p.Match(PartiQLParserCOUNT)
 
 			localctx.(*CountAllContext).func_ = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1323)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1324)
 			p.Match(PartiQLParserASTERISK)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1325)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -23865,9 +25198,16 @@ func (p *PartiQLParser) Aggregate() (localctx IAggregateContext) {
 		{
 			p.SetState(1327)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(1329)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserALL || _la == PartiQLParserDISTINCT {
@@ -23884,11 +25224,27 @@ func (p *PartiQLParser) Aggregate() (localctx IAggregateContext) {
 		{
 			p.SetState(1332)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IWindowFunctionContext is an interface to support dynamic dispatch.
@@ -23902,15 +25258,20 @@ type IWindowFunctionContext interface {
 }
 
 type WindowFunctionContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyWindowFunctionContext() *WindowFunctionContext {
 	var p = new(WindowFunctionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_windowFunction
 	return p
+}
+
+func InitEmptyWindowFunctionContext(p *WindowFunctionContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_windowFunction
 }
 
 func (*WindowFunctionContext) IsWindowFunctionContext() {}
@@ -23918,7 +25279,7 @@ func (*WindowFunctionContext) IsWindowFunctionContext() {}
 func NewWindowFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *WindowFunctionContext {
 	var p = new(WindowFunctionContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_windowFunction
@@ -23928,8 +25289,8 @@ func NewWindowFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContex
 
 func (s *WindowFunctionContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *WindowFunctionContext) CopyFrom(ctx *WindowFunctionContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *WindowFunctionContext) CopyAll(ctx *WindowFunctionContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *WindowFunctionContext) GetRuleContext() antlr.RuleContext {
@@ -23941,16 +25302,16 @@ func (s *WindowFunctionContext) ToStringTree(ruleNames []string, recog antlr.Rec
 }
 
 type LagLeadFunctionContext struct {
-	*WindowFunctionContext
+	WindowFunctionContext
 	func_ antlr.Token
 }
 
 func NewLagLeadFunctionContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LagLeadFunctionContext {
 	var p = new(LagLeadFunctionContext)
 
-	p.WindowFunctionContext = NewEmptyWindowFunctionContext()
+	InitEmptyWindowFunctionContext(&p.WindowFunctionContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*WindowFunctionContext))
+	p.CopyAll(ctx.(*WindowFunctionContext))
 
 	return p
 }
@@ -24057,28 +25418,9 @@ func (s *LagLeadFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) WindowFunction() (localctx IWindowFunctionContext) {
-	this := p
-	_ = this
-
 	localctx = NewWindowFunctionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 196, PartiQLParserRULE_windowFunction)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	localctx = NewLagLeadFunctionContext(p, localctx)
 	p.EnterOuterAlt(localctx, 1)
@@ -24103,6 +25445,10 @@ func (p *PartiQLParser) WindowFunction() (localctx IWindowFunctionContext) {
 	{
 		p.SetState(1337)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1338)
@@ -24110,12 +25456,19 @@ func (p *PartiQLParser) WindowFunction() (localctx IWindowFunctionContext) {
 	}
 	p.SetState(1345)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserCOMMA {
 		{
 			p.SetState(1339)
 			p.Match(PartiQLParserCOMMA)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1340)
@@ -24123,12 +25476,19 @@ func (p *PartiQLParser) WindowFunction() (localctx IWindowFunctionContext) {
 		}
 		p.SetState(1343)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserCOMMA {
 			{
 				p.SetState(1341)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1342)
@@ -24141,13 +25501,27 @@ func (p *PartiQLParser) WindowFunction() (localctx IWindowFunctionContext) {
 	{
 		p.SetState(1347)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1348)
 		p.Over()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ICastContext is an interface to support dynamic dispatch.
@@ -24170,15 +25544,20 @@ type ICastContext interface {
 }
 
 type CastContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyCastContext() *CastContext {
 	var p = new(CastContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_cast
 	return p
+}
+
+func InitEmptyCastContext(p *CastContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_cast
 }
 
 func (*CastContext) IsCastContext() {}
@@ -24186,7 +25565,7 @@ func (*CastContext) IsCastContext() {}
 func NewCastContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *CastContext {
 	var p = new(CastContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_cast
@@ -24265,36 +25644,24 @@ func (s *CastContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Cast() (localctx ICastContext) {
-	this := p
-	_ = this
-
 	localctx = NewCastContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 198, PartiQLParserRULE_cast)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1350)
 		p.Match(PartiQLParserCAST)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1351)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1352)
@@ -24303,6 +25670,10 @@ func (p *PartiQLParser) Cast() (localctx ICastContext) {
 	{
 		p.SetState(1353)
 		p.Match(PartiQLParserAS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1354)
@@ -24311,9 +25682,23 @@ func (p *PartiQLParser) Cast() (localctx ICastContext) {
 	{
 		p.SetState(1355)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ICanLosslessCastContext is an interface to support dynamic dispatch.
@@ -24336,15 +25721,20 @@ type ICanLosslessCastContext interface {
 }
 
 type CanLosslessCastContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyCanLosslessCastContext() *CanLosslessCastContext {
 	var p = new(CanLosslessCastContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_canLosslessCast
 	return p
+}
+
+func InitEmptyCanLosslessCastContext(p *CanLosslessCastContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_canLosslessCast
 }
 
 func (*CanLosslessCastContext) IsCanLosslessCastContext() {}
@@ -24352,7 +25742,7 @@ func (*CanLosslessCastContext) IsCanLosslessCastContext() {}
 func NewCanLosslessCastContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *CanLosslessCastContext {
 	var p = new(CanLosslessCastContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_canLosslessCast
@@ -24431,36 +25821,24 @@ func (s *CanLosslessCastContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) CanLosslessCast() (localctx ICanLosslessCastContext) {
-	this := p
-	_ = this
-
 	localctx = NewCanLosslessCastContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 200, PartiQLParserRULE_canLosslessCast)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1357)
 		p.Match(PartiQLParserCAN_LOSSLESS_CAST)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1358)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1359)
@@ -24469,6 +25847,10 @@ func (p *PartiQLParser) CanLosslessCast() (localctx ICanLosslessCastContext) {
 	{
 		p.SetState(1360)
 		p.Match(PartiQLParserAS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1361)
@@ -24477,9 +25859,23 @@ func (p *PartiQLParser) CanLosslessCast() (localctx ICanLosslessCastContext) {
 	{
 		p.SetState(1362)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ICanCastContext is an interface to support dynamic dispatch.
@@ -24502,15 +25898,20 @@ type ICanCastContext interface {
 }
 
 type CanCastContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyCanCastContext() *CanCastContext {
 	var p = new(CanCastContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_canCast
 	return p
+}
+
+func InitEmptyCanCastContext(p *CanCastContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_canCast
 }
 
 func (*CanCastContext) IsCanCastContext() {}
@@ -24518,7 +25919,7 @@ func (*CanCastContext) IsCanCastContext() {}
 func NewCanCastContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *CanCastContext {
 	var p = new(CanCastContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_canCast
@@ -24597,36 +25998,24 @@ func (s *CanCastContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) CanCast() (localctx ICanCastContext) {
-	this := p
-	_ = this
-
 	localctx = NewCanCastContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 202, PartiQLParserRULE_canCast)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1364)
 		p.Match(PartiQLParserCAN_CAST)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1365)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1366)
@@ -24635,6 +26024,10 @@ func (p *PartiQLParser) CanCast() (localctx ICanCastContext) {
 	{
 		p.SetState(1367)
 		p.Match(PartiQLParserAS)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1368)
@@ -24643,9 +26036,23 @@ func (p *PartiQLParser) CanCast() (localctx ICanCastContext) {
 	{
 		p.SetState(1369)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExtractContext is an interface to support dynamic dispatch.
@@ -24674,16 +26081,21 @@ type IExtractContext interface {
 }
 
 type ExtractContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	rhs    IExprContext
 }
 
 func NewEmptyExtractContext() *ExtractContext {
 	var p = new(ExtractContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_extract
 	return p
+}
+
+func InitEmptyExtractContext(p *ExtractContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_extract
 }
 
 func (*ExtractContext) IsExtractContext() {}
@@ -24691,7 +26103,7 @@ func (*ExtractContext) IsExtractContext() {}
 func NewExtractContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExtractContext {
 	var p = new(ExtractContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_extract
@@ -24762,44 +26174,40 @@ func (s *ExtractContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Extract() (localctx IExtractContext) {
-	this := p
-	_ = this
-
 	localctx = NewExtractContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 204, PartiQLParserRULE_extract)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1371)
 		p.Match(PartiQLParserEXTRACT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1372)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1373)
 		p.Match(PartiQLParserIDENTIFIER)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1374)
 		p.Match(PartiQLParserFROM)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1375)
@@ -24811,9 +26219,23 @@ func (p *PartiQLParser) Extract() (localctx IExtractContext) {
 	{
 		p.SetState(1376)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ITrimFunctionContext is an interface to support dynamic dispatch.
@@ -24861,7 +26283,7 @@ type ITrimFunctionContext interface {
 }
 
 type TrimFunctionContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	func_  antlr.Token
 	mod    antlr.Token
@@ -24871,9 +26293,14 @@ type TrimFunctionContext struct {
 
 func NewEmptyTrimFunctionContext() *TrimFunctionContext {
 	var p = new(TrimFunctionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_trimFunction
 	return p
+}
+
+func InitEmptyTrimFunctionContext(p *TrimFunctionContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_trimFunction
 }
 
 func (*TrimFunctionContext) IsTrimFunctionContext() {}
@@ -24881,7 +26308,7 @@ func (*TrimFunctionContext) IsTrimFunctionContext() {}
 func NewTrimFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TrimFunctionContext {
 	var p = new(TrimFunctionContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_trimFunction
@@ -24989,28 +26416,9 @@ func (s *TrimFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) TrimFunction() (localctx ITrimFunctionContext) {
-	this := p
-	_ = this
-
 	localctx = NewTrimFunctionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 206, PartiQLParserRULE_trimFunction)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -25019,30 +26427,47 @@ func (p *PartiQLParser) TrimFunction() (localctx ITrimFunctionContext) {
 		var _m = p.Match(PartiQLParserTRIM)
 
 		localctx.(*TrimFunctionContext).func_ = _m
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1379)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(1387)
 	p.GetErrorHandler().Sync(p)
 
-	if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 179, p.GetParserRuleContext()) == 1 {
+	if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 179, p.GetParserRuleContext()) == 1 {
 		p.SetState(1381)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 177, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 177, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1380)
 
 				var _m = p.Match(PartiQLParserIDENTIFIER)
 
 				localctx.(*TrimFunctionContext).mod = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(1384)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -25058,8 +26483,14 @@ func (p *PartiQLParser) TrimFunction() (localctx ITrimFunctionContext) {
 		{
 			p.SetState(1386)
 			p.Match(PartiQLParserFROM)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
+	} else if p.HasError() { // JIM
+		goto errorExit
 	}
 	{
 		p.SetState(1389)
@@ -25071,9 +26502,23 @@ func (p *PartiQLParser) TrimFunction() (localctx ITrimFunctionContext) {
 	{
 		p.SetState(1390)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IDateFunctionContext is an interface to support dynamic dispatch.
@@ -25111,7 +26556,7 @@ type IDateFunctionContext interface {
 }
 
 type DateFunctionContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	func_  antlr.Token
 	dt     antlr.Token
@@ -25119,9 +26564,14 @@ type DateFunctionContext struct {
 
 func NewEmptyDateFunctionContext() *DateFunctionContext {
 	var p = new(DateFunctionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_dateFunction
 	return p
+}
+
+func InitEmptyDateFunctionContext(p *DateFunctionContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_dateFunction
 }
 
 func (*DateFunctionContext) IsDateFunctionContext() {}
@@ -25129,7 +26579,7 @@ func (*DateFunctionContext) IsDateFunctionContext() {}
 func NewDateFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DateFunctionContext {
 	var p = new(DateFunctionContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_dateFunction
@@ -25237,28 +26687,9 @@ func (s *DateFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) DateFunction() (localctx IDateFunctionContext) {
-	this := p
-	_ = this
-
 	localctx = NewDateFunctionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 208, PartiQLParserRULE_dateFunction)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
@@ -25282,6 +26713,10 @@ func (p *PartiQLParser) DateFunction() (localctx IDateFunctionContext) {
 	{
 		p.SetState(1393)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1394)
@@ -25289,10 +26724,18 @@ func (p *PartiQLParser) DateFunction() (localctx IDateFunctionContext) {
 		var _m = p.Match(PartiQLParserIDENTIFIER)
 
 		localctx.(*DateFunctionContext).dt = _m
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1395)
 		p.Match(PartiQLParserCOMMA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1396)
@@ -25301,6 +26744,10 @@ func (p *PartiQLParser) DateFunction() (localctx IDateFunctionContext) {
 	{
 		p.SetState(1397)
 		p.Match(PartiQLParserCOMMA)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1398)
@@ -25309,9 +26756,23 @@ func (p *PartiQLParser) DateFunction() (localctx IDateFunctionContext) {
 	{
 		p.SetState(1399)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IFunctionCallContext is an interface to support dynamic dispatch.
@@ -25325,15 +26786,20 @@ type IFunctionCallContext interface {
 }
 
 type FunctionCallContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyFunctionCallContext() *FunctionCallContext {
 	var p = new(FunctionCallContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_functionCall
 	return p
+}
+
+func InitEmptyFunctionCallContext(p *FunctionCallContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_functionCall
 }
 
 func (*FunctionCallContext) IsFunctionCallContext() {}
@@ -25341,7 +26807,7 @@ func (*FunctionCallContext) IsFunctionCallContext() {}
 func NewFunctionCallContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionCallContext {
 	var p = new(FunctionCallContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_functionCall
@@ -25351,8 +26817,8 @@ func NewFunctionCallContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 
 func (s *FunctionCallContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *FunctionCallContext) CopyFrom(ctx *FunctionCallContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *FunctionCallContext) CopyAll(ctx *FunctionCallContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *FunctionCallContext) GetRuleContext() antlr.RuleContext {
@@ -25364,16 +26830,16 @@ func (s *FunctionCallContext) ToStringTree(ruleNames []string, recog antlr.Recog
 }
 
 type FunctionCallIdentContext struct {
-	*FunctionCallContext
+	FunctionCallContext
 	name ISymbolPrimitiveContext
 }
 
 func NewFunctionCallIdentContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FunctionCallIdentContext {
 	var p = new(FunctionCallIdentContext)
 
-	p.FunctionCallContext = NewEmptyFunctionCallContext()
+	InitEmptyFunctionCallContext(&p.FunctionCallContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*FunctionCallContext))
+	p.CopyAll(ctx.(*FunctionCallContext))
 
 	return p
 }
@@ -25472,16 +26938,16 @@ func (s *FunctionCallIdentContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type FunctionCallReservedContext struct {
-	*FunctionCallContext
+	FunctionCallContext
 	name antlr.Token
 }
 
 func NewFunctionCallReservedContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *FunctionCallReservedContext {
 	var p = new(FunctionCallReservedContext)
 
-	p.FunctionCallContext = NewEmptyFunctionCallContext()
+	InitEmptyFunctionCallContext(&p.FunctionCallContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*FunctionCallContext))
+	p.CopyAll(ctx.(*FunctionCallContext))
 
 	return p
 }
@@ -25600,31 +27066,15 @@ func (s *FunctionCallReservedContext) ExitRule(listener antlr.ParseTreeListener)
 }
 
 func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
-	this := p
-	_ = this
-
 	localctx = NewFunctionCallContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 210, PartiQLParserRULE_functionCall)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1428)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserBIT_LENGTH, PartiQLParserCHARACTER_LENGTH, PartiQLParserCHAR_LENGTH, PartiQLParserCOUNT, PartiQLParserEXISTS, PartiQLParserLOWER, PartiQLParserOCTET_LENGTH, PartiQLParserSIZE, PartiQLParserUPPER:
@@ -25651,9 +27101,16 @@ func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
 		{
 			p.SetState(1402)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(1411)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -25663,12 +27120,19 @@ func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
 			}
 			p.SetState(1408)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 
 			for _la == PartiQLParserCOMMA {
 				{
 					p.SetState(1404)
 					p.Match(PartiQLParserCOMMA)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1405)
@@ -25677,6 +27141,9 @@ func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
 
 				p.SetState(1410)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 			}
 
@@ -25684,6 +27151,10 @@ func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
 		{
 			p.SetState(1413)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserIDENTIFIER, PartiQLParserIDENTIFIER_QUOTED:
@@ -25699,9 +27170,16 @@ func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
 		{
 			p.SetState(1415)
 			p.Match(PartiQLParserPAREN_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(1424)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -25711,12 +27189,19 @@ func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
 			}
 			p.SetState(1421)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 
 			for _la == PartiQLParserCOMMA {
 				{
 					p.SetState(1417)
 					p.Match(PartiQLParserCOMMA)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1418)
@@ -25725,6 +27210,9 @@ func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
 
 				p.SetState(1423)
 				p.GetErrorHandler().Sync(p)
+				if p.HasError() {
+					goto errorExit
+				}
 				_la = p.GetTokenStream().LA(1)
 			}
 
@@ -25732,13 +27220,28 @@ func (p *PartiQLParser) FunctionCall() (localctx IFunctionCallContext) {
 		{
 			p.SetState(1426)
 			p.Match(PartiQLParserPAREN_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPathStepContext is an interface to support dynamic dispatch.
@@ -25752,15 +27255,20 @@ type IPathStepContext interface {
 }
 
 type PathStepContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyPathStepContext() *PathStepContext {
 	var p = new(PathStepContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_pathStep
 	return p
+}
+
+func InitEmptyPathStepContext(p *PathStepContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_pathStep
 }
 
 func (*PathStepContext) IsPathStepContext() {}
@@ -25768,7 +27276,7 @@ func (*PathStepContext) IsPathStepContext() {}
 func NewPathStepContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PathStepContext {
 	var p = new(PathStepContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_pathStep
@@ -25778,8 +27286,8 @@ func NewPathStepContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 
 func (s *PathStepContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *PathStepContext) CopyFrom(ctx *PathStepContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *PathStepContext) CopyAll(ctx *PathStepContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *PathStepContext) GetRuleContext() antlr.RuleContext {
@@ -25791,16 +27299,16 @@ func (s *PathStepContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 type PathStepDotAllContext struct {
-	*PathStepContext
+	PathStepContext
 	all antlr.Token
 }
 
 func NewPathStepDotAllContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PathStepDotAllContext {
 	var p = new(PathStepDotAllContext)
 
-	p.PathStepContext = NewEmptyPathStepContext()
+	InitEmptyPathStepContext(&p.PathStepContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*PathStepContext))
+	p.CopyAll(ctx.(*PathStepContext))
 
 	return p
 }
@@ -25834,16 +27342,16 @@ func (s *PathStepDotAllContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type PathStepIndexAllContext struct {
-	*PathStepContext
+	PathStepContext
 	all antlr.Token
 }
 
 func NewPathStepIndexAllContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PathStepIndexAllContext {
 	var p = new(PathStepIndexAllContext)
 
-	p.PathStepContext = NewEmptyPathStepContext()
+	InitEmptyPathStepContext(&p.PathStepContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*PathStepContext))
+	p.CopyAll(ctx.(*PathStepContext))
 
 	return p
 }
@@ -25881,16 +27389,16 @@ func (s *PathStepIndexAllContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type PathStepIndexExprContext struct {
-	*PathStepContext
+	PathStepContext
 	key IExprContext
 }
 
 func NewPathStepIndexExprContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PathStepIndexExprContext {
 	var p = new(PathStepIndexExprContext)
 
-	p.PathStepContext = NewEmptyPathStepContext()
+	InitEmptyPathStepContext(&p.PathStepContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*PathStepContext))
+	p.CopyAll(ctx.(*PathStepContext))
 
 	return p
 }
@@ -25940,16 +27448,16 @@ func (s *PathStepIndexExprContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type PathStepDotExprContext struct {
-	*PathStepContext
+	PathStepContext
 	key ISymbolPrimitiveContext
 }
 
 func NewPathStepDotExprContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *PathStepDotExprContext {
 	var p = new(PathStepDotExprContext)
 
-	p.PathStepContext = NewEmptyPathStepContext()
+	InitEmptyPathStepContext(&p.PathStepContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*PathStepContext))
+	p.CopyAll(ctx.(*PathStepContext))
 
 	return p
 }
@@ -25995,37 +27503,25 @@ func (s *PathStepDotExprContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) PathStep() (localctx IPathStepContext) {
-	this := p
-	_ = this
-
 	localctx = NewPathStepContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 212, PartiQLParserRULE_pathStep)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1441)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 185, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 185, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewPathStepIndexExprContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(1430)
 			p.Match(PartiQLParserBRACKET_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1431)
@@ -26037,6 +27533,10 @@ func (p *PartiQLParser) PathStep() (localctx IPathStepContext) {
 		{
 			p.SetState(1432)
 			p.Match(PartiQLParserBRACKET_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 2:
@@ -26045,6 +27545,10 @@ func (p *PartiQLParser) PathStep() (localctx IPathStepContext) {
 		{
 			p.SetState(1434)
 			p.Match(PartiQLParserBRACKET_LEFT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1435)
@@ -26052,10 +27556,18 @@ func (p *PartiQLParser) PathStep() (localctx IPathStepContext) {
 			var _m = p.Match(PartiQLParserASTERISK)
 
 			localctx.(*PathStepIndexAllContext).all = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1436)
 			p.Match(PartiQLParserBRACKET_RIGHT)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 3:
@@ -26064,6 +27576,10 @@ func (p *PartiQLParser) PathStep() (localctx IPathStepContext) {
 		{
 			p.SetState(1437)
 			p.Match(PartiQLParserPERIOD)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1438)
@@ -26079,6 +27595,10 @@ func (p *PartiQLParser) PathStep() (localctx IPathStepContext) {
 		{
 			p.SetState(1439)
 			p.Match(PartiQLParserPERIOD)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1440)
@@ -26086,11 +27606,27 @@ func (p *PartiQLParser) PathStep() (localctx IPathStepContext) {
 			var _m = p.Match(PartiQLParserASTERISK)
 
 			localctx.(*PathStepDotAllContext).all = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprGraphMatchManyContext is an interface to support dynamic dispatch.
@@ -26112,15 +27648,20 @@ type IExprGraphMatchManyContext interface {
 }
 
 type ExprGraphMatchManyContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprGraphMatchManyContext() *ExprGraphMatchManyContext {
 	var p = new(ExprGraphMatchManyContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprGraphMatchMany
 	return p
+}
+
+func InitEmptyExprGraphMatchManyContext(p *ExprGraphMatchManyContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprGraphMatchMany
 }
 
 func (*ExprGraphMatchManyContext) IsExprGraphMatchManyContext() {}
@@ -26128,7 +27669,7 @@ func (*ExprGraphMatchManyContext) IsExprGraphMatchManyContext() {}
 func NewExprGraphMatchManyContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprGraphMatchManyContext {
 	var p = new(ExprGraphMatchManyContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprGraphMatchMany
@@ -26203,32 +27744,16 @@ func (s *ExprGraphMatchManyContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ExprGraphMatchMany() (localctx IExprGraphMatchManyContext) {
-	this := p
-	_ = this
-
 	localctx = NewExprGraphMatchManyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 214, PartiQLParserRULE_exprGraphMatchMany)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1443)
 		p.Match(PartiQLParserPAREN_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1444)
@@ -26237,6 +27762,10 @@ func (p *PartiQLParser) ExprGraphMatchMany() (localctx IExprGraphMatchManyContex
 	{
 		p.SetState(1445)
 		p.Match(PartiQLParserMATCH)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1446)
@@ -26245,9 +27774,23 @@ func (p *PartiQLParser) ExprGraphMatchMany() (localctx IExprGraphMatchManyContex
 	{
 		p.SetState(1447)
 		p.Match(PartiQLParserPAREN_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IExprGraphMatchOneContext is an interface to support dynamic dispatch.
@@ -26267,15 +27810,20 @@ type IExprGraphMatchOneContext interface {
 }
 
 type ExprGraphMatchOneContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyExprGraphMatchOneContext() *ExprGraphMatchOneContext {
 	var p = new(ExprGraphMatchOneContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_exprGraphMatchOne
 	return p
+}
+
+func InitEmptyExprGraphMatchOneContext(p *ExprGraphMatchOneContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_exprGraphMatchOne
 }
 
 func (*ExprGraphMatchOneContext) IsExprGraphMatchOneContext() {}
@@ -26283,7 +27831,7 @@ func (*ExprGraphMatchOneContext) IsExprGraphMatchOneContext() {}
 func NewExprGraphMatchOneContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ExprGraphMatchOneContext {
 	var p = new(ExprGraphMatchOneContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_exprGraphMatchOne
@@ -26350,28 +27898,8 @@ func (s *ExprGraphMatchOneContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) ExprGraphMatchOne() (localctx IExprGraphMatchOneContext) {
-	this := p
-	_ = this
-
 	localctx = NewExprGraphMatchOneContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 216, PartiQLParserRULE_exprGraphMatchOne)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1449)
@@ -26380,13 +27908,27 @@ func (p *PartiQLParser) ExprGraphMatchOne() (localctx IExprGraphMatchOneContext)
 	{
 		p.SetState(1450)
 		p.Match(PartiQLParserMATCH)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1451)
 		p.GpmlPattern()
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IParameterContext is an interface to support dynamic dispatch.
@@ -26404,15 +27946,20 @@ type IParameterContext interface {
 }
 
 type ParameterContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyParameterContext() *ParameterContext {
 	var p = new(ParameterContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_parameter
 	return p
+}
+
+func InitEmptyParameterContext(p *ParameterContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_parameter
 }
 
 func (*ParameterContext) IsParameterContext() {}
@@ -26420,7 +27967,7 @@ func (*ParameterContext) IsParameterContext() {}
 func NewParameterContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ParameterContext {
 	var p = new(ParameterContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_parameter
@@ -26455,35 +28002,29 @@ func (s *ParameterContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Parameter() (localctx IParameterContext) {
-	this := p
-	_ = this
-
 	localctx = NewParameterContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 218, PartiQLParserRULE_parameter)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1453)
 		p.Match(PartiQLParserQUESTION_MARK)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IVarRefExprContext is an interface to support dynamic dispatch.
@@ -26515,7 +28056,7 @@ type IVarRefExprContext interface {
 }
 
 type VarRefExprContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser    antlr.Parser
 	qualifier antlr.Token
 	ident     antlr.Token
@@ -26523,9 +28064,14 @@ type VarRefExprContext struct {
 
 func NewEmptyVarRefExprContext() *VarRefExprContext {
 	var p = new(VarRefExprContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_varRefExpr
 	return p
+}
+
+func InitEmptyVarRefExprContext(p *VarRefExprContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_varRefExpr
 }
 
 func (*VarRefExprContext) IsVarRefExprContext() {}
@@ -26533,7 +28079,7 @@ func (*VarRefExprContext) IsVarRefExprContext() {}
 func NewVarRefExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *VarRefExprContext {
 	var p = new(VarRefExprContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_varRefExpr
@@ -26584,32 +28130,16 @@ func (s *VarRefExprContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) VarRefExpr() (localctx IVarRefExprContext) {
-	this := p
-	_ = this
-
 	localctx = NewVarRefExprContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 220, PartiQLParserRULE_varRefExpr)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	p.SetState(1456)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == PartiQLParserAT_SIGN {
@@ -26619,6 +28149,10 @@ func (p *PartiQLParser) VarRefExpr() (localctx IVarRefExprContext) {
 			var _m = p.Match(PartiQLParserAT_SIGN)
 
 			localctx.(*VarRefExprContext).qualifier = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	}
@@ -26641,7 +28175,17 @@ func (p *PartiQLParser) VarRefExpr() (localctx IVarRefExprContext) {
 		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ICollectionContext is an interface to support dynamic dispatch.
@@ -26660,15 +28204,20 @@ type ICollectionContext interface {
 }
 
 type CollectionContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyCollectionContext() *CollectionContext {
 	var p = new(CollectionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_collection
 	return p
+}
+
+func InitEmptyCollectionContext(p *CollectionContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_collection
 }
 
 func (*CollectionContext) IsCollectionContext() {}
@@ -26676,7 +28225,7 @@ func (*CollectionContext) IsCollectionContext() {}
 func NewCollectionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *CollectionContext {
 	var p = new(CollectionContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_collection
@@ -26739,30 +28288,13 @@ func (s *CollectionContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Collection() (localctx ICollectionContext) {
-	this := p
-	_ = this
-
 	localctx = NewCollectionContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 222, PartiQLParserRULE_collection)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1462)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserBRACKET_LEFT:
@@ -26780,10 +28312,21 @@ func (p *PartiQLParser) Collection() (localctx ICollectionContext) {
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IArrayContext is an interface to support dynamic dispatch.
@@ -26806,15 +28349,20 @@ type IArrayContext interface {
 }
 
 type ArrayContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyArrayContext() *ArrayContext {
 	var p = new(ArrayContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_array
 	return p
+}
+
+func InitEmptyArrayContext(p *ArrayContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_array
 }
 
 func (*ArrayContext) IsArrayContext() {}
@@ -26822,7 +28370,7 @@ func (*ArrayContext) IsArrayContext() {}
 func NewArrayContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ArrayContext {
 	var p = new(ArrayContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_array
@@ -26910,36 +28458,24 @@ func (s *ArrayContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Array() (localctx IArrayContext) {
-	this := p
-	_ = this
-
 	localctx = NewArrayContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 224, PartiQLParserRULE_array)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1464)
 		p.Match(PartiQLParserBRACKET_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(1473)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -26949,12 +28485,19 @@ func (p *PartiQLParser) Array() (localctx IArrayContext) {
 		}
 		p.SetState(1470)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for _la == PartiQLParserCOMMA {
 			{
 				p.SetState(1466)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1467)
@@ -26963,6 +28506,9 @@ func (p *PartiQLParser) Array() (localctx IArrayContext) {
 
 			p.SetState(1472)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 
@@ -26970,9 +28516,23 @@ func (p *PartiQLParser) Array() (localctx IArrayContext) {
 	{
 		p.SetState(1475)
 		p.Match(PartiQLParserBRACKET_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IBagContext is an interface to support dynamic dispatch.
@@ -26995,15 +28555,20 @@ type IBagContext interface {
 }
 
 type BagContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyBagContext() *BagContext {
 	var p = new(BagContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_bag
 	return p
+}
+
+func InitEmptyBagContext(p *BagContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_bag
 }
 
 func (*BagContext) IsBagContext() {}
@@ -27011,7 +28576,7 @@ func (*BagContext) IsBagContext() {}
 func NewBagContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *BagContext {
 	var p = new(BagContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_bag
@@ -27099,36 +28664,24 @@ func (s *BagContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Bag() (localctx IBagContext) {
-	this := p
-	_ = this
-
 	localctx = NewBagContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 226, PartiQLParserRULE_bag)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1477)
 		p.Match(PartiQLParserANGLE_DOUBLE_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(1486)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -27138,12 +28691,19 @@ func (p *PartiQLParser) Bag() (localctx IBagContext) {
 		}
 		p.SetState(1483)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for _la == PartiQLParserCOMMA {
 			{
 				p.SetState(1479)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1480)
@@ -27152,6 +28712,9 @@ func (p *PartiQLParser) Bag() (localctx IBagContext) {
 
 			p.SetState(1485)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 
@@ -27159,9 +28722,23 @@ func (p *PartiQLParser) Bag() (localctx IBagContext) {
 	{
 		p.SetState(1488)
 		p.Match(PartiQLParserANGLE_DOUBLE_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ITupleContext is an interface to support dynamic dispatch.
@@ -27184,15 +28761,20 @@ type ITupleContext interface {
 }
 
 type TupleContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyTupleContext() *TupleContext {
 	var p = new(TupleContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_tuple
 	return p
+}
+
+func InitEmptyTupleContext(p *TupleContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_tuple
 }
 
 func (*TupleContext) IsTupleContext() {}
@@ -27200,7 +28782,7 @@ func (*TupleContext) IsTupleContext() {}
 func NewTupleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TupleContext {
 	var p = new(TupleContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_tuple
@@ -27288,36 +28870,24 @@ func (s *TupleContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Tuple() (localctx ITupleContext) {
-	this := p
-	_ = this
-
 	localctx = NewTupleContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 228, PartiQLParserRULE_tuple)
 	var _la int
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
 
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1490)
 		p.Match(PartiQLParserBRACE_LEFT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	p.SetState(1499)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 	_la = p.GetTokenStream().LA(1)
 
 	if ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9024796566781952) != 0) || ((int64((_la-80)) & ^0x3f) == 0 && ((int64(1)<<(_la-80))&-6051008311837327239) != 0) || ((int64((_la-180)) & ^0x3f) == 0 && ((int64(1)<<(_la-180))&68398559028338721) != 0) || ((int64((_la-264)) & ^0x3f) == 0 && ((int64(1)<<(_la-264))&1166665056867) != 0) {
@@ -27327,12 +28897,19 @@ func (p *PartiQLParser) Tuple() (localctx ITupleContext) {
 		}
 		p.SetState(1496)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		for _la == PartiQLParserCOMMA {
 			{
 				p.SetState(1492)
 				p.Match(PartiQLParserCOMMA)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1493)
@@ -27341,6 +28918,9 @@ func (p *PartiQLParser) Tuple() (localctx ITupleContext) {
 
 			p.SetState(1498)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 		}
 
@@ -27348,9 +28928,23 @@ func (p *PartiQLParser) Tuple() (localctx ITupleContext) {
 	{
 		p.SetState(1501)
 		p.Match(PartiQLParserBRACE_RIGHT)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // IPairContext is an interface to support dynamic dispatch.
@@ -27382,7 +28976,7 @@ type IPairContext interface {
 }
 
 type PairContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 	lhs    IExprContext
 	rhs    IExprContext
@@ -27390,9 +28984,14 @@ type PairContext struct {
 
 func NewEmptyPairContext() *PairContext {
 	var p = new(PairContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_pair
 	return p
+}
+
+func InitEmptyPairContext(p *PairContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_pair
 }
 
 func (*PairContext) IsPairContext() {}
@@ -27400,7 +28999,7 @@ func (*PairContext) IsPairContext() {}
 func NewPairContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *PairContext {
 	var p = new(PairContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_pair
@@ -27484,28 +29083,8 @@ func (s *PairContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Pair() (localctx IPairContext) {
-	this := p
-	_ = this
-
 	localctx = NewPairContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 230, PartiQLParserRULE_pair)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(1503)
@@ -27517,6 +29096,10 @@ func (p *PartiQLParser) Pair() (localctx IPairContext) {
 	{
 		p.SetState(1504)
 		p.Match(PartiQLParserCOLON)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
 	}
 	{
 		p.SetState(1505)
@@ -27526,7 +29109,17 @@ func (p *PartiQLParser) Pair() (localctx IPairContext) {
 		localctx.(*PairContext).rhs = _x
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ILiteralContext is an interface to support dynamic dispatch.
@@ -27540,15 +29133,20 @@ type ILiteralContext interface {
 }
 
 type LiteralContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyLiteralContext() *LiteralContext {
 	var p = new(LiteralContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_literal
 	return p
+}
+
+func InitEmptyLiteralContext(p *LiteralContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_literal
 }
 
 func (*LiteralContext) IsLiteralContext() {}
@@ -27556,7 +29154,7 @@ func (*LiteralContext) IsLiteralContext() {}
 func NewLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LiteralContext {
 	var p = new(LiteralContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_literal
@@ -27566,8 +29164,8 @@ func NewLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *LiteralContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *LiteralContext) CopyFrom(ctx *LiteralContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *LiteralContext) CopyAll(ctx *LiteralContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *LiteralContext) GetRuleContext() antlr.RuleContext {
@@ -27579,15 +29177,15 @@ func (s *LiteralContext) ToStringTree(ruleNames []string, recog antlr.Recognizer
 }
 
 type LiteralMissingContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralMissingContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralMissingContext {
 	var p = new(LiteralMissingContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27613,15 +29211,15 @@ func (s *LiteralMissingContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralIntegerContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralIntegerContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralIntegerContext {
 	var p = new(LiteralIntegerContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27647,15 +29245,15 @@ func (s *LiteralIntegerContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralDateContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralDateContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralDateContext {
 	var p = new(LiteralDateContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27685,15 +29283,15 @@ func (s *LiteralDateContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralFalseContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralFalseContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralFalseContext {
 	var p = new(LiteralFalseContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27719,15 +29317,15 @@ func (s *LiteralFalseContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralStringContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralStringContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralStringContext {
 	var p = new(LiteralStringContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27753,15 +29351,15 @@ func (s *LiteralStringContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralDecimalContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralDecimalContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralDecimalContext {
 	var p = new(LiteralDecimalContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27787,15 +29385,15 @@ func (s *LiteralDecimalContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralNullContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralNullContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralNullContext {
 	var p = new(LiteralNullContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27821,15 +29419,15 @@ func (s *LiteralNullContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralIonContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralIonContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralIonContext {
 	var p = new(LiteralIonContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27855,15 +29453,15 @@ func (s *LiteralIonContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralTrueContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralTrueContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralTrueContext {
 	var p = new(LiteralTrueContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27889,15 +29487,15 @@ func (s *LiteralTrueContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type LiteralTimeContext struct {
-	*LiteralContext
+	LiteralContext
 }
 
 func NewLiteralTimeContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *LiteralTimeContext {
 	var p = new(LiteralTimeContext)
 
-	p.LiteralContext = NewEmptyLiteralContext()
+	InitEmptyLiteralContext(&p.LiteralContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*LiteralContext))
+	p.CopyAll(ctx.(*LiteralContext))
 
 	return p
 }
@@ -27951,31 +29549,15 @@ func (s *LiteralTimeContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
-	this := p
-	_ = this
-
 	localctx = NewLiteralContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 232, PartiQLParserRULE_literal)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1529)
 	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
 
 	switch p.GetTokenStream().LA(1) {
 	case PartiQLParserNULL:
@@ -27984,6 +29566,10 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1507)
 			p.Match(PartiQLParserNULL)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserMISSING:
@@ -27992,6 +29578,10 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1508)
 			p.Match(PartiQLParserMISSING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserTRUE:
@@ -28000,6 +29590,10 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1509)
 			p.Match(PartiQLParserTRUE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserFALSE:
@@ -28008,6 +29602,10 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1510)
 			p.Match(PartiQLParserFALSE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserLITERAL_STRING:
@@ -28016,6 +29614,10 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1511)
 			p.Match(PartiQLParserLITERAL_STRING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserLITERAL_INTEGER:
@@ -28024,6 +29626,10 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1512)
 			p.Match(PartiQLParserLITERAL_INTEGER)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserLITERAL_DECIMAL:
@@ -28032,6 +29638,10 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1513)
 			p.Match(PartiQLParserLITERAL_DECIMAL)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserION_CLOSURE:
@@ -28040,6 +29650,10 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1514)
 			p.Match(PartiQLParserION_CLOSURE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserDATE:
@@ -28048,10 +29662,18 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1515)
 			p.Match(PartiQLParserDATE)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1516)
 			p.Match(PartiQLParserLITERAL_STRING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case PartiQLParserTIME:
@@ -28060,55 +29682,104 @@ func (p *PartiQLParser) Literal() (localctx ILiteralContext) {
 		{
 			p.SetState(1517)
 			p.Match(PartiQLParserTIME)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(1521)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserPAREN_LEFT {
 			{
 				p.SetState(1518)
 				p.Match(PartiQLParserPAREN_LEFT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1519)
 				p.Match(PartiQLParserLITERAL_INTEGER)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1520)
 				p.Match(PartiQLParserPAREN_RIGHT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
 		p.SetState(1526)
 		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PartiQLParserWITH {
 			{
 				p.SetState(1523)
 				p.Match(PartiQLParserWITH)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1524)
 				p.Match(PartiQLParserTIME)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1525)
 				p.Match(PartiQLParserZONE)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
 		}
 		{
 			p.SetState(1528)
 			p.Match(PartiQLParserLITERAL_STRING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		p.SetError(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 // ITypeContext is an interface to support dynamic dispatch.
@@ -28122,15 +29793,20 @@ type ITypeContext interface {
 }
 
 type TypeContext struct {
-	*antlr.BaseParserRuleContext
+	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
 func NewEmptyTypeContext() *TypeContext {
 	var p = new(TypeContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
 	p.RuleIndex = PartiQLParserRULE_type
 	return p
+}
+
+func InitEmptyTypeContext(p *TypeContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = PartiQLParserRULE_type
 }
 
 func (*TypeContext) IsTypeContext() {}
@@ -28138,7 +29814,7 @@ func (*TypeContext) IsTypeContext() {}
 func NewTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TypeContext {
 	var p = new(TypeContext)
 
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
 	p.RuleIndex = PartiQLParserRULE_type
@@ -28148,8 +29824,8 @@ func NewTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 
 func (s *TypeContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *TypeContext) CopyFrom(ctx *TypeContext) {
-	s.BaseParserRuleContext.CopyFrom(ctx.BaseParserRuleContext)
+func (s *TypeContext) CopyAll(ctx *TypeContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
 func (s *TypeContext) GetRuleContext() antlr.RuleContext {
@@ -28161,7 +29837,7 @@ func (s *TypeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) s
 }
 
 type TypeArgSingleContext struct {
-	*TypeContext
+	TypeContext
 	datatype antlr.Token
 	arg0     antlr.Token
 }
@@ -28169,9 +29845,9 @@ type TypeArgSingleContext struct {
 func NewTypeArgSingleContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TypeArgSingleContext {
 	var p = new(TypeArgSingleContext)
 
-	p.TypeContext = NewEmptyTypeContext()
+	InitEmptyTypeContext(&p.TypeContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TypeContext))
+	p.CopyAll(ctx.(*TypeContext))
 
 	return p
 }
@@ -28229,16 +29905,16 @@ func (s *TypeArgSingleContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TypeAtomicContext struct {
-	*TypeContext
+	TypeContext
 	datatype antlr.Token
 }
 
 func NewTypeAtomicContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TypeAtomicContext {
 	var p = new(TypeAtomicContext)
 
-	p.TypeContext = NewEmptyTypeContext()
+	InitEmptyTypeContext(&p.TypeContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TypeContext))
+	p.CopyAll(ctx.(*TypeContext))
 
 	return p
 }
@@ -28388,7 +30064,7 @@ func (s *TypeAtomicContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TypeArgDoubleContext struct {
-	*TypeContext
+	TypeContext
 	datatype antlr.Token
 	arg0     antlr.Token
 	arg1     antlr.Token
@@ -28397,9 +30073,9 @@ type TypeArgDoubleContext struct {
 func NewTypeArgDoubleContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TypeArgDoubleContext {
 	var p = new(TypeArgDoubleContext)
 
-	p.TypeContext = NewEmptyTypeContext()
+	InitEmptyTypeContext(&p.TypeContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TypeContext))
+	p.CopyAll(ctx.(*TypeContext))
 
 	return p
 }
@@ -28465,16 +30141,16 @@ func (s *TypeArgDoubleContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TypeTimeZoneContext struct {
-	*TypeContext
+	TypeContext
 	precision antlr.Token
 }
 
 func NewTypeTimeZoneContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TypeTimeZoneContext {
 	var p = new(TypeTimeZoneContext)
 
-	p.TypeContext = NewEmptyTypeContext()
+	InitEmptyTypeContext(&p.TypeContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TypeContext))
+	p.CopyAll(ctx.(*TypeContext))
 
 	return p
 }
@@ -28528,15 +30204,15 @@ func (s *TypeTimeZoneContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TypeCustomContext struct {
-	*TypeContext
+	TypeContext
 }
 
 func NewTypeCustomContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TypeCustomContext {
 	var p = new(TypeCustomContext)
 
-	p.TypeContext = NewEmptyTypeContext()
+	InitEmptyTypeContext(&p.TypeContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TypeContext))
+	p.CopyAll(ctx.(*TypeContext))
 
 	return p
 }
@@ -28574,16 +30250,16 @@ func (s *TypeCustomContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 type TypeVarCharContext struct {
-	*TypeContext
+	TypeContext
 	arg0 antlr.Token
 }
 
 func NewTypeVarCharContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *TypeVarCharContext {
 	var p = new(TypeVarCharContext)
 
-	p.TypeContext = NewEmptyTypeContext()
+	InitEmptyTypeContext(&p.TypeContext)
 	p.parser = parser
-	p.CopyFrom(ctx.(*TypeContext))
+	p.CopyAll(ctx.(*TypeContext))
 
 	return p
 }
@@ -28629,32 +30305,17 @@ func (s *TypeVarCharContext) ExitRule(listener antlr.ParseTreeListener) {
 }
 
 func (p *PartiQLParser) Type_() (localctx ITypeContext) {
-	this := p
-	_ = this
-
 	localctx = NewTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 234, PartiQLParserRULE_type)
 	var _la int
 
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
 	p.SetState(1569)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 203, p.GetParserRuleContext()) {
+	if p.HasError() {
+		goto errorExit
+	}
+
+	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 203, p.GetParserRuleContext()) {
 	case 1:
 		localctx = NewTypeAtomicContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
@@ -28686,10 +30347,18 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 			var _m = p.Match(PartiQLParserDOUBLE)
 
 			localctx.(*TypeAtomicContext).datatype = _m
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1533)
 			p.Match(PartiQLParserPRECISION)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case 3:
@@ -28716,10 +30385,14 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 		p.SetState(1538)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 197, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 197, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1535)
 				p.Match(PartiQLParserPAREN_LEFT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1536)
@@ -28727,12 +30400,22 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 				var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 				localctx.(*TypeArgSingleContext).arg0 = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1537)
 				p.Match(PartiQLParserPAREN_RIGHT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case 4:
@@ -28741,18 +30424,30 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 		{
 			p.SetState(1540)
 			p.Match(PartiQLParserCHARACTER)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		{
 			p.SetState(1541)
 			p.Match(PartiQLParserVARYING)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(1545)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 198, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 198, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1542)
 				p.Match(PartiQLParserPAREN_LEFT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1543)
@@ -28760,12 +30455,22 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 				var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 				localctx.(*TypeVarCharContext).arg0 = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1544)
 				p.Match(PartiQLParserPAREN_RIGHT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case 5:
@@ -28792,10 +30497,14 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 		p.SetState(1555)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 200, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 200, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1548)
 				p.Match(PartiQLParserPAREN_LEFT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1549)
@@ -28803,15 +30512,26 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 				var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 				localctx.(*TypeArgDoubleContext).arg0 = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			p.SetState(1552)
 			p.GetErrorHandler().Sync(p)
+			if p.HasError() {
+				goto errorExit
+			}
 			_la = p.GetTokenStream().LA(1)
 
 			if _la == PartiQLParserCOMMA {
 				{
 					p.SetState(1550)
 					p.Match(PartiQLParserCOMMA)
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 				{
 					p.SetState(1551)
@@ -28819,14 +30539,24 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 					var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 					localctx.(*TypeArgDoubleContext).arg1 = _m
+					if p.HasError() {
+						// Recognition error - abort rule
+						goto errorExit
+					}
 				}
 
 			}
 			{
 				p.SetState(1554)
 				p.Match(PartiQLParserPAREN_RIGHT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case 6:
@@ -28835,14 +30565,22 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 		{
 			p.SetState(1557)
 			p.Match(PartiQLParserTIME)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 		p.SetState(1561)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 201, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 201, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1558)
 				p.Match(PartiQLParserPAREN_LEFT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1559)
@@ -28850,30 +30588,54 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 				var _m = p.Match(PartiQLParserLITERAL_INTEGER)
 
 				localctx.(*TypeTimeZoneContext).precision = _m
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1560)
 				p.Match(PartiQLParserPAREN_RIGHT)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 		p.SetState(1566)
 		p.GetErrorHandler().Sync(p)
 
-		if p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 202, p.GetParserRuleContext()) == 1 {
+		if p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 202, p.GetParserRuleContext()) == 1 {
 			{
 				p.SetState(1563)
 				p.Match(PartiQLParserWITH)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1564)
 				p.Match(PartiQLParserTIME)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 			{
 				p.SetState(1565)
 				p.Match(PartiQLParserZONE)
+				if p.HasError() {
+					// Recognition error - abort rule
+					goto errorExit
+				}
 			}
 
+		} else if p.HasError() { // JIM
+			goto errorExit
 		}
 
 	case 7:
@@ -28884,9 +30646,21 @@ func (p *PartiQLParser) Type_() (localctx ITypeContext) {
 			p.SymbolPrimitive()
 		}
 
+	case antlr.ATNInvalidAltNumber:
+		goto errorExit
 	}
 
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
 	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
 func (p *PartiQLParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
@@ -28960,9 +30734,6 @@ func (p *PartiQLParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex
 }
 
 func (p *PartiQLParser) TableReference_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 0:
 		return p.Precpred(p.GetParserRuleContext(), 5)
@@ -28979,9 +30750,6 @@ func (p *PartiQLParser) TableReference_Sempred(localctx antlr.RuleContext, predI
 }
 
 func (p *PartiQLParser) ExprBagOp_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 3:
 		return p.Precpred(p.GetParserRuleContext(), 4)
@@ -28998,9 +30766,6 @@ func (p *PartiQLParser) ExprBagOp_Sempred(localctx antlr.RuleContext, predIndex 
 }
 
 func (p *PartiQLParser) ExprOr_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 6:
 		return p.Precpred(p.GetParserRuleContext(), 2)
@@ -29011,9 +30776,6 @@ func (p *PartiQLParser) ExprOr_Sempred(localctx antlr.RuleContext, predIndex int
 }
 
 func (p *PartiQLParser) ExprAnd_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 7:
 		return p.Precpred(p.GetParserRuleContext(), 2)
@@ -29024,9 +30786,6 @@ func (p *PartiQLParser) ExprAnd_Sempred(localctx antlr.RuleContext, predIndex in
 }
 
 func (p *PartiQLParser) ExprPredicate_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 8:
 		return p.Precpred(p.GetParserRuleContext(), 7)
@@ -29052,9 +30811,6 @@ func (p *PartiQLParser) ExprPredicate_Sempred(localctx antlr.RuleContext, predIn
 }
 
 func (p *PartiQLParser) MathOp00_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 14:
 		return p.Precpred(p.GetParserRuleContext(), 2)
@@ -29065,9 +30821,6 @@ func (p *PartiQLParser) MathOp00_Sempred(localctx antlr.RuleContext, predIndex i
 }
 
 func (p *PartiQLParser) MathOp01_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 15:
 		return p.Precpred(p.GetParserRuleContext(), 2)
@@ -29078,9 +30831,6 @@ func (p *PartiQLParser) MathOp01_Sempred(localctx antlr.RuleContext, predIndex i
 }
 
 func (p *PartiQLParser) MathOp02_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 16:
 		return p.Precpred(p.GetParserRuleContext(), 2)
@@ -29091,9 +30841,6 @@ func (p *PartiQLParser) MathOp02_Sempred(localctx antlr.RuleContext, predIndex i
 }
 
 func (p *PartiQLParser) ExprPrimary_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
 	switch predIndex {
 	case 17:
 		return p.Precpred(p.GetParserRuleContext(), 6)

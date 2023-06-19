@@ -1,13 +1,12 @@
-// Code generated from PartiQLTokens.g4 by ANTLR 4.12.0. DO NOT EDIT.
+// Code generated from PartiQLTokens.g4 by ANTLR 4.13.0. DO NOT EDIT.
 
 package parser
 
 import (
 	"fmt"
+	"github.com/antlr4-go/antlr/v4"
 	"sync"
 	"unicode"
-
-	"github.com/antlr/antlr4/runtime/Go/antlr/v4"
 )
 
 // Suppress unused import error
@@ -22,28 +21,28 @@ type PartiQLTokens struct {
 	// TODO: EOF string
 }
 
-var partiqltokensLexerStaticData struct {
+var PartiQLTokensLexerStaticData struct {
 	once                   sync.Once
 	serializedATN          []int32
-	channelNames           []string
-	modeNames              []string
-	literalNames           []string
-	symbolicNames          []string
-	ruleNames              []string
-	predictionContextCache *antlr.PredictionContextCache
+	ChannelNames           []string
+	ModeNames              []string
+	LiteralNames           []string
+	SymbolicNames          []string
+	RuleNames              []string
+	PredictionContextCache *antlr.PredictionContextCache
 	atn                    *antlr.ATN
 	decisionToDFA          []*antlr.DFA
 }
 
 func partiqltokensLexerInit() {
-	staticData := &partiqltokensLexerStaticData
-	staticData.channelNames = []string{
+	staticData := &PartiQLTokensLexerStaticData
+	staticData.ChannelNames = []string{
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN",
 	}
-	staticData.modeNames = []string{
+	staticData.ModeNames = []string{
 		"DEFAULT_MODE", "ION",
 	}
-	staticData.literalNames = []string{
+	staticData.LiteralNames = []string{
 		"", "'ABSOLUTE'", "'ACTION'", "'ADD'", "'ALL'", "'ALLOCATE'", "'ALTER'",
 		"'AND'", "'ANY'", "'ARE'", "'AS'", "'ASC'", "'ASSERTION'", "'AT'", "'AUTHORIZATION'",
 		"'AVG'", "'BEGIN'", "'BETWEEN'", "'BIT'", "'BIT_LENGTH'", "'BY'", "'CASCADE'",
@@ -92,7 +91,7 @@ func partiqltokensLexerInit() {
 		"'='", "", "'||'", "'<'", "'>'", "'<<'", "'>>'", "'['", "']'", "'{'",
 		"'}'", "'('", "')'", "':'", "';'", "'?'", "'.'",
 	}
-	staticData.symbolicNames = []string{
+	staticData.SymbolicNames = []string{
 		"", "ABSOLUTE", "ACTION", "ADD", "ALL", "ALLOCATE", "ALTER", "AND",
 		"ANY", "ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG",
 		"BEGIN", "BETWEEN", "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED",
@@ -139,7 +138,7 @@ func partiqltokensLexerInit() {
 		"WS", "COMMENT_SINGLE", "COMMENT_BLOCK", "UNRECOGNIZED", "ION_CLOSURE",
 		"BACKTICK",
 	}
-	staticData.ruleNames = []string{
+	staticData.RuleNames = []string{
 		"ABSOLUTE", "ACTION", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY",
 		"ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG", "BEGIN",
 		"BETWEEN", "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED", "CASE",
@@ -193,7 +192,7 @@ func partiqltokensLexerInit() {
 		"SYMBOL_TEXT_ALLOWED", "COMMON_ESCAPE", "COMMON_ESCAPE_CODE", "HEX_ESCAPE",
 		"UNICODE_ESCAPE", "HEX_DIGIT_QUARTET", "HEX_DIGIT", "WS_NOT_NL", "SYMBOL_QUOTE",
 	}
-	staticData.predictionContextCache = antlr.NewPredictionContextCache()
+	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
 		4, 0, 305, 3061, 6, -1, 6, -1, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3,
 		7, 3, 2, 4, 7, 4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9,
@@ -1606,7 +1605,7 @@ func partiqltokensLexerInit() {
 // NewPartiQLTokens(). You can call this function if you wish to initialize the static state ahead
 // of time.
 func PartiQLTokensInit() {
-	staticData := &partiqltokensLexerStaticData
+	staticData := &PartiQLTokensLexerStaticData
 	staticData.once.Do(partiqltokensLexerInit)
 }
 
@@ -1615,13 +1614,13 @@ func NewPartiQLTokens(input antlr.CharStream) *PartiQLTokens {
 	PartiQLTokensInit()
 	l := new(PartiQLTokens)
 	l.BaseLexer = antlr.NewBaseLexer(input)
-	staticData := &partiqltokensLexerStaticData
-	l.Interpreter = antlr.NewLexerATNSimulator(l, staticData.atn, staticData.decisionToDFA, staticData.predictionContextCache)
-	l.channelNames = staticData.channelNames
-	l.modeNames = staticData.modeNames
-	l.RuleNames = staticData.ruleNames
-	l.LiteralNames = staticData.literalNames
-	l.SymbolicNames = staticData.symbolicNames
+	staticData := &PartiQLTokensLexerStaticData
+	l.Interpreter = antlr.NewLexerATNSimulator(l, staticData.atn, staticData.decisionToDFA, staticData.PredictionContextCache)
+	l.channelNames = staticData.ChannelNames
+	l.modeNames = staticData.ModeNames
+	l.RuleNames = staticData.RuleNames
+	l.LiteralNames = staticData.LiteralNames
+	l.SymbolicNames = staticData.SymbolicNames
 	l.GrammarFileName = "PartiQLTokens.g4"
 	// TODO: l.EOF = antlr.TokenEOF
 

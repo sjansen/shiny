@@ -1,0 +1,1 @@
+UPDATE "Movie" SET info.rating=? WHERE title=? AND year=?

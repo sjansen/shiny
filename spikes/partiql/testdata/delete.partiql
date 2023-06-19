@@ -1,0 +1,1 @@
+DELETE FROM "Movie" WHERE title=? AND year=?
