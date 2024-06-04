@@ -1,6 +1,6 @@
 #!/bin/sh
 
-JAR="antlr-4.13.0-complete.jar"
+JAR="antlr-4.13.1-complete.jar"
 
 if [ ! -f "$JAR" ]; then
     curl -O https://www.antlr.org/download/"$JAR"
