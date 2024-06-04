@@ -113,11 +113,11 @@ pathSimpleSteps
     | PERIOD key=symbolPrimitive                         # PathSimpleDotSymbol
     ;
 
-// Based on https://github.com/partiql/partiql-docs/blob/main/RFCs/0011-partiql-insert.md
+// Based on https://github.com/partiql/partiql-lang/blob/main/RFCs/0011-partiql-insert.md
 replaceCommand
     : REPLACE INTO symbolPrimitive asIdent? value=expr;
 
-// Based on https://github.com/partiql/partiql-docs/blob/main/RFCs/0011-partiql-insert.md
+// Based on https://github.com/partiql/partiql-lang/blob/main/RFCs/0011-partiql-insert.md
 upsertCommand
     : UPSERT INTO symbolPrimitive asIdent? value=expr;
 
@@ -129,7 +129,7 @@ insertCommandReturning
 
 insertCommand
     : INSERT INTO pathSimple VALUE value=expr ( AT pos=expr )? onConflictClause?  # InsertLegacy
-    // See the Grammar at https://github.com/partiql/partiql-docs/blob/main/RFCs/0011-partiql-insert.md#2-proposed-grammar-and-semantics
+    // See the Grammar at https://github.com/partiql/partiql-lang/blob/main/RFCs/0011-partiql-insert.md#2-proposed-grammar-and-semantics
     | INSERT INTO symbolPrimitive asIdent? value=expr onConflictClause?           # Insert
     ;
 
@@ -465,17 +465,17 @@ exprSelect
 
 exprOr
     : lhs=exprOr OR rhs=exprAnd     # Or
-    | subexpr=exprAnd               # ExprOrBase
+    | parent_=exprAnd               # ExprOrBase
     ;
 
 exprAnd
     : lhs=exprAnd op=AND rhs=exprNot  # And
-    | subexpr=exprNot                 # ExprAndBase
+    | parent_=exprNot                 # ExprAndBase
     ;
 
 exprNot
     : <assoc=right> op=NOT rhs=exprNot  # Not
-    | subexpr=exprPredicate             # ExprNotBase
+    | parent_=exprPredicate             # ExprNotBase
     ;
 
 exprPredicate
@@ -485,27 +485,27 @@ exprPredicate
     | lhs=exprPredicate NOT? IN rhs=mathOp00                                         # PredicateIn
     | lhs=exprPredicate NOT? LIKE rhs=mathOp00 ( ESCAPE escape=expr )?               # PredicateLike
     | lhs=exprPredicate NOT? BETWEEN lower=mathOp00 AND upper=mathOp00               # PredicateBetween
-    | subexpr=mathOp00                                                               # PredicateBase
+    | parent_=mathOp00                                                               # PredicateBase
     ;
 
 mathOp00
     : lhs=mathOp00 op=CONCAT rhs=mathOp01
-    | subexpr=mathOp01
+    | parent_=mathOp01
     ;
 
 mathOp01
     : lhs=mathOp01 op=(PLUS|MINUS) rhs=mathOp02
-    | subexpr=mathOp02
+    | parent_=mathOp02
     ;
 
 mathOp02
     : lhs=mathOp02 op=(PERCENT|ASTERISK|SLASH_FORWARD) rhs=valueExpr
-    | subexpr=valueExpr
+    | parent_=valueExpr
     ;
 
 valueExpr
     : sign=(PLUS|MINUS) rhs=valueExpr
-    | subexpr=exprPrimary
+    | parent_=exprPrimary
     ;
 
 exprPrimary

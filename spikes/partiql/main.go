@@ -24,7 +24,7 @@ func NewStdinStream() (*StdinStream, error) {
 
 	fs := new(StdinStream)
 	fs.InputStream = antlr.NewInputStream(
-		string(buf.Bytes()),
+		buf.String(),
 	)
 
 	return fs, nil
@@ -36,14 +36,20 @@ func (f *StdinStream) GetSourceName() string {
 
 type TreeShapeListener struct {
 	*parser.BasePartiQLListener
+	depth int
 }
 
 func NewTreeShapeListener() *TreeShapeListener {
-	return new(TreeShapeListener)
+	return &TreeShapeListener{}
 }
 
-func (this *TreeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
-	fmt.Printf("%T %s\n", ctx, ctx.GetText())
+func (l *TreeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
+	fmt.Printf("%*s %T    %s\n", l.depth, "", ctx, ctx.GetText())
+	l.depth++
+}
+
+func (l *TreeShapeListener) ExitEveryRule(ctx antlr.ParserRuleContext) {
+	l.depth--
 }
 
 func main() {
@@ -65,5 +71,6 @@ func main() {
 	p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
 	p.BuildParseTrees = true
 	tree := p.Root()
+	fmt.Println("=========================================")
 	antlr.ParseTreeWalkerDefault.Walk(NewTreeShapeListener(), tree)
 }
